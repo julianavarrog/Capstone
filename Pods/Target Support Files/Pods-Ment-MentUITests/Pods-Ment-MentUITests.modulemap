@@ -1,0 +1,6 @@
+framework module Pods_Ment_MentUITests {
+  umbrella header "Pods-Ment-MentUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

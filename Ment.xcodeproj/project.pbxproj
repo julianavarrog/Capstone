@@ -1,0 +1,876 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
+		106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFA2870126A0091D1A6 /* SceneDelegate.m */; };
+		106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFD2870126A0091D1A6 /* ViewController.m */; };
+		106B4E012870126A0091D1A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106B4DFF2870126A0091D1A6 /* Main.storyboard */; };
+		106B4E032870126B0091D1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106B4E022870126B0091D1A6 /* Assets.xcassets */; };
+		106B4E062870126B0091D1A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */; };
+		106B4E092870126B0091D1A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E082870126B0091D1A6 /* main.m */; };
+		106B4E132870126B0091D1A6 /* MentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E122870126B0091D1A6 /* MentTests.m */; };
+		106B4E1D2870126B0091D1A6 /* MentUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E1C2870126B0091D1A6 /* MentUITests.m */; };
+		106B4E1F2870126B0091D1A6 /* MentUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E1E2870126B0091D1A6 /* MentUITestsLaunchTests.m */; };
+		106B4E302870198C0091D1A6 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E2F2870198C0091D1A6 /* FeedViewController.m */; };
+		106B4E34287019BD0091D1A6 /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E33287019BD0091D1A6 /* FeedCell.m */; };
+		106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3628701D290091D1A6 /* CalendarViewController.m */; };
+		106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3928701D420091D1A6 /* ProfileViewController.m */; };
+		106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3C28701D730091D1A6 /* ProfileCell.m */; };
+		106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3F2870A1C20091D1A6 /* LoginViewController2.m */; };
+		106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E422870AFA40091D1A6 /* NotificationsViewController.m */; };
+		106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E452870B19E0091D1A6 /* FilterViewController.m */; };
+		106B4E492870B48A0091D1A6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E482870B48A0091D1A6 /* SettingsViewController.m */; };
+		106B4E582872943C0091D1A6 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E572872943C0091D1A6 /* Profile.m */; };
+		106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5B287372D60091D1A6 /* userTypeViewController.m */; };
+		106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */; };
+		106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E61287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m */; };
+		106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E642874B6500091D1A6 /* ProfessionalProfilePictureViewController.m */; };
+		106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E672874E40A0091D1A6 /* OpenViewController.m */; };
+		106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */; };
+		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
+		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
+		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		106B4E0F2870126B0091D1A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 106B4DEB2870126A0091D1A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 106B4DF22870126A0091D1A6;
+			remoteInfo = Ment;
+		};
+		106B4E192870126B0091D1A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 106B4DEB2870126A0091D1A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 106B4DF22870126A0091D1A6;
+			remoteInfo = Ment;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.release.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.release.xcconfig"; sourceTree = "<group>"; };
+		106B4DF32870126A0091D1A6 /* Ment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		106B4DF62870126A0091D1A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		106B4DF72870126A0091D1A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		106B4DF92870126A0091D1A6 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		106B4DFA2870126A0091D1A6 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		106B4DFC2870126A0091D1A6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		106B4DFD2870126A0091D1A6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		106B4E002870126A0091D1A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		106B4E022870126B0091D1A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		106B4E052870126B0091D1A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		106B4E072870126B0091D1A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		106B4E082870126B0091D1A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		106B4E0E2870126B0091D1A6 /* MentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		106B4E122870126B0091D1A6 /* MentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MentTests.m; sourceTree = "<group>"; };
+		106B4E182870126B0091D1A6 /* MentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		106B4E1C2870126B0091D1A6 /* MentUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MentUITests.m; sourceTree = "<group>"; };
+		106B4E1E2870126B0091D1A6 /* MentUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MentUITestsLaunchTests.m; sourceTree = "<group>"; };
+		106B4E2E2870198C0091D1A6 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		106B4E2F2870198C0091D1A6 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		106B4E32287019BD0091D1A6 /* FeedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = "<group>"; };
+		106B4E33287019BD0091D1A6 /* FeedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
+		106B4E3528701D290091D1A6 /* CalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		106B4E3628701D290091D1A6 /* CalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		106B4E3828701D420091D1A6 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		106B4E3928701D420091D1A6 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		106B4E3B28701D730091D1A6 /* ProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		106B4E3C28701D730091D1A6 /* ProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		106B4E3E2870A1C20091D1A6 /* LoginViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController2.h; sourceTree = "<group>"; };
+		106B4E3F2870A1C20091D1A6 /* LoginViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController2.m; sourceTree = "<group>"; };
+		106B4E412870AFA40091D1A6 /* NotificationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		106B4E422870AFA40091D1A6 /* NotificationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		106B4E442870B19E0091D1A6 /* FilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		106B4E452870B19E0091D1A6 /* FilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		106B4E472870B48A0091D1A6 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		106B4E482870B48A0091D1A6 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		106B4E562872943C0091D1A6 /* Profile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		106B4E572872943C0091D1A6 /* Profile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		106B4E5A287372D60091D1A6 /* userTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userTypeViewController.h; sourceTree = "<group>"; };
+		106B4E5B287372D60091D1A6 /* userTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = userTypeViewController.m; sourceTree = "<group>"; };
+		106B4E5D287373070091D1A6 /* UserFinalRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserFinalRegistrationViewController.h; sourceTree = "<group>"; };
+		106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserFinalRegistrationViewController.m; sourceTree = "<group>"; };
+		106B4E60287384370091D1A6 /* ProfessionalFinalRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessionalFinalRegistrationViewController.h; sourceTree = "<group>"; };
+		106B4E61287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessionalFinalRegistrationViewController.m; sourceTree = "<group>"; };
+		106B4E632874B6500091D1A6 /* ProfessionalProfilePictureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessionalProfilePictureViewController.h; sourceTree = "<group>"; };
+		106B4E642874B6500091D1A6 /* ProfessionalProfilePictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessionalProfilePictureViewController.m; sourceTree = "<group>"; };
+		106B4E662874E40A0091D1A6 /* OpenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenViewController.h; sourceTree = "<group>"; };
+		106B4E672874E40A0091D1A6 /* OpenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenViewController.m; sourceTree = "<group>"; };
+		106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFeedViewController.h; sourceTree = "<group>"; };
+		106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailFeedViewController.m; sourceTree = "<group>"; };
+		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
+		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E2DFF3589CE4D7997855B57 /* Pods-Ment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment.release.xcconfig"; path = "Target Support Files/Pods-Ment/Pods-Ment.release.xcconfig"; sourceTree = "<group>"; };
+		8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21EDD5E2517E0AD3B5B5DD6 /* Pods-Ment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment.debug.xcconfig"; path = "Target Support Files/Pods-Ment/Pods-Ment.debug.xcconfig"; sourceTree = "<group>"; };
+		BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ment_MentUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5AFC5E86153DD04E24087D0 /* Pods-MentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.debug.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		106B4DF02870126A0091D1A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106B4E0B2870126B0091D1A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106B4E152870126B0091D1A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		106B4DEA2870126A0091D1A6 = {
+			isa = PBXGroup;
+			children = (
+				106B4E59287371AB0091D1A6 /* Authentification */,
+				106B4E5228728CDF0091D1A6 /* Calendar */,
+				106B4E312870199C0091D1A6 /* Model */,
+				106B4DF52870126A0091D1A6 /* Ment */,
+				106B4E112870126B0091D1A6 /* MentTests */,
+				106B4E1B2870126B0091D1A6 /* MentUITests */,
+				106B4DF42870126A0091D1A6 /* Products */,
+				B0064E3134BC0B4AD54A925C /* Pods */,
+				583EB014884E5F2DFCC344EC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		106B4DF42870126A0091D1A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				106B4DF32870126A0091D1A6 /* Ment.app */,
+				106B4E0E2870126B0091D1A6 /* MentTests.xctest */,
+				106B4E182870126B0091D1A6 /* MentUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		106B4DF52870126A0091D1A6 /* Ment */ = {
+			isa = PBXGroup;
+			children = (
+				106B4DF62870126A0091D1A6 /* AppDelegate.h */,
+				106B4DF72870126A0091D1A6 /* AppDelegate.m */,
+				106B4DF92870126A0091D1A6 /* SceneDelegate.h */,
+				106B4DFA2870126A0091D1A6 /* SceneDelegate.m */,
+				106B4DFC2870126A0091D1A6 /* ViewController.h */,
+				106B4DFD2870126A0091D1A6 /* ViewController.m */,
+				106B4DFF2870126A0091D1A6 /* Main.storyboard */,
+				106B4E022870126B0091D1A6 /* Assets.xcassets */,
+				106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */,
+				106B4E072870126B0091D1A6 /* Info.plist */,
+				106B4E082870126B0091D1A6 /* main.m */,
+				106B4E2E2870198C0091D1A6 /* FeedViewController.h */,
+				106B4E2F2870198C0091D1A6 /* FeedViewController.m */,
+				106B4E3828701D420091D1A6 /* ProfileViewController.h */,
+				106B4E3928701D420091D1A6 /* ProfileViewController.m */,
+				106B4E412870AFA40091D1A6 /* NotificationsViewController.h */,
+				106B4E422870AFA40091D1A6 /* NotificationsViewController.m */,
+				106B4E442870B19E0091D1A6 /* FilterViewController.h */,
+				106B4E452870B19E0091D1A6 /* FilterViewController.m */,
+				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
+				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
+				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
+				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
+			);
+			path = Ment;
+			sourceTree = "<group>";
+		};
+		106B4E112870126B0091D1A6 /* MentTests */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E122870126B0091D1A6 /* MentTests.m */,
+			);
+			path = MentTests;
+			sourceTree = "<group>";
+		};
+		106B4E1B2870126B0091D1A6 /* MentUITests */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E1C2870126B0091D1A6 /* MentUITests.m */,
+				106B4E1E2870126B0091D1A6 /* MentUITestsLaunchTests.m */,
+			);
+			path = MentUITests;
+			sourceTree = "<group>";
+		};
+		106B4E312870199C0091D1A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E32287019BD0091D1A6 /* FeedCell.h */,
+				106B4E33287019BD0091D1A6 /* FeedCell.m */,
+				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
+				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
+				106B4E562872943C0091D1A6 /* Profile.h */,
+				106B4E572872943C0091D1A6 /* Profile.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		106B4E5228728CDF0091D1A6 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E3528701D290091D1A6 /* CalendarViewController.h */,
+				106B4E3628701D290091D1A6 /* CalendarViewController.m */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		106B4E59287371AB0091D1A6 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E3F2870A1C20091D1A6 /* LoginViewController2.m */,
+				106B4E3E2870A1C20091D1A6 /* LoginViewController2.h */,
+				106B4E5A287372D60091D1A6 /* userTypeViewController.h */,
+				106B4E5B287372D60091D1A6 /* userTypeViewController.m */,
+				106B4E5D287373070091D1A6 /* UserFinalRegistrationViewController.h */,
+				106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */,
+				106B4E60287384370091D1A6 /* ProfessionalFinalRegistrationViewController.h */,
+				106B4E61287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m */,
+				106B4E632874B6500091D1A6 /* ProfessionalProfilePictureViewController.h */,
+				106B4E642874B6500091D1A6 /* ProfessionalProfilePictureViewController.m */,
+				106B4E662874E40A0091D1A6 /* OpenViewController.h */,
+				106B4E672874E40A0091D1A6 /* OpenViewController.m */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
+		583EB014884E5F2DFCC344EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */,
+				BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */,
+				447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0064E3134BC0B4AD54A925C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B21EDD5E2517E0AD3B5B5DD6 /* Pods-Ment.debug.xcconfig */,
+				8E2DFF3589CE4D7997855B57 /* Pods-Ment.release.xcconfig */,
+				8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */,
+				0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */,
+				C5AFC5E86153DD04E24087D0 /* Pods-MentTests.debug.xcconfig */,
+				25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		106B4DF22870126A0091D1A6 /* Ment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 106B4E222870126B0091D1A6 /* Build configuration list for PBXNativeTarget "Ment" */;
+			buildPhases = (
+				74C649E64178030DA322306F /* [CP] Check Pods Manifest.lock */,
+				106B4DEF2870126A0091D1A6 /* Sources */,
+				106B4DF02870126A0091D1A6 /* Frameworks */,
+				106B4DF12870126A0091D1A6 /* Resources */,
+				D72F5148B3BC6E54ECB899AC /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ment;
+			productName = Ment;
+			productReference = 106B4DF32870126A0091D1A6 /* Ment.app */;
+			productType = "com.apple.product-type.application";
+		};
+		106B4E0D2870126B0091D1A6 /* MentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 106B4E252870126B0091D1A6 /* Build configuration list for PBXNativeTarget "MentTests" */;
+			buildPhases = (
+				4345D6BE715985016BF266E2 /* [CP] Check Pods Manifest.lock */,
+				106B4E0A2870126B0091D1A6 /* Sources */,
+				106B4E0B2870126B0091D1A6 /* Frameworks */,
+				106B4E0C2870126B0091D1A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				106B4E102870126B0091D1A6 /* PBXTargetDependency */,
+			);
+			name = MentTests;
+			productName = MentTests;
+			productReference = 106B4E0E2870126B0091D1A6 /* MentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		106B4E172870126B0091D1A6 /* MentUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 106B4E282870126B0091D1A6 /* Build configuration list for PBXNativeTarget "MentUITests" */;
+			buildPhases = (
+				58672935317C160E7388C980 /* [CP] Check Pods Manifest.lock */,
+				106B4E142870126B0091D1A6 /* Sources */,
+				106B4E152870126B0091D1A6 /* Frameworks */,
+				106B4E162870126B0091D1A6 /* Resources */,
+				31D978D3276CF2103AE9688A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				106B4E1A2870126B0091D1A6 /* PBXTargetDependency */,
+			);
+			name = MentUITests;
+			productName = MentUITests;
+			productReference = 106B4E182870126B0091D1A6 /* MentUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		106B4DEB2870126A0091D1A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					106B4DF22870126A0091D1A6 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					106B4E0D2870126B0091D1A6 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 106B4DF22870126A0091D1A6;
+					};
+					106B4E172870126B0091D1A6 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 106B4DF22870126A0091D1A6;
+					};
+				};
+			};
+			buildConfigurationList = 106B4DEE2870126A0091D1A6 /* Build configuration list for PBXProject "Ment" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 106B4DEA2870126A0091D1A6;
+			productRefGroup = 106B4DF42870126A0091D1A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				106B4DF22870126A0091D1A6 /* Ment */,
+				106B4E0D2870126B0091D1A6 /* MentTests */,
+				106B4E172870126B0091D1A6 /* MentUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		106B4DF12870126A0091D1A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106B4E062870126B0091D1A6 /* LaunchScreen.storyboard in Resources */,
+				106B4E032870126B0091D1A6 /* Assets.xcassets in Resources */,
+				106B4E012870126A0091D1A6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106B4E0C2870126B0091D1A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106B4E162870126B0091D1A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31D978D3276CF2103AE9688A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4345D6BE715985016BF266E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MentTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58672935317C160E7388C980 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ment-MentUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74C649E64178030DA322306F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D72F5148B3BC6E54ECB899AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ment/Pods-Ment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ment/Pods-Ment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ment/Pods-Ment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		106B4DEF2870126A0091D1A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */,
+				106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */,
+				106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */,
+				106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */,
+				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
+				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
+				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
+				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
+				106B4E582872943C0091D1A6 /* Profile.m in Sources */,
+				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
+				106B4E34287019BD0091D1A6 /* FeedCell.m in Sources */,
+				106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */,
+				106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */,
+				106B4E092870126B0091D1A6 /* main.m in Sources */,
+				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
+				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
+				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
+				106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */,
+				106B4E302870198C0091D1A6 /* FeedViewController.m in Sources */,
+				106B4E492870B48A0091D1A6 /* SettingsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106B4E0A2870126B0091D1A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106B4E132870126B0091D1A6 /* MentTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		106B4E142870126B0091D1A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				106B4E1F2870126B0091D1A6 /* MentUITestsLaunchTests.m in Sources */,
+				106B4E1D2870126B0091D1A6 /* MentUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		106B4E102870126B0091D1A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 106B4DF22870126A0091D1A6 /* Ment */;
+			targetProxy = 106B4E0F2870126B0091D1A6 /* PBXContainerItemProxy */;
+		};
+		106B4E1A2870126B0091D1A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 106B4DF22870126A0091D1A6 /* Ment */;
+			targetProxy = 106B4E192870126B0091D1A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		106B4DFF2870126A0091D1A6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				106B4E002870126A0091D1A6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				106B4E052870126B0091D1A6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		106B4E202870126B0091D1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		106B4E212870126B0091D1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		106B4E232870126B0091D1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B21EDD5E2517E0AD3B5B5DD6 /* Pods-Ment.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Ment/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.Ment;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		106B4E242870126B0091D1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E2DFF3589CE4D7997855B57 /* Pods-Ment.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Ment/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.Ment;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		106B4E262870126B0091D1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5AFC5E86153DD04E24087D0 /* Pods-MentTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.MentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ment.app/Ment";
+			};
+			name = Debug;
+		};
+		106B4E272870126B0091D1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.MentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ment.app/Ment";
+			};
+			name = Release;
+		};
+		106B4E292870126B0091D1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.MentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ment;
+			};
+			name = Debug;
+		};
+		106B4E2A2870126B0091D1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.MentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ment;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		106B4DEE2870126A0091D1A6 /* Build configuration list for PBXProject "Ment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				106B4E202870126B0091D1A6 /* Debug */,
+				106B4E212870126B0091D1A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		106B4E222870126B0091D1A6 /* Build configuration list for PBXNativeTarget "Ment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				106B4E232870126B0091D1A6 /* Debug */,
+				106B4E242870126B0091D1A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		106B4E252870126B0091D1A6 /* Build configuration list for PBXNativeTarget "MentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				106B4E262870126B0091D1A6 /* Debug */,
+				106B4E272870126B0091D1A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		106B4E282870126B0091D1A6 /* Build configuration list for PBXNativeTarget "MentUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				106B4E292870126B0091D1A6 /* Debug */,
+				106B4E2A2870126B0091D1A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 106B4DEB2870126A0091D1A6 /* Project object */;
+}

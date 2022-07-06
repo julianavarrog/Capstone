@@ -1,0 +1,6 @@
+framework module Pods_MentTests {
+  umbrella header "Pods-MentTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
