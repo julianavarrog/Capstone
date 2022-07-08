@@ -1,8 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-Ment/Pods-Ment-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework
 ${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
 ${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework
-${BUILT_PRODUCTS_DIR}/JTCalendar/JTCalendar.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework

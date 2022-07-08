@@ -11,7 +11,8 @@ target 'Ment' do
   pod 'GoogleAPIClientForREST/Calendar'
   pod 'GTMAppAuth'
   pod 'AppAuth'
-  pod 'JTCalendar'
+  pod 'FSCalendar'
+
 
   target 'MentTests' do
     inherit! :search_paths

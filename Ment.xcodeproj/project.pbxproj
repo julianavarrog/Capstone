@@ -33,6 +33,7 @@
 		106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E642874B6500091D1A6 /* ProfessionalProfilePictureViewController.m */; };
 		106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E672874E40A0091D1A6 /* OpenViewController.m */; };
 		106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */; };
+		106B4E6E2877A1C90091D1A6 /* UserProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
 		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
 		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
@@ -106,6 +107,8 @@
 		106B4E672874E40A0091D1A6 /* OpenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenViewController.m; sourceTree = "<group>"; };
 		106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFeedViewController.h; sourceTree = "<group>"; };
 		106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailFeedViewController.m; sourceTree = "<group>"; };
+		106B4E6C2877A1C90091D1A6 /* UserProfilePictureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfilePictureViewController.h; sourceTree = "<group>"; };
+		106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfilePictureViewController.m; sourceTree = "<group>"; };
 		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
 		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				106B4E642874B6500091D1A6 /* ProfessionalProfilePictureViewController.m */,
 				106B4E662874E40A0091D1A6 /* OpenViewController.h */,
 				106B4E672874E40A0091D1A6 /* OpenViewController.m */,
+				106B4E6C2877A1C90091D1A6 /* UserProfilePictureViewController.h */,
+				106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */,
 				106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */,
 				106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */,
+				106B4E6E2877A1C90091D1A6 /* UserProfilePictureViewController.m in Sources */,
 				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
 				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
@@ -719,6 +725,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -747,6 +754,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

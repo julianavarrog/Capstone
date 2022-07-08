@@ -34,11 +34,20 @@
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"secondSegue" sender:nil];
-            NSLog(@"Segue called");
+            NSLog(@"PFUser for User registered successfully");
+            PFObject *userDetail = [PFObject objectWithClassName:@"UserDetail"];
+            userDetail[@"userID"] = newUser.objectId;
+            userDetail[@"Name"]= self.nameField.text;
+            [userDetail saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded){
+                    [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
+                }else{
+                    //there is a problem
+                }
+            }];
         }
     }];
+    
 }
 
 /*

@@ -23,22 +23,33 @@
 
 
 - (void) registerProfessional{
-    PFObject *parseObject = [PFObject objectWithClassName:@"Professionals"];
-    parseObject[@"Name"] = self.nameField.text;
-    parseObject[@"Description"] = self.descriptionField.text;
-    parseObject[@"username"] = self.usernameField.text;
-    parseObject[@"password"] = self.passwordField.text;
-
-    [parseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    PFUser *newUser = [PFUser user];
+    newUser.username = self.usernameField.text;
+    newUser.password = self.passwordField.text;
+    
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
-            NSLog(@"Segue called");
+            NSLog(@" PFUser for professional registered successfully");
+            PFObject *profesionals = [PFObject objectWithClassName:@"Professionals"];
+            profesionals[@"userID" ] = newUser.objectId;
+            profesionals[@"Name"] = self.nameField.text;
+            profesionals[@"Description"] = self.descriptionField.text;
+            [profesionals saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded){
+                    NSLog(@"Professional registered sucessfully");
+                    [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
+                }else{
+                    NSLog(@"Professional registration failed");
+                    //there is a problem
+                }
+            }];
         }
     }];
 }
+
+
 /*
 #pragma mark - Navigation
 
