@@ -17,6 +17,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.2)
   - GTMSessionFetcher/Full (1.7.2):
     - GTMSessionFetcher/Core (= 1.7.2)
+  - JTCalendar (2.2.6)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - AppAuth
   - GoogleAPIClientForREST/Calendar
   - GTMAppAuth
+  - JTCalendar
   - Parse
   - Parse/UI
 
@@ -38,6 +40,7 @@ SPEC REPOS:
     - GoogleAPIClientForREST
     - GTMAppAuth
     - GTMSessionFetcher
+    - JTCalendar
     - Parse
 
 SPEC CHECKSUMS:
@@ -46,8 +49,9 @@ SPEC CHECKSUMS:
   GoogleAPIClientForREST: 2abe83bae1085d28f94ccc30a49fc7950d721fb9
   GTMAppAuth: 4d8f864896f3646f0c33baf38a28362f4c601e15
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  JTCalendar: 1b326e0d59dd1855b52c5f3feb059d2ff953805d
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
 
-PODFILE CHECKSUM: 5f0cd7e29abaed3ad15ee6de2f0d3685e712feeb
+PODFILE CHECKSUM: adf34493ee33099cc9f171dbcc79406c5013e28b
 
 COCOAPODS: 1.11.3

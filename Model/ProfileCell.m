@@ -26,7 +26,7 @@
     //self.
     
     
-    self.profileCellImage.file = profile[@"image"];
+    self.profileCellImage.file = profile[@"Image"];
     self.profileCellImage.layer.cornerRadius  = self.profileCellImage.frame.size.width/2;
     self.profileDescription.text = profile.description;
     [self.profileCellImage loadInBackground];
