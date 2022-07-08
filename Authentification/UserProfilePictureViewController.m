@@ -32,21 +32,6 @@
 */
 
 - (IBAction)didSignup:(id)sender {
-    /*
-    PFObject *parseObject = [PFObject objectWithClassName:@"Professionals"];
-    parseObject[@"Image"] = self.chosenProfilePicture.image;
-
-    [parseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"secondSegue" sender:nil];
-            NSLog(@" Second Segue called");
-        }
-    }];
-     
-     */
  [self performSegueWithIdentifier:@"secondSegue" sender:nil];
 }
 

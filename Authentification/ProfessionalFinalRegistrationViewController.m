@@ -35,6 +35,7 @@
             PFObject *profesionals = [PFObject objectWithClassName:@"Professionals"];
             profesionals[@"userID" ] = newUser.objectId;
             profesionals[@"Name"] = self.nameField.text;
+            profesionals[@"username"] = self.usernameField.text;
             profesionals[@"Description"] = self.descriptionField.text;
             [profesionals saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){
