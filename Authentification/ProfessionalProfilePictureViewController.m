@@ -98,21 +98,15 @@
 
 - (IBAction)didSignUp:(id)sender {
     
-        /*
-        PFObject *parseObject = [PFObject objectWithClassName:@"Professionals"];
-        parseObject[@"Image"] = self.chosenProfilePicture.image;
-
-        [parseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error != nil) {
-                NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"User registered successfully");
-                [self performSegueWithIdentifier:@"secondSegue" sender:nil];
-                NSLog(@" Second Segue called");
-            }
-        }];
-         
-         */
+    // This is how to update my object with the chosen image. How do I get the object ID from the user I've 
+    /*
+    PFQuery *query = [PFQuery queryWithClassName:@"Professional"];
+    [query getObjectInBackgroundWithId:### block:^(PFObject *professional, NSError *error) {
+        professional[@"Image"] = self.chosenProfilePicture.image;
+        [professional saveInBackground];
+    }];}
+     */
+    
      [self performSegueWithIdentifier:@"secondSegue" sender:nil];
 }
 

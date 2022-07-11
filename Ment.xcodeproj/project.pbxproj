@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10657454287C8C16003E8877 /* FilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657453287C8C16003E8877 /* FilterInfoViewController.m */; };
+		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
+		1065745A287CA6D0003E8877 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Languages.m */; };
 		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
 		106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFA2870126A0091D1A6 /* SceneDelegate.m */; };
 		106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFD2870126A0091D1A6 /* ViewController.m */; };
@@ -35,6 +38,7 @@
 		106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */; };
 		106B4E6E2877A1C90091D1A6 /* UserProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */; };
 		106B4E712877EEFB0091D1A6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E702877EEFB0091D1A6 /* Event.m */; };
+		106B4E742878A13F0091D1A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E732878A13F0091D1A6 /* User.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
 		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
 		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
@@ -59,6 +63,12 @@
 
 /* Begin PBXFileReference section */
 		0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.release.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.release.xcconfig"; sourceTree = "<group>"; };
+		10657452287C8C16003E8877 /* FilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterInfoViewController.h; sourceTree = "<group>"; };
+		10657453287C8C16003E8877 /* FilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterInfoViewController.m; sourceTree = "<group>"; };
+		10657455287C9F3D003E8877 /* Speciality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Speciality.h; sourceTree = "<group>"; };
+		10657456287C9F3D003E8877 /* Speciality.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Speciality.m; sourceTree = "<group>"; };
+		10657458287CA6D0003E8877 /* Languages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
+		10657459287CA6D0003E8877 /* Languages.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Languages.m; sourceTree = "<group>"; };
 		106B4DF32870126A0091D1A6 /* Ment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		106B4DF62870126A0091D1A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		106B4DF72870126A0091D1A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -112,6 +122,8 @@
 		106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfilePictureViewController.m; sourceTree = "<group>"; };
 		106B4E6F2877EEFB0091D1A6 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		106B4E702877EEFB0091D1A6 /* Event.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		106B4E722878A13F0091D1A6 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		106B4E732878A13F0091D1A6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
 		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +213,8 @@
 				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
 				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
 				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
+				10657452287C8C16003E8877 /* FilterInfoViewController.h */,
+				10657453287C8C16003E8877 /* FilterInfoViewController.m */,
 			);
 			path = Ment;
 			sourceTree = "<group>";
@@ -233,6 +247,12 @@
 				106B4E572872943C0091D1A6 /* Profile.m */,
 				106B4E6F2877EEFB0091D1A6 /* Event.h */,
 				106B4E702877EEFB0091D1A6 /* Event.m */,
+				106B4E722878A13F0091D1A6 /* User.h */,
+				106B4E732878A13F0091D1A6 /* User.m */,
+				10657455287C9F3D003E8877 /* Speciality.h */,
+				10657456287C9F3D003E8877 /* Speciality.m */,
+				10657458287CA6D0003E8877 /* Languages.h */,
+				10657459287CA6D0003E8877 /* Languages.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -534,18 +554,22 @@
 				106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */,
 				106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */,
 				106B4E6E2877A1C90091D1A6 /* UserProfilePictureViewController.m in Sources */,
+				10657454287C8C16003E8877 /* FilterInfoViewController.m in Sources */,
+				10657457287C9F3D003E8877 /* Speciality.m in Sources */,
 				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
 				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
 				106B4E582872943C0091D1A6 /* Profile.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
+				106B4E742878A13F0091D1A6 /* User.m in Sources */,
 				106B4E34287019BD0091D1A6 /* FeedCell.m in Sources */,
 				106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */,
 				106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */,
 				106B4E092870126B0091D1A6 /* main.m in Sources */,
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
+				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
 				106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */,
 				106B4E302870198C0091D1A6 /* FeedViewController.m in Sources */,

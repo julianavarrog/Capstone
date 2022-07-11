@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "Parse/PFImageView.h"
 #import "Profile.h"
+#import "Event.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Profile *profile;
 @property (weak, nonatomic) IBOutlet UILabel *profileDescription;
 @property (weak, nonatomic) IBOutlet UILabel *profileUsername;
+
+
+@property (strong, nonatomic) Event *event;
+
 @end
 
 NS_ASSUME_NONNULL_END

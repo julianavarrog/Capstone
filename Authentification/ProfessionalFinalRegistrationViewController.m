@@ -40,7 +40,7 @@
             [profesionals saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){
                     NSLog(@"Professional registered sucessfully");
-                    [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
+                    [self performSegueWithIdentifier:@"filterInfoSegue" sender:nil];
                 }else{
                     NSLog(@"Professional registration failed");
                     //there is a problem

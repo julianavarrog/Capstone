@@ -10,6 +10,7 @@
 #import "PFUser.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
+#import "Event.h"
 
 @implementation ProfileCell
 
@@ -18,18 +19,13 @@
     // Initialization code
 }
 
-- (void)setProfile:(Profile *)profile {
-    _profile = profile;
-    NSString *atName = @"@";
-    NSString *screenName = [atName stringByAppendingString:profile[@"username"]];
-    self.profileUsername.text = screenName;
+- (void)setSession:(Event *)event {
+    _event = event;
+    // self.feedImage.file = profile[@"Image"];
+    
+    
+    
     //self.
-    
-    
-    self.profileCellImage.file = profile[@"image"];
-    self.profileCellImage.layer.cornerRadius  = self.profileCellImage.frame.size.width/2;
-    self.profileDescription.text = profile.description;
-    [self.profileCellImage loadInBackground];
     
     /*
     PFUser *user = [PFUser currentUser];

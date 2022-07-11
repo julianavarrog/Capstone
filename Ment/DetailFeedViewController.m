@@ -6,12 +6,18 @@
 //
 
 #import "DetailFeedViewController.h"
+#import "CalendarViewController.h"
 #import "Profile.h"
 #import "PFUser.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
+#import "FSCalendar/FSCalendar.h"
 
-@interface DetailFeedViewController ()<UITextViewDelegate>
+@interface DetailFeedViewController ()<FSCalendarDelegate, FSCalendarDataSource, UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
+@property (strong, nonatomic) NSMutableArray *events;
+
+
 
 @end
 
@@ -20,25 +26,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   // [self getInfo];
-    
+    [self getInfo];
 }
 
 - (void) getInfo{
     
-
+    /*
+    approach 1
+     
+    //PFObject *professionals = [PFObject objectWithClassName:@"Professionals"];
+    // do something with the array of object returned by call
+    //self.detailName.text = professionals[@"Name"];
+    //self.detailUsername.text = professionals[@"Username"];
+    
+    
+     approach 2
+     
     NSString *atName = @"@";
-    NSString *screenName = [atName stringByAppendingString:self.profile[@"username"]];
+    NSString *screenName = [atName stringByAppendingString:self.profile.username];
     self.detailUsername.text = screenName;
     
-    //self.detailUsername.text = self.post.author.username;
-    
-   // self.detailCaption.text = self.post.caption;
-   // self.detailImage.file = self.post.image;
-    
-    //self.detailProfileImage.file = self.post.author[@"profilePic"];
-    //self.detailProfileImage.layer.cornerRadius = self.detailProfileImage.frame.size.height/2;
-        
+    self.detailName.text = self.profile.Name;
+    */
 }
 
 @end
