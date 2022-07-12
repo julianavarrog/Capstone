@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSDate *date;
 
+@property (nonatomic, strong) NSString *dateString;
+
 
 @end
 
