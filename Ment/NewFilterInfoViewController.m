@@ -50,6 +50,8 @@
 
 - (IBAction)finalSignUp:(id)sender {
     
+    /*
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
     [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
@@ -60,6 +62,13 @@
                 professional[@"Language"] = self.languageArray;
             }
     }];
+     
+     */
+    
+    PFObject * object = [PFObject objectWithClassName:@"Professionals"];
+    [object where]
+   // [object objectForKey:@"userID" equalTo:PFUser.currentUser.objectId];
+    [object setValue:self.priceAmount.text forKey:@"Price"];
     [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
 }
 

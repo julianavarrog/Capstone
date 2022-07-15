@@ -43,6 +43,7 @@
                     [self performSegueWithIdentifier:@"filterInfoSegue" sender:nil];
                 }else{
                     NSLog(@"Professional registration failed");
+                    [self displayMessageToUser:error.localizedDescription];
                     //there is a problem
                 }
             }];
@@ -50,6 +51,20 @@
     }];
 }
 
+- (void)displayMessageToUser:(NSString*)message {
+     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Message"
+                                                                    message:message
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+     UIPopoverPresentationController *popPresenter = [alert popoverPresentationController];
+     popPresenter.sourceView = self.view;
+     UIAlertAction *Okbutton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+     }];
+     [alert addAction:Okbutton];
+     popPresenter.sourceRect = self.view.frame;
+     alert.modalPresentationStyle = UIModalPresentationPopover;
+     [self presentViewController:alert animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

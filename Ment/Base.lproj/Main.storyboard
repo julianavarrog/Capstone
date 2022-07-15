@@ -672,6 +672,10 @@
                                 <rect key="frame" x="33" y="352" width="344" height="348"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="E6r-jd-DKp" id="BBf-wg-hfP"/>
+                                    <outlet property="delegate" destination="E6r-jd-DKp" id="Vzb-TC-X16"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVa-IV-iLu">
                                 <rect key="frame" x="33" y="733" width="167" height="35"/>
@@ -681,6 +685,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Book Event">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="bookEvent:" destination="E6r-jd-DKp" eventType="touchUpInside" id="SR1-oq-Enu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2w-Mr-uzp">
                                 <rect key="frame" x="214" y="733" width="164" height="35"/>
@@ -717,11 +724,45 @@
                         <outlet property="calendar" destination="7g8-79-LUe" id="FYp-3y-k2W"/>
                         <outlet property="detailName" destination="yiA-vD-2vv" id="bAf-fX-KOX"/>
                         <outlet property="detailUsername" destination="0ab-CK-vrK" id="Qz8-R5-lbS"/>
+                        <segue destination="zYs-iA-zOu" kind="presentation" identifier="bookSession" id="hLW-MX-UG2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnY-EI-eLE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6437.68115942029" y="-252.45535714285714"/>
+        </scene>
+        <!--Book-->
+        <scene sceneID="JpY-sS-avA">
+            <objects>
+                <viewController title="Book" id="zYs-iA-zOu" customClass="BookingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kFl-fq-7jD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2O-qd-K6Y">
+                                <rect key="frame" x="0.0" y="70" width="414" height="134"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNg-0e-SR8">
+                                        <rect key="frame" x="30" y="53" width="321" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0JH-nI-eaV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateSelectionTextField" destination="nNg-0e-SR8" id="yU6-Kz-u7n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fOh-jT-sAN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7208.6956521739139" y="-244.41964285714283"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Agn-o5-b0D">
@@ -853,7 +894,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="gear" catalog="system" title=""/>
                                 <connections>
-                                    <segue destination="gXR-MS-XGC" kind="showDetail" id="w6F-lf-Nci"/>
+                                    <segue destination="gXR-MS-XGC" kind="show" id="w6F-lf-Nci"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -1752,12 +1793,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhd-ql-EJR">
-                                <rect key="frame" x="4" y="398" width="131" height="102"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhd-ql-EJR">
+                                <rect key="frame" x="4" y="398" width="129" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="131" id="bhJ-s0-IIW"/>
-                                </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -2032,7 +2071,7 @@
                     <connections>
                         <outlet property="chosenProfilePicture" destination="Xd4-LK-hKf" id="ykH-qA-Kfx"/>
                         <outlet property="uploadPictureLabel" destination="zXV-tD-dRV" id="4IB-t7-ieP"/>
-                        <segue destination="0ST-oV-Tf2" kind="replace" identifier="secondSegue" splitViewControllerTargetIndex="1" id="Rpo-iD-Atn"/>
+                        <segue destination="6v1-pc-Lnf" kind="show" identifier="secondSegue" id="dhl-fX-hjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVf-7i-2ps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2095,6 +2134,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dou-Hi-hHa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sL8-B2-ftF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sve-TP-Wxk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="aEf-Rx-QnF"/>
                     <toolbarItems/>
@@ -2107,9 +2147,27 @@
                         <segue destination="TYd-3e-6QU" kind="relationship" relationship="rootViewController" id="wgK-GA-yc6"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sL8-B2-ftF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2558" y="1233"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="tED-nX-5qB">
+            <objects>
+                <tabBarController id="6v1-pc-Lnf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5gZ-C1-1jS"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RDa-ia-1zX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="e4V-zs-ETT" kind="relationship" relationship="viewControllers" id="7gr-dl-lZ9"/>
+                        <segue destination="Sve-TP-Wxk" kind="relationship" relationship="viewControllers" id="4qJ-if-fKg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IDQ-ld-X49" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1543" y="1647"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K2e-rx-RgK">
@@ -2153,6 +2211,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gXR-MS-XGC" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bO3-4F-1gh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyl-Qs-VPu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2168,7 +2227,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VoE-Bp-W3B"/>
+        <segue reference="4qJ-if-fKg"/>
+        <segue reference="7gr-dl-lZ9"/>
+        <segue reference="p0U-Yw-8bJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PFImageView" width="128" height="128"/>

@@ -11,8 +11,10 @@
 #import "PFUser.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
-#import "FSCalendar/FSCalendar.h"
+#import "FSCalendar.h"
 #import "Event.h"
+#import "EventList.h"
+
 
 
 @interface DetailFeedViewController ()<FSCalendarDelegate, FSCalendarDataSource, UITextViewDelegate>
@@ -95,6 +97,9 @@
         return events.count;
     }
     return 0;
+}
+- (IBAction)bookEvent:(id)sender {
+    [self performSegueWithIdentifier:@"bookSession" sender:nil];
 }
 
 @end
