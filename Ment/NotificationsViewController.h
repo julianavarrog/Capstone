@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NotificationsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *notificationTableView;
 
 @end
 

@@ -19,22 +19,17 @@
     // Initialization code
 }
 
-- (void)setSession:(Event *)event {
-    _event = event;
-    // self.feedImage.file = profile[@"Image"];
-    
-    
-    
-    //self.
-    
-    /*
-    PFUser *user = [PFUser currentUser];
-    user[@"profilePic"] = self.feedProfilePicture.file;
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-    }];
-     */
+- (void)setEvent:(Event*)event{
+    [self.profileUsername setText: event.title];
 }
+
+/*
+PFUser *user = [PFUser currentUser];
+user[@"Image"] = self.feedProfilePicture.file;
+[user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    
+}];
+ */
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -18,4 +18,14 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)didApplyFilters:(id)sender {
+}
+
+
+- (IBAction)didChangeAge:(id)sender {
+    self.ageAmount.text = [NSString stringWithFormat:@"%0.0f", self.ageSlider.value];
+}
+- (IBAction)didChangePrice:(id)sender {
+    self.priceAmount.text = [NSString stringWithFormat:@"%0.0f", self.priceSlider.value];
+}
 @end

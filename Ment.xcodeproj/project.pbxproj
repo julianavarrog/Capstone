@@ -40,6 +40,10 @@
 		106B4E712877EEFB0091D1A6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E702877EEFB0091D1A6 /* Event.m */; };
 		106B4E742878A13F0091D1A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E732878A13F0091D1A6 /* User.m */; };
 		1096D83C287D318500A97C32 /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096D83B287D318500A97C32 /* EventList.m */; };
+		1096D83F287E2A4800A97C32 /* TestAppleSignin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096D83E287E2A4800A97C32 /* TestAppleSignin.m */; };
+		1096D841287E32F600A97C32 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1096D840287E32F600A97C32 /* MapKit.framework */; };
+		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
+		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
 		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
 		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
@@ -127,6 +131,13 @@
 		106B4E732878A13F0091D1A6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		1096D83A287D318500A97C32 /* EventList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventList.h; sourceTree = "<group>"; };
 		1096D83B287D318500A97C32 /* EventList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventList.m; sourceTree = "<group>"; };
+		1096D83D287E2A4800A97C32 /* TestAppleSignin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAppleSignin.h; sourceTree = "<group>"; };
+		1096D83E287E2A4800A97C32 /* TestAppleSignin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAppleSignin.m; sourceTree = "<group>"; };
+		1096D840287E32F600A97C32 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFilterInfoViewController.h; sourceTree = "<group>"; };
+		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
+		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
+		10E3EFEB2880DE1900F529D6 /* NotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
 		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1096D841287E32F600A97C32 /* MapKit.framework in Frameworks */,
 				391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +230,10 @@
 				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
 				10657452287C8C16003E8877 /* FilterInfoViewController.h */,
 				10657453287C8C16003E8877 /* FilterInfoViewController.m */,
+				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
+				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
+				10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */,
+				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
 			);
 			path = Ment;
 			sourceTree = "<group>";
@@ -258,6 +274,8 @@
 				10657459287CA6D0003E8877 /* Languages.m */,
 				1096D83A287D318500A97C32 /* EventList.h */,
 				1096D83B287D318500A97C32 /* EventList.m */,
+				10E3EFEA2880DE1900F529D6 /* NotificationCell.h */,
+				10E3EFEB2880DE1900F529D6 /* NotificationCell.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,6 +313,7 @@
 		583EB014884E5F2DFCC344EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1096D840287E32F600A97C32 /* MapKit.framework */,
 				8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */,
 				BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */,
 				447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */,
@@ -569,12 +588,15 @@
 				106B4E582872943C0091D1A6 /* Profile.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
 				106B4E742878A13F0091D1A6 /* User.m in Sources */,
+				10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */,
 				106B4E34287019BD0091D1A6 /* FeedCell.m in Sources */,
 				106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */,
 				106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */,
 				106B4E092870126B0091D1A6 /* main.m in Sources */,
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
+				10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */,
+				1096D83F287E2A4800A97C32 /* TestAppleSignin.m in Sources */,
 				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
 				106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */,
@@ -761,7 +783,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -790,7 +812,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

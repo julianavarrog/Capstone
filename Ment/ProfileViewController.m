@@ -25,8 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getCurrentUserInfo];
+    
     self.profileTableView.dataSource = self;
     self.profileTableView.delegate = self;
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getCurrentUserInfo) forControlEvents:UIControlEventValueChanged];
     [self.profileTableView insertSubview:self.refreshControl atIndex:0];
@@ -39,6 +41,18 @@
     self.profileUsername.text = user.username;
     PFObject *userInfo = [PFObject objectWithClassName:@"UserDetail"];
     // how to get the object with the same userID as the current user.
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *profile, NSError *error){
+        [self.refreshControl endRefreshing];
+        if(profile != nil){
+            // do something with the array of object returned by call
+            self.profileArray = profile;
+            [self.profileTableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 
     
 }

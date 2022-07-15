@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileCell: UITableViewCell
 @property (weak, nonatomic) IBOutlet PFImageView *profileCellImage;
+@property (weak, nonatomic) IBOutlet UILabel *profileCellDate;
 @property (strong, nonatomic) Profile *profile;
 @property (weak, nonatomic) IBOutlet UILabel *profileDescription;
 @property (weak, nonatomic) IBOutlet UILabel *profileUsername;
 
-
-@property (strong, nonatomic) Event *event;
+- (void)setEvent:(Event*)event;
 
 @end
 

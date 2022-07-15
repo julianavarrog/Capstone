@@ -5,11 +5,12 @@
 //  Created by Julia Navarro Goldaraz on 7/11/22.
 //
 
+#import <UIKit/UIKit.h>
 #import "FilterInfoViewController.h"
 #import "Speciality.h"
 #import "Languages.h"
 
-@interface FilterInfoViewController ()
+@interface FilterInfoViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSMutableArray *specialityArray;
 @property (nonatomic, strong) NSMutableArray *languagesArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *specialityController;
@@ -23,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //[self.specialityController registerNib:<#(nullable UINib *)#> forCellWithReuseIdentifier:];
     
     self.specialityController.dataSource = self;
     self.specialityController.delegate = self;
@@ -49,7 +52,7 @@
 }
     
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    Speciality *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SpecialityCollectorCell" forIndexPath:indexPath];
+    Speciality *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SpecialityCollectionCell" forIndexPath:indexPath];
 
     cell.specialityLabel.text = self.specialityArray[indexPath.item];
     return cell;

@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 // had initalized it as UIViewController. Which one is it? UIViewController or UICollectionViewController
-@interface FilterInfoViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface FilterInfoViewController : UIViewController 
 
 
 @property (weak, nonatomic) IBOutlet UILabel *specialityLabel;
