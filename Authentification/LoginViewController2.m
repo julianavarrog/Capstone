@@ -47,6 +47,8 @@
     // NSString *username = self.usernameField.text;
     // NSString *password = self.passwordField.text;
     [self performSegueWithIdentifier:@"signupSegue" sender:nil];
+    
+    //After we sign up, I feel we don't need the navigation bar anymore. Is it possible to 
 
 }
 

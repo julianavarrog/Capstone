@@ -16,8 +16,8 @@
 @interface CalendarViewController()<FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (weak, nonatomic) IBOutlet UIView *calendarlist;
-@property (strong, nonatomic) NSDateFormatter * dateFormatter1;
-@property (strong, nonatomic) NSMutableDictionary *orderEvents;
+@property (strong, nonatomic) NSDateFormatter * dateFormatter1; //Please switch to a name that is easier to understand, without the number
+@property (strong, nonatomic) NSMutableDictionary *orderEvents; //Could you add some comments here to explain the orderEvent and distinctEvent?
 @property (strong, nonatomic) NSArray *distinctEvents;
 
 @property (weak, nonatomic) IBOutlet UITableView *eventsTableView;
@@ -40,6 +40,7 @@
     self.dateFormatter1.dateFormat = @"yyyy/MM/dd";
     // Do any additional setup after loading the view.
 }
+
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0){
         [self.calendar setHidden:false];
@@ -98,7 +99,7 @@
 {
     EventList * cell = [tableView dequeueReusableCellWithIdentifier:@"EventListCell" forIndexPath:indexPath];
     NSArray *keys = [self.orderEvents allKeys];
-    id aKey = [keys objectAtIndex:indexPath.section];
+    id aKey = [keys objectAtIndex:indexPath.section]; //What is aKey? better to rename it lol
     NSArray * events = (NSArray *)[self.orderEvents objectForKey:aKey];
     Event * event = [events objectAtIndex:indexPath.row];
     [cell setEvent: event];
@@ -119,6 +120,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     return 160;
 }
+
+/**
+FYI, in the FSCalendar, I found this func which may help you with the tap action we mentioned today
+ - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
+ */
 
 @end
 
