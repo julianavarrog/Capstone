@@ -9,8 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// Could you avoid number in the name? Naming should be easy to understand. Instead of using LoginViewController2, we could just do LoginViewController.
+ 
 @interface LoginViewController2 : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *loginLabel;
+@property (weak, nonatomic) IBOutlet UILabel *loginLabel; 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 

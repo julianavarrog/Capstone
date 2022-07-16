@@ -28,4 +28,5 @@
 - (IBAction)didChangePrice:(id)sender {
     self.priceAmount.text = [NSString stringWithFormat:@"%0.0f", self.priceSlider.value];
 }
+
 @end

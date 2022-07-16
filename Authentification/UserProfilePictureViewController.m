@@ -33,6 +33,8 @@
 
 - (IBAction)didSignup:(id)sender {
  [self performSegueWithIdentifier:@"secondSegue" sender:nil];
+    
+ // I noticed after we finally sign up, the navigation bar (back button on the top left) still exists, which we don't want it. I feel we only need the navigation bar when creating the account.
 }
 
 - (IBAction)didTapUploadButton:(id)sender {

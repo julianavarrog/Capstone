@@ -72,6 +72,31 @@
     [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
 }
 
+
+/**
+ These tap actions are similar and I would suggest you to build one function for them to call
+ Also, I feel these flags (_countFamily, _countBehavioural,..) could be stored as BOOL in the Specialist class and we can fetch them from the speciality.isSelected
+
+- (void) didTapSpeciality:(Speciality *)speciality
+{
+    if(!speciality.isSelected) {
+        [_specialityArray addObject:speciality.label];
+        speciality.button.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        speciality.isSelected = YES;
+    } else {
+        [_specialityArray removeObject:speciality.label];
+        speciality.isSelected = NO;
+        speciality.button.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+    }  
+}
+ 
+ - (IBAction)tappedFamily:(id)sender
+ {
+    [didTapSpeciality: family]
+ }
+
+*/
+
 //Speciality
 - (IBAction)tappedFamily:(id)sender {
     if (_countFamily == 0){
