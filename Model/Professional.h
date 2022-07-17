@@ -16,7 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *Description;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSString *Name;
-@property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) NSNumber *Price;
+@property (nonatomic, strong) NSNumber *Age;
+@property (nonatomic, strong) NSArray *Speciality;
+
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

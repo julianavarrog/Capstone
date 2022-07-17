@@ -15,7 +15,9 @@
 @dynamic Description;
 @dynamic image;
 @dynamic Name;
-@dynamic price;
+@dynamic Price;
+@dynamic Age;
+@dynamic Speciality;
 
 + (nonnull NSString *)parseClassName {
     return @"Professional";

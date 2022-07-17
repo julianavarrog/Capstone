@@ -100,8 +100,43 @@
 }
 
 - (void)sendDataToA:(nonnull Filter *)filter {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"price <= %d", filter.selectedPrice.intValue];
-    self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
+    // predicates are conditionals to array.
+    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]];
+    NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
+    NSMutableArray * specialityFiltered = [[NSMutableArray alloc]init];
+    
+    if (filter.selectedSpeciality.count > 0){
+        for (Professional* professional in firstFiltered){
+            NSArray * specialitys = professional[@"Speciality"];
+            for (NSString * speciality in specialitys){
+                if([filter.selectedSpeciality containsObject:speciality]){
+                    if(![specialityFiltered containsObject:professional]){
+                        [specialityFiltered addObject:professional];
+                    }
+                }
+            }
+        }
+        self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:specialityFiltered];
+    } else{
+        self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray: firstFiltered];
+    }
+    
+    NSMutableArray* languagesFiltered = [[NSMutableArray alloc] init];
+    if (filter.selectedLanguage.count > 0){
+        for (Professional* professional in self.profesionalsFiltered){
+            NSArray * languages = professional[@"Languages"];
+            for (NSString * language in languages){
+                if([filter.selectedLanguage containsObject:language]){
+                    if(![languagesFiltered containsObject:professional]){
+                        [languagesFiltered addObject:professional];
+                    }
+                }
+            }
+        }
+        self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:languagesFiltered];
+    }
     [self.feedTableView reloadData];
 }
 

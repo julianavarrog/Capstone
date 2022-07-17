@@ -1088,7 +1088,11 @@
                                 <segue destination="a0g-BF-sFq" kind="showDetail" id="K34-Ot-B0S"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" id="Sdd-sV-Hgq"/>
+                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" id="Sdd-sV-Hgq">
+                            <connections>
+                                <action selector="feedFilterButton:" destination="FW6-5i-wk1" id="Rl7-e9-hda"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="feedTableView" destination="VHX-tP-bRt" id="Vqo-74-S2n"/>
@@ -1122,7 +1126,7 @@
                                     <action selector="didChangeAge:" destination="IhS-Z7-phh" eventType="valueChanged" id="3ds-Fb-PAn"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-a6-PSX">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="101" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-a6-PSX">
                                 <rect key="frame" x="20" y="590" width="376" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -1184,22 +1188,31 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Family &amp; Friends"/>
+                                <connections>
+                                    <action selector="tappedFamily:" destination="IhS-Z7-phh" eventType="touchUpInside" id="r6g-Bp-I4m"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzS-5J-EFP">
-                                <rect key="frame" x="140" y="57" width="131" height="102"/>
+                                <rect key="frame" x="142" y="57" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Behavioural"/>
+                                <connections>
+                                    <action selector="tappedBehavioural:" destination="IhS-Z7-phh" eventType="touchUpInside" id="4re-AX-9dN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zww-5M-FZK">
-                                <rect key="frame" x="278" y="57" width="131" height="102"/>
+                                <rect key="frame" x="279" y="57" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Child Therapist"/>
+                                <connections>
+                                    <action selector="tappedChild:" destination="IhS-Z7-phh" eventType="touchUpInside" id="5iE-rC-qvH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lc0-yj-OKv">
                                 <rect key="frame" x="5" y="166" width="131" height="102"/>
@@ -1208,6 +1221,9 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Stress Managment"/>
+                                <connections>
+                                    <action selector="tappedStress:" destination="IhS-Z7-phh" eventType="touchUpInside" id="SPB-3Q-Oju"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wb-g1-vJY">
                                 <rect key="frame" x="140" y="166" width="131" height="102"/>
@@ -1216,6 +1232,9 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="General"/>
+                                <connections>
+                                    <action selector="tappedGeneral:" destination="IhS-Z7-phh" eventType="touchUpInside" id="Msw-6X-Cfb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVv-04-DNh">
                                 <rect key="frame" x="278" y="166" width="131" height="102"/>
@@ -1224,60 +1243,81 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Life Coaching"/>
+                                <connections>
+                                    <action selector="tappedLife:" destination="IhS-Z7-phh" eventType="touchUpInside" id="HN8-yq-CM1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxe-dW-tAf">
-                                <rect key="frame" x="4" y="317" width="131" height="102"/>
+                                <rect key="frame" x="4" y="317" width="135" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="Spanish">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedSpanish:" destination="IhS-Z7-phh" eventType="touchUpInside" id="TFv-qI-ukS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slh-C2-u0Z">
                                 <rect key="frame" x="142" y="317" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="English">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedEnglish:" destination="IhS-Z7-phh" eventType="touchUpInside" id="aBx-bL-sV5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCf-2k-4ag">
                                 <rect key="frame" x="278" y="317" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="French">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedFrench:" destination="IhS-Z7-phh" eventType="touchUpInside" id="KOf-MQ-RhM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0z-7o-04U">
-                                <rect key="frame" x="4" y="426" width="131" height="102"/>
+                                <rect key="frame" x="4" y="426" width="135" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="Portuguese">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedPortuguese:" destination="IhS-Z7-phh" eventType="touchUpInside" id="GYP-eE-6e6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqw-GR-yq2">
                                 <rect key="frame" x="143" y="426" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="Mandarin">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedMandarin:" destination="IhS-Z7-phh" eventType="touchUpInside" id="MvW-Ng-pyJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-yk-c5l">
                                 <rect key="frame" x="279" y="425" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <buttonConfiguration key="configuration" style="plain" title="Other">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="tappedOther:" destination="IhS-Z7-phh" eventType="touchUpInside" id="tWM-c9-Cbc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biu-l9-9HR">
                                 <rect key="frame" x="93" y="545" width="42" height="30"/>
@@ -1302,8 +1342,20 @@
                     <connections>
                         <outlet property="ageAmount" destination="unz-Ii-AFY" id="FfP-5l-Klw"/>
                         <outlet property="ageSlider" destination="Fls-7Z-fxo" id="dL8-wl-Be6"/>
+                        <outlet property="behaviouralButton" destination="OzS-5J-EFP" id="kgy-Nn-gkO"/>
+                        <outlet property="childButton" destination="Zww-5M-FZK" id="he4-7o-eyj"/>
+                        <outlet property="englishButton" destination="Slh-C2-u0Z" id="kCx-Am-pav"/>
+                        <outlet property="familyButton" destination="Q5d-im-0JN" id="Juc-M5-sYi"/>
+                        <outlet property="frenchButton" destination="rCf-2k-4ag" id="Dmq-s6-Rl5"/>
+                        <outlet property="generalButton" destination="9Wb-g1-vJY" id="icA-NX-hR0"/>
+                        <outlet property="lifeButton" destination="QVv-04-DNh" id="7Fv-TU-ixB"/>
+                        <outlet property="mandarinButton" destination="wqw-GR-yq2" id="mS5-Wv-hGD"/>
+                        <outlet property="otherButton" destination="ibn-yk-c5l" id="ZvU-UI-W1C"/>
+                        <outlet property="portugueseButton" destination="s0z-7o-04U" id="w4D-uM-QFt"/>
                         <outlet property="priceAmount" destination="biu-l9-9HR" id="ZQw-P8-hvy"/>
                         <outlet property="priceSlider" destination="W8Q-a6-PSX" id="x7g-AZ-uNC"/>
+                        <outlet property="spanishButton" destination="Gxe-dW-tAf" id="fzh-gb-IDJ"/>
+                        <outlet property="stressButton" destination="Lc0-yj-OKv" id="SMW-j2-bQB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LOX-Fq-ROB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1747,7 +1799,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywH-lD-abb">
-                                <rect key="frame" x="141" y="251" width="131" height="102"/>
+                                <rect key="frame" x="280" y="251" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1766,7 +1818,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hq-LM-wuv">
-                                <rect key="frame" x="279" y="251" width="131" height="102"/>
+                                <rect key="frame" x="141" y="251" width="131" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1987,11 +2039,17 @@
                         <outlet property="ageSlider" destination="vR4-pE-GQg" id="H6E-rZ-gNo"/>
                         <outlet property="behaviouralButton" destination="2DA-NF-Rfb" id="SGb-DI-v7k"/>
                         <outlet property="childButton" destination="snN-2j-Z7c" id="tGd-v3-J90"/>
+                        <outlet property="englishButton" destination="HmQ-8x-Ts4" id="Lz6-oP-X6g"/>
                         <outlet property="familyButton" destination="nBb-Rf-l92" id="mkj-jB-ddQ"/>
+                        <outlet property="frenchButton" destination="FaM-7a-fah" id="Epw-MD-sJu"/>
                         <outlet property="generalButton" destination="ywH-lD-abb" id="LNU-8R-KmV"/>
                         <outlet property="lifeButton" destination="5hq-LM-wuv" id="VG8-Fa-TzK"/>
+                        <outlet property="mandarinButton" destination="OOq-Mc-igx" id="FaN-C8-Lnw"/>
+                        <outlet property="otherButton" destination="4zO-fT-CYR" id="YiS-gr-QZX"/>
+                        <outlet property="portugueseButton" destination="t2p-ja-3ST" id="qjc-R2-4sK"/>
                         <outlet property="priceAmount" destination="w3v-KG-5ru" id="LMW-Ab-qwa"/>
                         <outlet property="priceSlider" destination="Haj-un-ePO" id="dco-kc-Zlb"/>
+                        <outlet property="spanishButton" destination="zhd-ql-EJR" id="JW1-85-gbU"/>
                         <outlet property="stressButton" destination="Std-H1-Vy3" id="Fpb-Wi-E9D"/>
                         <segue destination="ICD-54-RKd" kind="show" identifier="uploadPictureSegue" id="ZQL-9E-K1i"/>
                     </connections>
@@ -2109,7 +2167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYF-dW-aHL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3784" y="279"/>
+            <point key="canvasLocation" x="-2236" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QnO-nm-jQv">
@@ -2229,7 +2287,7 @@
         <segue reference="4qJ-if-fKg"/>
         <segue reference="7gr-dl-lZ9"/>
         <segue reference="p0U-Yw-8bJ"/>
-        <segue reference="mah-3r-gX4"/>
+        <segue reference="YXv-Y5-Xgn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PFImageView" width="128" height="128"/>

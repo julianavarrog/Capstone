@@ -27,6 +27,17 @@
     _countStress = 0;
     _countGeneral = 0;
     _countLife = 0;
+    
+    _countSpanish = 0;
+    _countEnglish = 0;
+    _countFrench = 0;
+    _countPortuguese = 0;
+    _countMandarin = 0;
+    _countOther = 0;
+
+    
+    
+    
     _specialityArray = [[NSMutableArray alloc] init];
     _languageArray = [[NSMutableArray alloc] init];
     
@@ -64,46 +75,6 @@
     }];
     [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
 }
-    /*
-    PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable professionals, NSError * _Nullable error) {
-        if (!error){
-            for(Profile * professional in professionals) {
-                    professional[@"Price"] = self.priceAmount.text;
-                    professional[@"Age"] = self.ageAmount.text;
-                if(self.specialityArray){
-                    professional[@"Speciality"] = self.specialityArray;
-                }
-                if (self.languageArray){
-                    professional[@"Language"] = self.languageArray;
-                }
-                [professional saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (!error){
-                        if (succeeded){
-                            [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
-                        }
-                    }
-                    else{
-                        NSLog(@"failed to save to Professionals");
-                    }
-                }];
-            }
-        }else{
-            NSLog(@"failed to retrive Professionals");
-        }
-    }];
-
-}
-     */
-    
-    /*
-    PFObject * object = [PFObject objectWithClassName:@"Professionals"];
-    [object where]
-    [object objectForKey:@"userID" equalTo:PFUser.currentUser.objectId];
-    [object setValue:self.priceAmount.text forKey:@"Price"];
-     */
-    
-
 
 //Speciality
 - (IBAction)tappedFamily:(id)sender {
@@ -189,16 +160,76 @@
 
 //Languages
 - (IBAction)tappedSpanish:(id)sender {
+    if (_countSpanish == 0){
+        [_languageArray addObject:@"Spanish"];
+        _spanishButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        _countSpanish = @1;
+    }else{
+        [_languageArray removeObject:@"Spanish"];
+        _spanishButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        _countSpanish = @0;
+    }
+    NSLog(@"%@",_languageArray);
 }
 - (IBAction)tappedEnglish:(id)sender {
+    if (_countEnglish == 0){
+        [_languageArray addObject:@"English"];
+        _englishButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        _countSpanish = @1;
+    }else{
+        [_languageArray removeObject:@"English"];
+        _englishButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        _countEnglish = @0;
+    }
+    NSLog(@"%@",_languageArray);
 }
 - (IBAction)tappedFrench:(id)sender {
+    if (_countFrench == 0){
+        [_languageArray addObject:@"French"];
+        _frenchButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        _countFrench = @1;
+    }else{
+        [_languageArray removeObject:@"French"];
+        _frenchButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        _countFrench = @0;
+    }
+    NSLog(@"%@",_languageArray);
 }
 - (IBAction)tappedPortuguese:(id)sender {
+    if (_countPortuguese == 0){
+        [_languageArray addObject:@"Portuguese"];
+        _portugueseButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        _countPortuguese = @1;
+    }else{
+        [_languageArray removeObject:@"Portuguese"];
+        _portugueseButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        _countPortuguese = @0;
+    }
+    NSLog(@"%@",_languageArray);
 }
 - (IBAction)tappedMandarin:(id)sender {
+    if (_countMandarin == 0){
+        [_languageArray addObject:@"Mandarin"];
+        _mandarinButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        _countMandarin = @1;
+    }else{
+        [_languageArray removeObject:@"Mandarin"];
+        _mandarinButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        _countMandarin = @0;
+    }
+    NSLog(@"%@",_languageArray);
 }
 - (IBAction)tappedOther:(id)sender {
+    if (_countOther == 0){
+        [_languageArray addObject:@"Other"];
+        _otherButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        _countOther = @1;
+    }else{
+        [_languageArray removeObject:@"Other"];
+        _otherButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        _countOther = @0;
+    }
+    NSLog(@"%@",_languageArray);
 }
 
 
