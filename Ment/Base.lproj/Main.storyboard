@@ -636,6 +636,7 @@
                         <outlet property="calendar" destination="eDE-H5-39B" id="LYL-76-sbG"/>
                         <outlet property="calendarlist" destination="MVT-VP-3fp" id="nKj-2T-Lwn"/>
                         <outlet property="eventsTableView" destination="rnc-GG-lJz" id="60k-Q7-Was"/>
+                        <segue destination="E6r-jd-DKp" kind="presentation" identifier="professionalDetail" id="mah-3r-gX4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuY-na-VEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1053,11 +1054,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bookAppointmentButton" destination="piS-Kx-UzO" id="hiN-ij-y8A"/>
                                             <outlet property="feedDescription" destination="M5a-6i-hiD" id="qN8-Xe-OYQ"/>
                                             <outlet property="feedImage" destination="dVj-ck-uVd" id="gD4-HQ-jqp"/>
                                             <outlet property="feedName" destination="O1C-9u-hLV" id="CZ4-Nw-Sil"/>
                                             <outlet property="feedUsername" destination="lUs-Z6-30A" id="JCb-uf-PR4"/>
-                                            <segue destination="E6r-jd-DKp" kind="presentation" id="sUI-I3-hbP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1087,14 +1088,12 @@
                                 <segue destination="a0g-BF-sFq" kind="showDetail" id="K34-Ot-B0S"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" id="Sdd-sV-Hgq">
-                            <connections>
-                                <segue destination="IhS-Z7-phh" kind="presentation" id="hqx-kG-5gL"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" id="Sdd-sV-Hgq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="feedTableView" destination="VHX-tP-bRt" id="Vqo-74-S2n"/>
+                        <segue destination="E6r-jd-DKp" kind="presentation" identifier="professionalDetail" id="YXv-Y5-Xgn"/>
+                        <segue destination="IhS-Z7-phh" kind="presentation" identifier="professionalsFilter" id="0S1-qt-vJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjX-Qg-Y5i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1957,7 +1956,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3v-KG-5ru">
-                                <rect key="frame" x="87" y="635" width="62" height="21"/>
+                                <rect key="frame" x="87" y="635" width="62" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2134,7 +2133,6 @@
         <!--Navigation Controller-->
         <scene sceneID="dou-Hi-hHa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sL8-B2-ftF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sve-TP-Wxk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="aEf-Rx-QnF"/>
                     <toolbarItems/>
@@ -2147,6 +2145,7 @@
                         <segue destination="TYd-3e-6QU" kind="relationship" relationship="rootViewController" id="wgK-GA-yc6"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sL8-B2-ftF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2558" y="1233"/>
         </scene>
@@ -2230,6 +2229,7 @@
         <segue reference="4qJ-if-fKg"/>
         <segue reference="7gr-dl-lZ9"/>
         <segue reference="p0U-Yw-8bJ"/>
+        <segue reference="mah-3r-gX4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PFImageView" width="128" height="128"/>

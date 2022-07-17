@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Profile.h"
+#import "Professional.h"
 #import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *detailName;
 @property (weak, nonatomic) IBOutlet UILabel *detailUsername;
 
-@property (strong, nonatomic) Profile *profile;
+@property (strong, nonatomic) Professional *professional;
 
 @end
 

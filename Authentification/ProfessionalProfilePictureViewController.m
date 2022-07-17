@@ -8,7 +8,7 @@
 #import "ProfessionalProfilePictureViewController.h"
 #import "Parse/PFImageView.h"
 #import "Parse/Parse.h"
-#import "Profile.h"
+#import "Professional.h"
 
 @interface ProfessionalProfilePictureViewController ()<UIImagePickerControllerDelegate>
 

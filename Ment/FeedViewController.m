@@ -5,16 +5,21 @@
 //  Created by Julia Navarro Goldaraz on 7/1/22.
 //
 
+
 #import "FeedViewController.h"
 #import "FeedCell.h"
-#import "Profile.h"
+#import "Professional.h"
 #import "Parse/Parse.h"
 #import <Parse/PFObject+Subclass.h>
+#import "DetailFeedViewController.h"
+#import "FilterViewController.h"
 
 
 @interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (strong, nonatomic) NSArray *profileArray;
+@property (strong, nonatomic) NSMutableArray *profesionals;
+@property (strong, nonatomic) NSMutableArray *profesionalsFiltered;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 
@@ -28,24 +33,25 @@
     
     self.feedTableView.dataSource = self;
     self.feedTableView.delegate = self;
-    [self getProfile];
+    [self getProfessionals];
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getProfile) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(getProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
 }
 
--(void) getProfile {
+
+-(void) getProfessionals {
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    //query.limit = 20;
     [self refreshControl];
     //fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *profile, NSError *error){
+    [query findObjectsInBackgroundWithBlock:^(NSArray *profesionals, NSError *error){
         [self.refreshControl endRefreshing];
-        if(profile != nil){
+        if(profesionals != nil){
             // do something with the array of object returned by call
-            self.profileArray = profile;
+            self.profesionals = [[NSMutableArray alloc] initWithArray:profesionals];
+            self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:profesionals];
             [self.feedTableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -55,13 +61,14 @@
 
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
-    Profile *profile = self.profileArray[indexPath.row];
+    Professional *profile = self.profesionalsFiltered[indexPath.row];
     [cell setProfile:profile];
+    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.profileArray.count;
+    return self.profesionalsFiltered.count;
 }
 /*
 #pragma mark - Navigation
@@ -73,9 +80,50 @@
 }
 */
 
+-(void)viewButtonTapped:(UIButton*)sender {
+    CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.feedTableView];
+    NSIndexPath *clickedButtonIndexPath = [self.feedTableView indexPathForRowAtPoint:touchPoint];
+
+    NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
+    NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
+
+    [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
+}
+
 - (IBAction)feedFilterButton:(id)sender {
+    [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
+
 }
 
 - (IBAction)feedNotificationButton:(id)sender {
+    
 }
+
+- (void)sendDataToA:(nonnull Filter *)filter {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"price <= %d", filter.selectedPrice.intValue];
+    self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
+    [self.feedTableView reloadData];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"professionalDetail"]) {
+        NSIndexPath * indexPath = (NSIndexPath*)sender;
+        Professional *professional = self.profesionalsFiltered[indexPath.row];
+        DetailFeedViewController *detailsVC = [segue destinationViewController];
+        detailsVC.professional = professional;
+    } else if ([segue.identifier isEqual:@"professionalsFilter"]) {
+        FilterViewController *filterVC = [segue destinationViewController];
+        filterVC.delegate = self;
+        filterVC.professionals = self.profesionals;
+    }
+}
+
 @end
+
+
+
+

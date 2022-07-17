@@ -6,8 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Filter.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol senddataProtocol <NSObject>
+
+-(void)sendDataToA:(Filter *)filter;
+
+@end
 
 @interface FilterViewController : UIViewController
 
@@ -22,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UISlider *ageSlider;
 
 
+@property (strong, nonatomic) NSMutableArray *professionals;
+@property(nonatomic,assign)id delegate;
 
 - (IBAction)didApplyFilters:(id)sender;
 

@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Event.h"
+#import "Professional.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewButton;
 
-- (void)setEvent:(Event*)event;
+- (void)setEvent:(Event*)event with:(Professional*) profesional;
 
 @end
 

@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
-#import "Profile.h"
+#import "Professional.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,8 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *feedUsername;
 @property (weak, nonatomic) IBOutlet UILabel *feedDescription;
 @property (weak, nonatomic) IBOutlet UILabel *feedName;
+@property (weak, nonatomic) IBOutlet UIButton *bookAppointmentButton;
+
 @property (weak, nonatomic) IBOutlet PFImageView *feedImage;
-@property (strong, nonatomic) Profile *profile;
+
+
+@property (strong, nonatomic) Professional *profile;
 
 - (IBAction)feedBookAppointmentButton:(id)sender;
 

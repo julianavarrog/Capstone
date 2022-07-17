@@ -6,7 +6,7 @@
 //
 
 #import "FeedCell.h"
-#import "Profile.h"
+#import "Professional.h"
 #import "PFUser.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
@@ -15,11 +15,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.bookAppointmentButton.layer.cornerRadius = 20; // this value vary as per your desire
+    self.bookAppointmentButton.clipsToBounds = YES;
 }
 
 
-- (void)setProfile:(Profile *)profile {
+- (void)setProfile:(Professional *)profile {
     _profile = profile;
     
     self.feedImage.file = profile[@"Image"];
@@ -51,3 +52,4 @@
 - (IBAction)feedBookAppointmentButton:(id)sender {
 }
 @end
+

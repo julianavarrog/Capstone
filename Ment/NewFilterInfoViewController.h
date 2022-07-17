@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *priceAmount;
 @property (weak, nonatomic) IBOutlet UILabel *ageAmount;
 
-@property (weak, nonatomic) NSMutableArray *specialityArray;
-@property (weak, nonatomic) NSMutableArray *languageArray;
+@property (strong, nonatomic) NSMutableArray *specialityArray;
+@property (strong, nonatomic) NSMutableArray *languageArray;
 
 @property (strong, nonatomic) NSNumber * countFamily;
 @property (strong, nonatomic) NSNumber * countBehavioural;

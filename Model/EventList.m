@@ -6,6 +6,7 @@
 //
 
 #import "EventList.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EventList
 
@@ -16,12 +17,18 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
+    self.cancelButton.layer.cornerRadius = 15;
+    self.cancelButton.clipsToBounds = YES;
+    self.cancelButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.cancelButton.layer.borderWidth = 1;
+    
+    self.viewButton.layer.cornerRadius = 15;
+    self.viewButton.clipsToBounds = YES;
 }
 
-- (void)setEvent:(Event*)event{
-    [self.profesionalName setText: event.title];
+- (void)setEvent:(Event*)event with:(Professional*) professional {
+    [self.profesionalName setText: [professional[@"Name"] capitalizedString]];
 }
 
 @end

@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 #import "PFImageView.h"
-#import "Profile.h"
+#import "Professional.h"
 #import "Parse/PFImageView.h"
 
 

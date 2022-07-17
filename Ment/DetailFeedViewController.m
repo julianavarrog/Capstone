@@ -7,14 +7,12 @@
 
 #import "DetailFeedViewController.h"
 #import "CalendarViewController.h"
-#import "Profile.h"
+#import "Professional.h"
 #import "PFUser.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"
-#import "FSCalendar.h"
+#import "FSCalendar/FSCalendar.h"
 #import "Event.h"
-#import "EventList.h"
-
 
 
 @interface DetailFeedViewController ()<FSCalendarDelegate, FSCalendarDataSource, UITextViewDelegate>
@@ -42,29 +40,13 @@
 }
 
 - (void) getInfo{
-    
-    /*
-    approach 1
-     
-    //PFObject *professionals = [PFObject objectWithClassName:@"Professionals"];
-    // do something with the array of object returned by call
-    //self.detailName.text = professionals[@"Name"];
-    //self.detailUsername.text = professionals[@"Username"];
-    
-    
-     approach 2
-     
-    NSString *atName = @"@";
-    NSString *screenName = [atName stringByAppendingString:self.profile.username];
-    self.detailUsername.text = screenName;
-    
-    self.detailName.text = self.profile.Name;
-    */
+    self.detailName.text = [self.professional[@"Name"] capitalizedString];
+    self.detailUsername.text = self.professional[@"username"];
 }
 
 - (void) fetchEvents{
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+    [query whereKey:@"professionalID" equalTo:self.professional[@"userID"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
         if (!error){
             NSLog(@"sucessfully retrived Event");
@@ -98,8 +80,59 @@
     }
     return 0;
 }
-- (IBAction)bookEvent:(id)sender {
-    [self performSegueWithIdentifier:@"bookSession" sender:nil];
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    NSLog(@"did select date %@",[self.dateFormatter1 stringFromDate:date]);
+    [self showAlert: date];
+    if (monthPosition == FSCalendarMonthPositionNext || monthPosition == FSCalendarMonthPositionPrevious) {
+        [calendar setCurrentPage:date animated:YES];
+    }
 }
 
+- (void)showAlert:(NSDate *)date {
+    
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Book Appointment"
+                                 message:[NSString stringWithFormat:@"Date: %@", [self.dateFormatter1 stringFromDate:date]]
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    //Add Buttons
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Book Now"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+        //Handle your yes please button action here
+        [self addEvent: date];
+    }];
+    
+    UIAlertAction* noButton = [UIAlertAction
+                                actionWithTitle:@"Cancel"
+                                style:UIAlertActionStyleDestructive
+                                handler:nil];
+    //Add your buttons to alert controller
+    
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void) addEvent:(NSDate *)date {
+    PFObject *event = [PFObject objectWithClassName:@"Event"];
+    event[@"userID" ] = PFUser.currentUser.objectId;
+    event[@"professionalID"] = self.professional[@"userID"];
+    event[@"title"] = [NSString stringWithFormat:@"Date: %@", [self.dateFormatter1 stringFromDate:date]];
+    event[@"date"] = date;
+    [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded){
+            NSLog(@"Event registered sucessfully");
+            [self fetchEvents];
+        }else{
+            NSLog(@"Event registration failed");
+            //there is a problem
+        }
+    }];
+}
 @end

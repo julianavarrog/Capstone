@@ -6,7 +6,7 @@
 //
 
 #import "ProfileCell.h"
-#import "Profile.h"
+#import "Professional.h"
 #import "PFUser.h"
 #import "Parse/Parse.h"
 #import "Parse/PFImageView.h"

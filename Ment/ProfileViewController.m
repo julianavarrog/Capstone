@@ -6,9 +6,9 @@
 //
 
 #import "ProfileViewController.h"
-#import "Profile.h"
 #import "ProfileCell.h"
 #import "Parse/Parse.h"
+#import "Professional.h"
 #import <Parse/PFObject+Subclass.h>
 
 
@@ -57,9 +57,10 @@
     
 }
 
+
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
-    Profile *profile = self.profileArray[indexPath.row];
+    Professional *profile = self.profileArray[indexPath.row];
     [cell setProfile:profile];
     return cell;
 }

@@ -11,7 +11,7 @@
 @implementation Event
 
 @dynamic userID;
-@dynamic profesionalID;
+@dynamic professionalID;
 @dynamic title;
 @dynamic date;
 

@@ -6,19 +6,39 @@
 //
 
 #import "FilterViewController.h"
+#import "Professional.h"
+#import "Filter.h"
 
 @interface FilterViewController ()
-
+@property (strong, nonatomic) NSNumber *selectedPrice;
 @end
 
 @implementation FilterViewController
 
+@synthesize delegate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setup];
+}
+
+- (void)setup {
+    NSNumber * maxPrice = 0;
+    for (Professional* professional in self.professionals) {
+        if (professional[@"price"] > maxPrice) {
+            maxPrice = professional[@"price"];
+        }
+    }
+    self.priceSlider.maximumValue = maxPrice.floatValue;
+    self.priceSlider.value = maxPrice.floatValue;
+    self.priceAmount.text = [NSString stringWithFormat:@"%0.0f", self.priceSlider.value];
 }
 
 - (IBAction)didApplyFilters:(id)sender {
+    Filter* filter = [[Filter alloc] init];
+    filter.selectedPrice = @(self.priceSlider.value);
+    [delegate sendDataToA: filter];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -27,5 +47,7 @@
 }
 - (IBAction)didChangePrice:(id)sender {
     self.priceAmount.text = [NSString stringWithFormat:@"%0.0f", self.priceSlider.value];
+    self.selectedPrice =  @(self.priceSlider.value);
 }
+
 @end

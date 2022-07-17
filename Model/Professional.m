@@ -1,29 +1,29 @@
 //
-//  Profile.m
+//  Professional.m
 //  Ment
 //
-//  Created by Julia Navarro Goldaraz on 7/3/22.
+//  Created by Julia Navarro Goldaraz on 7/16/22.
 //
 
-#import "Profile.h"
+#import "Professional.h"
 #import <Parse/PFObject+Subclass.h>
 
-
-@implementation Profile
+@implementation Professional
 
 @dynamic userID;
 @dynamic username;
 @dynamic Description;
 @dynamic image;
 @dynamic Name;
+@dynamic price;
 
 + (nonnull NSString *)parseClassName {
-    return @"Profile";
+    return @"Professional";
 }
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
-    Profile *newProfile = [Profile new];
+    Professional *newProfile = [Professional new];
     newProfile.image = [self getPFFileFromImage:image];
     
     [newProfile saveInBackgroundWithBlock: completion];
@@ -47,5 +47,4 @@
 
 
 @end
-
 

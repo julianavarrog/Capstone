@@ -8,7 +8,7 @@
 #import "NewFilterInfoViewController.h"
 #import "ProfessionalFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
-#import "Profile.h"
+#import "Professional.h"
 
 
 @interface NewFilterInfoViewController ()
@@ -27,6 +27,9 @@
     _countStress = 0;
     _countGeneral = 0;
     _countLife = 0;
+    _specialityArray = [[NSMutableArray alloc] init];
+    _languageArray = [[NSMutableArray alloc] init];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -49,28 +52,58 @@
 }
 
 - (IBAction)finalSignUp:(id)sender {
-    
-    /*
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
     [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
-        for(Profile * professional in self.professional) {
+        for(Professional * professional in self.professional) {
                 professional[@"Price"] = self.priceAmount.text;
                 professional[@"Age"] = self.ageAmount.text;
-                professional[@"Speciality"] = self.specialityArray;
-                professional[@"Language"] = self.languageArray;
+                //professional[@"Speciality"] = self.specialityArray;
+               // professional[@"Language"] = self.languageArray;
             }
     }];
-     
-     */
-    
-    PFObject * object = [PFObject objectWithClassName:@"Professionals"];
-    [object where]
-   // [object objectForKey:@"userID" equalTo:PFUser.currentUser.objectId];
-    [object setValue:self.priceAmount.text forKey:@"Price"];
     [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
 }
+    /*
+    PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable professionals, NSError * _Nullable error) {
+        if (!error){
+            for(Profile * professional in professionals) {
+                    professional[@"Price"] = self.priceAmount.text;
+                    professional[@"Age"] = self.ageAmount.text;
+                if(self.specialityArray){
+                    professional[@"Speciality"] = self.specialityArray;
+                }
+                if (self.languageArray){
+                    professional[@"Language"] = self.languageArray;
+                }
+                [professional saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (!error){
+                        if (succeeded){
+                            [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
+                        }
+                    }
+                    else{
+                        NSLog(@"failed to save to Professionals");
+                    }
+                }];
+            }
+        }else{
+            NSLog(@"failed to retrive Professionals");
+        }
+    }];
+
+}
+     */
+    
+    /*
+    PFObject * object = [PFObject objectWithClassName:@"Professionals"];
+    [object where]
+    [object objectForKey:@"userID" equalTo:PFUser.currentUser.objectId];
+    [object setValue:self.priceAmount.text forKey:@"Price"];
+     */
+    
+
 
 //Speciality
 - (IBAction)tappedFamily:(id)sender {
@@ -87,6 +120,7 @@
     NSLog(@"%@",_specialityArray);
 }
 - (IBAction)tappedBehavioural:(id)sender {
+
     if (_countBehavioural == 0){
         [_specialityArray addObject:@"Behavioural"];
         _behaviouralButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];

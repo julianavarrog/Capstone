@@ -29,7 +29,6 @@
 		106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E422870AFA40091D1A6 /* NotificationsViewController.m */; };
 		106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E452870B19E0091D1A6 /* FilterViewController.m */; };
 		106B4E492870B48A0091D1A6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E482870B48A0091D1A6 /* SettingsViewController.m */; };
-		106B4E582872943C0091D1A6 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E572872943C0091D1A6 /* Profile.m */; };
 		106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5B287372D60091D1A6 /* userTypeViewController.m */; };
 		106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */; };
 		106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E61287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m */; };
@@ -45,6 +44,8 @@
 		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEE2881DF5200F529D6 /* BookingViewController.m */; };
+		10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF12883A4AC00F529D6 /* Professional.m */; };
+		10E3EFF52883A69600F529D6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF42883A69600F529D6 /* Filter.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
 		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
 		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
@@ -110,8 +111,6 @@
 		106B4E452870B19E0091D1A6 /* FilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		106B4E472870B48A0091D1A6 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		106B4E482870B48A0091D1A6 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		106B4E562872943C0091D1A6 /* Profile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
-		106B4E572872943C0091D1A6 /* Profile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		106B4E5A287372D60091D1A6 /* userTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userTypeViewController.h; sourceTree = "<group>"; };
 		106B4E5B287372D60091D1A6 /* userTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = userTypeViewController.m; sourceTree = "<group>"; };
 		106B4E5D287373070091D1A6 /* UserFinalRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserFinalRegistrationViewController.h; sourceTree = "<group>"; };
@@ -141,6 +140,10 @@
 		10E3EFEB2880DE1900F529D6 /* NotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		10E3EFED2881DF5200F529D6 /* BookingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
 		10E3EFEE2881DF5200F529D6 /* BookingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingViewController.m; sourceTree = "<group>"; };
+		10E3EFF02883A4AC00F529D6 /* Professional.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Professional.h; sourceTree = "<group>"; };
+		10E3EFF12883A4AC00F529D6 /* Professional.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Professional.m; sourceTree = "<group>"; };
+		10E3EFF32883A69600F529D6 /* Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		10E3EFF42883A69600F529D6 /* Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
 		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,8 +270,6 @@
 				106B4E33287019BD0091D1A6 /* FeedCell.m */,
 				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
 				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
-				106B4E562872943C0091D1A6 /* Profile.h */,
-				106B4E572872943C0091D1A6 /* Profile.m */,
 				106B4E6F2877EEFB0091D1A6 /* Event.h */,
 				106B4E702877EEFB0091D1A6 /* Event.m */,
 				106B4E722878A13F0091D1A6 /* User.h */,
@@ -281,6 +282,10 @@
 				1096D83B287D318500A97C32 /* EventList.m */,
 				10E3EFEA2880DE1900F529D6 /* NotificationCell.h */,
 				10E3EFEB2880DE1900F529D6 /* NotificationCell.m */,
+				10E3EFF02883A4AC00F529D6 /* Professional.h */,
+				10E3EFF12883A4AC00F529D6 /* Professional.m */,
+				10E3EFF32883A69600F529D6 /* Filter.h */,
+				10E3EFF42883A69600F529D6 /* Filter.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,7 +596,6 @@
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
 				10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
-				106B4E582872943C0091D1A6 /* Profile.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
 				106B4E742878A13F0091D1A6 /* User.m in Sources */,
 				10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */,
@@ -605,8 +609,10 @@
 				1096D83F287E2A4800A97C32 /* TestAppleSignin.m in Sources */,
 				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
+				10E3EFF52883A69600F529D6 /* Filter.m in Sources */,
 				106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */,
 				106B4E302870198C0091D1A6 /* FeedViewController.m in Sources */,
+				10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */,
 				106B4E492870B48A0091D1A6 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
