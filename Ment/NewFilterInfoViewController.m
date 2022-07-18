@@ -9,6 +9,7 @@
 #import "ProfessionalFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
 #import "Professional.h"
+#import "ProfessionalProfilePictureViewController.h"
 
 
 @interface NewFilterInfoViewController ()
@@ -34,9 +35,6 @@
     _countPortuguese = 0;
     _countMandarin = 0;
     _countOther = 0;
-
-    
-    
     
     _specialityArray = [[NSMutableArray alloc] init];
     _languageArray = [[NSMutableArray alloc] init];
@@ -64,16 +62,17 @@
 
 - (IBAction)finalSignUp:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
-    [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
-        for(Professional * professional in self.professional) {
-                professional[@"Price"] = self.priceAmount.text;
-                professional[@"Age"] = self.ageAmount.text;
-                //professional[@"Speciality"] = self.specialityArray;
-               // professional[@"Language"] = self.languageArray;
-            }
+    [query whereKey:@"userID" equalTo:self.objectToUpdate];
+    [query getFirstObjectInBackgroundWithBlock:^ (PFObject * professional, NSError *error) {
+        professional[@"Price"] = @(@(self.priceSlider.value).intValue);
+        professional[@"Age"] = @(@(self.ageSlider.value).intValue);
+        professional[@"Speciality"] = self.specialityArray;
+        professional[@"Language"] = self.languageArray;
+        [professional save];
+        
+        [self performSegueWithIdentifier:@"uploadPictureSegue" sender: self.objectToUpdate];
+
     }];
-    [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
 }
 
 //Speciality
@@ -232,6 +231,14 @@
     NSLog(@"%@",_languageArray);
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual: @"uploadPictureSegue"]){
+//        NSString*objectToUpdate = (NSString *) sender;
+        
+        ProfessionalProfilePictureViewController * vc = [segue destinationViewController];
+        vc.objectToUpdatePicture = self.objectToUpdate;
+    }
+}
 
 
 @end

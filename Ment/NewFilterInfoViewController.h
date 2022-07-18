@@ -48,6 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *mandarinButton;
 @property (weak, nonatomic) IBOutlet UIButton *otherButton;
 
+@property (strong, nonatomic) NSString * objectToUpdate;
+
 
 
 

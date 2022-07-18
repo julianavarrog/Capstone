@@ -8,6 +8,7 @@
 #import "ProfessionalFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
 #import "userTypeViewController.h"
+#import "NewFilterInfoViewController.h"
 
 
 @interface ProfessionalFinalRegistrationViewController ()
@@ -42,7 +43,7 @@
             [profesionals saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){
                     NSLog(@"Professional registered sucessfully");
-                    [self performSegueWithIdentifier:@"filterInfoSegue" sender:nil];
+                    [self performSegueWithIdentifier:@"filterInfoSegue" sender:newUser.objectId];
                 }else{
                     NSLog(@"Professional registration failed");
                     [self displayMessageToUser:error.localizedDescription];
@@ -68,15 +69,16 @@
      [self presentViewController:alert animated:YES completion:nil];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual: @"filterInfoSegue"]){
+        NSString *objectId = (NSString *) sender;
+        NewFilterInfoViewController * vc = [segue destinationViewController];
+        vc.objectToUpdate = objectId;
+    }
 }
-*/
 
 - (IBAction)signupButton:(id)sender {
     [self registerProfessional];

@@ -32,7 +32,15 @@
 */
 
 - (IBAction)didSignup:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"UserDetail"];
+    [query whereKey:@"userID" equalTo:self.objectToUpdatePicture];
+    [query getFirstObjectInBackgroundWithBlock:^ (PFObject * professional, NSError *error) {
+        PFFileObject *imageFile = [UserProfilePictureViewController getPFFileFromImage: self.chosenProfilePicture.image];
+        professional[@"Image"] = imageFile;
+        [professional save];
+    }];
  [self performSegueWithIdentifier:@"secondSegue" sender:nil];
+    
 }
 
 - (IBAction)didTapUploadButton:(id)sender {

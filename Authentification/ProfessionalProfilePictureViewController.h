@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *uploadPictureLabel;
 - (IBAction)didSignUp:(id)sender;
 
+@property (strong, nonatomic) NSString * objectToUpdatePicture;
 
 @end
 

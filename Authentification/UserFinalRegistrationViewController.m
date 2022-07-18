@@ -8,6 +8,7 @@
 #import "UserFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
 #import "userTypeViewController.h"
+#import "UserProfilePictureViewController.h"
 
 @interface UserFinalRegistrationViewController ()
 @property (strong, nonatomic) NSString *type;
@@ -62,6 +63,14 @@
 
 - (IBAction)signUpButton:(id)sender {
     [self registerUser];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual: @"uploadPictureSegue"]){
+        NSString *objectId = (NSString *) sender;
+        UserProfilePictureViewController * vc = [segue destinationViewController];
+        vc.objectToUpdatePicture = objectId;
+    }
 }
     
 @end

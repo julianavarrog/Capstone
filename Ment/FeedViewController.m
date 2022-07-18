@@ -126,7 +126,7 @@
     NSMutableArray* languagesFiltered = [[NSMutableArray alloc] init];
     if (filter.selectedLanguage.count > 0){
         for (Professional* professional in self.profesionalsFiltered){
-            NSArray * languages = professional[@"Languages"];
+            NSArray * languages = professional[@"Language"];
             for (NSString * language in languages){
                 if([filter.selectedLanguage containsObject:language]){
                     if(![languagesFiltered containsObject:professional]){

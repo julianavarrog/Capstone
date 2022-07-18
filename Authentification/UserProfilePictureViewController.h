@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)didTapUploadButton:(id)sender;
 - (IBAction)didSignup:(id)sender;
 
+@property (strong, nonatomic) NSString * objectToUpdatePicture;
+
 
 @end
 

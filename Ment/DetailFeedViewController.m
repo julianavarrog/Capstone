@@ -40,8 +40,17 @@
 }
 
 - (void) getInfo{
+
     self.detailName.text = [self.professional[@"Name"] capitalizedString];
     self.detailUsername.text = self.professional[@"username"];
+    self.detailDescription.text = self.professional[@"Description"];
+    NSString * specialityString = [[self.professional[@"Speciality"] valueForKey:@"description"] componentsJoinedByString:@", "];
+    self.detailSpeciality.text = specialityString;
+    NSString * languageString = [[self.professional[@"Language"] valueForKey:@"description"] componentsJoinedByString:@", "];
+    self.detailLanguage.text = languageString;
+    
+    self.detailImage.file = self.professional[@"Image"];
+    self.detailImage.layer.cornerRadius  = self.detailImage.frame.size.width/2;
 }
 
 - (void) fetchEvents{

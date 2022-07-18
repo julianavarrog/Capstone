@@ -53,8 +53,8 @@
     //PFUser *user = [PFUser currentUser];
     PFObject *parseObject = [PFObject objectWithClassName:@"Professionals"];
     
-    PFFileObject *imageFile = [ProfessionalProfilePictureViewController getPFFileFromImage: self.chosenProfilePicture.image];
-    parseObject[@"Image"] = imageFile;
+    
+    //parseObject[@"Image"] = imageFile;
     [parseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
@@ -98,6 +98,15 @@
 
 - (IBAction)didSignUp:(id)sender {
     
+    PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
+    [query whereKey:@"userID" equalTo:self.objectToUpdatePicture];
+    [query getFirstObjectInBackgroundWithBlock:^ (PFObject * professional, NSError *error) {
+        PFFileObject *imageFile = [ProfessionalProfilePictureViewController getPFFileFromImage: self.chosenProfilePicture.image];
+        professional[@"Image"] = imageFile;
+        //[professional saveInBackground];
+        [professional save];
+    }];
+    
     // This is how to update my object with the chosen image. How do I get the object ID from the user I've 
     /*
     PFQuery *query = [PFQuery queryWithClassName:@"Professional"];
@@ -105,7 +114,7 @@
         professional[@"Image"] = self.chosenProfilePicture.image;
         [professional saveInBackground];
     }];}
-     */
+    */
     
      [self performSegueWithIdentifier:@"secondSegue" sender:nil];
 }
