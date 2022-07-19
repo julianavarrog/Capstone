@@ -7,10 +7,13 @@
 
 #import <UIKit/UIKit.h>
 #import "FilterInfoViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "Speciality.h"
 #import "Languages.h"
 
-@interface FilterInfoViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface FilterInfoViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
 @property (nonatomic, strong) NSMutableArray *specialityArray;
 @property (nonatomic, strong) NSMutableArray *languagesArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *specialityController;
@@ -36,6 +39,8 @@
     _specialityArray = [NSMutableArray arrayWithObjects: @"Family & Friends", @"Behavioural", @"Child Therapist", @"Stress Managment", @"General", @"Life Coaching", nil];
     
     _languagesArray = [NSMutableArray arrayWithObjects: @"English", @"Spanish", @"French", @"Hindi", @"Mandarine", @"Portuguese", nil];
+    
+    
     
 }
 
@@ -74,6 +79,7 @@
 }
 
 - (IBAction)finalSignUp:(id)sender {
+    [locationManager stopUpdatingLocation];
     [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
 }
 @end

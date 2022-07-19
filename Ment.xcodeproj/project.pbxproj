@@ -41,6 +41,8 @@
 		1096D83C287D318500A97C32 /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096D83B287D318500A97C32 /* EventList.m */; };
 		1096D83F287E2A4800A97C32 /* TestAppleSignin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096D83E287E2A4800A97C32 /* TestAppleSignin.m */; };
 		1096D841287E32F600A97C32 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1096D840287E32F600A97C32 /* MapKit.framework */; };
+		10D364942885F7B000FF5BBB /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364932885F7B000FF5BBB /* UserDetail.m */; };
+		10D36497288621C000FF5BBB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D36496288621C000FF5BBB /* MapViewController.m */; };
 		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEE2881DF5200F529D6 /* BookingViewController.m */; };
@@ -134,6 +136,10 @@
 		1096D83D287E2A4800A97C32 /* TestAppleSignin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAppleSignin.h; sourceTree = "<group>"; };
 		1096D83E287E2A4800A97C32 /* TestAppleSignin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAppleSignin.m; sourceTree = "<group>"; };
 		1096D840287E32F600A97C32 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		10D364922885F7B000FF5BBB /* UserDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetail.h; sourceTree = "<group>"; };
+		10D364932885F7B000FF5BBB /* UserDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDetail.m; sourceTree = "<group>"; };
+		10D36495288621C000FF5BBB /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		10D36496288621C000FF5BBB /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFilterInfoViewController.h; sourceTree = "<group>"; };
 		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
 		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
 				10E3EFED2881DF5200F529D6 /* BookingViewController.h */,
 				10E3EFEE2881DF5200F529D6 /* BookingViewController.m */,
+				10D36495288621C000FF5BBB /* MapViewController.h */,
+				10D36496288621C000FF5BBB /* MapViewController.m */,
 			);
 			path = Ment;
 			sourceTree = "<group>";
@@ -286,6 +294,8 @@
 				10E3EFF12883A4AC00F529D6 /* Professional.m */,
 				10E3EFF32883A69600F529D6 /* Filter.h */,
 				10E3EFF42883A69600F529D6 /* Filter.m */,
+				10D364922885F7B000FF5BBB /* UserDetail.h */,
+				10D364932885F7B000FF5BBB /* UserDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,6 +595,7 @@
 				106B4E712877EEFB0091D1A6 /* Event.m in Sources */,
 				1096D83C287D318500A97C32 /* EventList.m in Sources */,
 				106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */,
+				10D364942885F7B000FF5BBB /* UserDetail.m in Sources */,
 				106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */,
 				106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */,
 				106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */,
@@ -596,6 +607,7 @@
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
 				10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
+				10D36497288621C000FF5BBB /* MapViewController.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
 				106B4E742878A13F0091D1A6 /* User.m in Sources */,
 				10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */,

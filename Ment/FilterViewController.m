@@ -240,4 +240,5 @@
     self.selectedPrice =  @(self.priceSlider.value);
 }
 
+
 @end

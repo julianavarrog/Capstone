@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 #import "FeedCell.h"
 #import "Professional.h"
+#import "UserDetail.h"
 #import "Parse/Parse.h"
 #import <Parse/PFObject+Subclass.h>
 #import "DetailFeedViewController.h"
@@ -21,6 +22,12 @@
 @property (strong, nonatomic) NSMutableArray *profesionals;
 @property (strong, nonatomic) NSMutableArray *profesionalsFiltered;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+
+@property (strong, nonatomic) NSArray *userLocation;
+@property (strong, nonatomic) NSArray *professionalLocation;
+
+
+
 
 
 @end
@@ -95,12 +102,25 @@
 
 }
 
+- (void) calculateDistance{
+    
+    //_userLocation = userDetail["Location"];
+    // professionalLocation = professional["Location"];
+    // long = (userLocation.item[0] - professionalLocation.item[0])**2
+    // lat = (userLocation.item[1] - professionalLocation.item[1])**2
+    //distance = sqrt(long,lat);
+    
+}
+
+
+
 - (IBAction)feedNotificationButton:(id)sender {
     
 }
 
 - (void)sendDataToA:(nonnull Filter *)filter {
     // predicates are conditionals to array.
+    //NSPredicate *predicate0 = [NSPredicate predicateWithFormat:@"Location <= %d" filter.selectedDistance.intValue];
     NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
     NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
     NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]];

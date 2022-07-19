@@ -6,6 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Professional.h"
+#import "UserDetail.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)feedNotificationButton:(id)sender;
 - (IBAction)feedFilterButton:(id)sender;
+
+@property (weak, nonatomic) UserDetail *userDetail;
+@property (strong, nonatomic) Professional *profile;
 
 
 @end

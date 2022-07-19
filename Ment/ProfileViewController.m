@@ -32,7 +32,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getCurrentUserInfo) forControlEvents:UIControlEventValueChanged];
     [self.profileTableView insertSubview:self.refreshControl atIndex:0];
-    // Do any additional setup after loading the view.
 }
 
 
@@ -40,7 +39,9 @@
     PFUser *user = [PFUser currentUser];
     self.profileUsername.text = user.username;
     PFObject *userInfo = [PFObject objectWithClassName:@"UserDetail"];
-    // how to get the object with the same userID as the current user.
+    
+    self.profilePicture.file = self.userDetail[@"Image"];
+    self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
     
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *profile, NSError *error){

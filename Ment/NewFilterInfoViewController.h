@@ -50,8 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSString * objectToUpdate;
 
-
-
+@property (strong, nonatomic) NSMutableArray * userLocation;
 
 
 @end

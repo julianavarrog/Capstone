@@ -10,7 +10,11 @@
 #import "userTypeViewController.h"
 #import "UserProfilePictureViewController.h"
 
-@interface UserFinalRegistrationViewController ()
+@interface UserFinalRegistrationViewController ()<CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
+
 @property (strong, nonatomic) NSString *type;
 
 @end
@@ -19,9 +23,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _userLocation = [[NSMutableArray alloc] init];
+    
+    [self CurrentLocationIdentifier];
     // Do any additional setup after loading the view.
 }
 
+
+- (void) CurrentLocationIdentifier{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+
+    [locationManager startUpdatingLocation];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    NSString *latitudeString = [NSString stringWithFormat:@"%0.0f",  location.coordinate.latitude];
+    NSString *longitudeString = [NSString stringWithFormat:@"%0.0f", location.coordinate.longitude];
+    [_userLocation addObject:latitudeString];
+    [_userLocation addObject:longitudeString];
+    NSLog(@"%@",_userLocation);
+}
 
 - (void) registerUser{
     // initialize a user object
@@ -39,9 +71,10 @@
             PFObject *userDetail = [PFObject objectWithClassName:@"UserDetail"];
             userDetail[@"userID"] = newUser.objectId;
             userDetail[@"Name"]= self.nameField.text;
+            userDetail[@"Location"] = self.userLocation;
             [userDetail saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){
-                    [self performSegueWithIdentifier:@"uploadPictureSegue" sender:nil];
+                    [self performSegueWithIdentifier:@"uploadPictureSegue" sender:newUser.objectId];
                 }else{
                     //there is a problem
                 }

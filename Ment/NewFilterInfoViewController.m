@@ -7,14 +7,18 @@
 
 #import "NewFilterInfoViewController.h"
 #import "ProfessionalFinalRegistrationViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "Parse/Parse.h"
 #import "Professional.h"
 #import "ProfessionalProfilePictureViewController.h"
 
 
-@interface NewFilterInfoViewController ()
-@property (strong, nonatomic) NSMutableArray *professional;
+@interface NewFilterInfoViewController ()<CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
+}
 
+@property (strong, nonatomic) NSMutableArray *professional;
 
 @end
 
@@ -39,18 +43,36 @@
     _specialityArray = [[NSMutableArray alloc] init];
     _languageArray = [[NSMutableArray alloc] init];
     
+    _userLocation = [[NSMutableArray alloc] init];
+    
+    [self CurrentLocationIdentifier];
+    
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
+- (void) CurrentLocationIdentifier{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [locationManager startUpdatingLocation];
+    
 }
-*/
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    NSString *latitudeString = [NSString stringWithFormat:@"%0.0f",  location.coordinate.latitude];
+    NSString *longitudeString = [NSString stringWithFormat:@"%0.0f", location.coordinate.longitude];
+    [_userLocation addObject:latitudeString];
+    [_userLocation addObject:longitudeString];
+    NSLog(@"%@",_userLocation);
+}
 
 - (IBAction)priceSliderAction:(id)sender {
     self.priceAmount.text = [NSString stringWithFormat:@"%0.0f", self.priceSlider.value];
@@ -68,6 +90,7 @@
         professional[@"Age"] = @(@(self.ageSlider.value).intValue);
         professional[@"Speciality"] = self.specialityArray;
         professional[@"Language"] = self.languageArray;
+        professional[@"Location"] = self.userLocation;
         [professional save];
         
         [self performSegueWithIdentifier:@"uploadPictureSegue" sender: self.objectToUpdate];

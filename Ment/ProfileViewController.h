@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Parse/PFImageView.h"
+#import "UserDetail.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *profileUsername;
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
+
+@property (strong, nonatomic) UserDetail *userDetail;
 
 + (nullable instancetype)currentUser;
 
