@@ -29,6 +29,7 @@
 
 - (void)setEvent:(Event*)event with:(Professional*) professional {
     [self.profesionalName setText: [professional[@"Name"] capitalizedString]];
+    [self.profesionalImage setFile: professional[@"Image"]];
 }
 
 @end

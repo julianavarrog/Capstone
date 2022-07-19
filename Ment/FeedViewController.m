@@ -27,6 +27,15 @@
 @property (strong, nonatomic) NSArray *professionalLocation;
 
 
+// attempt at searchBar
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) NSMutableArray *filteredProfessionals;
+
+
+@property BOOL isFiltered;
+
+
 
 
 
@@ -37,6 +46,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.isFiltered = false;
+    self.searchBar.delegate = self;
     
     self.feedTableView.dataSource = self;
     self.feedTableView.delegate = self;
@@ -64,6 +76,25 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length == 0) {
+        self.isFiltered = false;
+        [self.searchBar endEditing:YES];
+        
+    } else {
+        self.isFiltered = true;
+        for (Professional *professional in self.profesionals ) {
+            NSRange range = [professional[@"Name"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (range.location != NSNotFound) {
+                
+                [self.filteredProfessionals addObject:professional];
+            }
+        }
+    }
+    [self.feedTableView reloadData];
 }
 
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

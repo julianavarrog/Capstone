@@ -8,16 +8,17 @@
 #import <UIKit/UIKit.h>
 #import "Event.h"
 #import "Professional.h"
+#import "Parse/PFImageView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EventList : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *profesionalImage;
+@property (weak, nonatomic) IBOutlet PFImageView *profesionalImage;
 @property (weak, nonatomic) IBOutlet UILabel *profesionalName;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewButton;
 
-- (void)setEvent:(Event*)event with:(Professional*) profesional;
+- (void)setEvent:(Event*)event with:(Professional*) professional;
 
 @end
 
