@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (weak, nonatomic) IBOutlet UIView *calendarlist;
 @property (strong, nonatomic) NSDateFormatter * dateFormatter1;
+@property (strong, nonatomic) NSDateFormatter * dateFormatter2;
+
 @property (strong, nonatomic) NSMutableDictionary *orderEvents;
 @property (strong, nonatomic) NSArray *distinctEvents;
 
@@ -36,12 +38,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchEvents];
+    [self fetchProfesionals];
     
     self.dateFormatter1 = [[NSDateFormatter alloc] init];
     self.dateFormatter1.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.dateFormatter1.dateFormat = @"yyyy/MM/dd";
     // Do any additional setup after loading the view.
+    
+    self.dateFormatter2 = [[NSDateFormatter alloc] init];
+    self.dateFormatter2.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.dateFormatter2.dateFormat = @"MMM d";
+    
 }
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0){
@@ -53,9 +60,24 @@
     }
 }
 
+// will load professional data again
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self fetchProfesionals];
+}
+
+
+//predicates will add to selectProfessioals Array if true, in this case if they are professionals
 - (void) fetchEvents{
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", PFUser.currentUser.objectId];
+    NSArray *selectProfessional = [self.professionals filteredArrayUsingPredicate:predicate];
+    if([self.professionals containsObject: selectProfessional.firstObject]){
+        [query whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
+    }else{
+        [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+    }
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
         if (!error){
             NSLog(@"sucessfully retrived Event");
@@ -74,7 +96,10 @@
                 [self.orderEvents setObject:events forKey:date];
             }
             NSLog(@"%@", self.orderEvents);
-            [self fetchProfesionals];
+            
+            [self.calendar reloadData];
+            [self.eventsTableView reloadData];
+            
         }else{
             NSLog(@"failed to retrived Event");
         }
@@ -89,8 +114,7 @@
             self.professionals = [[NSMutableArray alloc]init];
             [self.professionals addObjectsFromArray:professionals];
             
-            [self.calendar reloadData];
-            [self.eventsTableView reloadData];
+            [self fetchEvents];
         }else{
             NSLog(@"failed to retrived Event");
         }
@@ -113,10 +137,17 @@
     }
 }
 
+//[["2022/07/18": [Event1, Event2]]]
+//first line obtains all the keys in the dictionary, all the dates
+//object for keys are the events per dates
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
     NSArray *keys = [self.orderEvents allKeys];
-    NSString *date = (NSString *)[keys objectAtIndex:section];
-    return date;
+    id aKey = [keys objectAtIndex: section];
+    NSArray * events = (NSArray *)[self.orderEvents objectForKey: aKey];
+    Event * event = [events firstObject];
+    return [self.dateFormatter2 stringFromDate:event.date];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath

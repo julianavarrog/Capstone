@@ -39,10 +39,10 @@
 		106B4E712877EEFB0091D1A6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E702877EEFB0091D1A6 /* Event.m */; };
 		106B4E742878A13F0091D1A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E732878A13F0091D1A6 /* User.m */; };
 		1096D83C287D318500A97C32 /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096D83B287D318500A97C32 /* EventList.m */; };
-		1096D83F287E2A4800A97C32 /* TestAppleSignin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1096D83E287E2A4800A97C32 /* TestAppleSignin.m */; };
 		1096D841287E32F600A97C32 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1096D840287E32F600A97C32 /* MapKit.framework */; };
 		10D364942885F7B000FF5BBB /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364932885F7B000FF5BBB /* UserDetail.m */; };
 		10D36497288621C000FF5BBB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D36496288621C000FF5BBB /* MapViewController.m */; };
+		10D3649B2887C39400FF5BBB /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */; };
 		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEE2881DF5200F529D6 /* BookingViewController.m */; };
@@ -141,6 +141,7 @@
 		10D36495288621C000FF5BBB /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		10D36496288621C000FF5BBB /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		10D364992887749300FF5BBB /* Ment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ment.entitlements; sourceTree = "<group>"; };
+		10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFilterInfoViewController.h; sourceTree = "<group>"; };
 		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
 		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D3649B2887C39400FF5BBB /* AuthenticationServices.framework in Frameworks */,
 				1096D841287E32F600A97C32 /* MapKit.framework in Frameworks */,
 				391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */,
 			);
@@ -335,6 +337,7 @@
 		583EB014884E5F2DFCC344EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */,
 				1096D840287E32F600A97C32 /* MapKit.framework */,
 				8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */,
 				BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */,
@@ -620,7 +623,6 @@
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
 				10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */,
-				1096D83F287E2A4800A97C32 /* TestAppleSignin.m in Sources */,
 				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
 				10E3EFF52883A69600F529D6 /* Filter.m in Sources */,

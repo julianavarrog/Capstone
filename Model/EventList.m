@@ -29,7 +29,12 @@
 
 - (void)setEvent:(Event*)event with:(Professional*) professional {
     [self.profesionalName setText: [professional[@"Name"] capitalizedString]];
-    [self.profesionalImage setFile: professional[@"Image"]];
+    [self.eventState setText: [event[@"state"] capitalizedString]];
+    
+    self.profesionalImage.file = professional[@"Image"];
+    self.profesionalImage.layer.cornerRadius = self.profesionalImage.frame.size.width/2;
+    [self.profesionalImage loadInBackground];
+    
 }
 
 @end

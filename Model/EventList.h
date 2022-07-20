@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *profesionalName;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewButton;
+@property (weak, nonatomic) IBOutlet UILabel *eventState;
 
 - (void)setEvent:(Event*)event with:(Professional*) professional;
 

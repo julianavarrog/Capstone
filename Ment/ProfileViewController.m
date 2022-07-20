@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSArray *profileArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-
 @end
 
 @implementation ProfileViewController
@@ -34,6 +33,18 @@
     [self.profileTableView insertSubview:self.refreshControl atIndex:0];
 }
 
+
+/*
+- (IBAction)segmentedTapped:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0){
+        [self.calendar setHidden:false];
+        [self.calendarlist setHidden:true];
+    }else{
+        [self.calendar setHidden:true];
+        [self.calendarlist setHidden:false];
+    }
+}
+*/
 
 -(void) getCurrentUserInfo  {
     PFUser *user = [PFUser currentUser];

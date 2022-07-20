@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *profileUsername;
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedProfile;
 
 @property (strong, nonatomic) UserDetail *userDetail;
 

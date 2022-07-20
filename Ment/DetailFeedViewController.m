@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (strong, nonatomic) NSMutableArray *events;
 @property (strong, nonatomic) NSDateFormatter * dateFormatter1;
+@property (strong, nonatomic) NSDateFormatter * dateFormatter2;
 @property (strong, nonatomic) NSMutableDictionary *orderEvents;
 @property (strong, nonatomic) NSArray *distinctEvents;
 
@@ -27,6 +28,9 @@
 @end
 
 @implementation DetailFeedViewController
+
+UIToolbar* toolbar;
+UIDatePicker* picker;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +41,12 @@
     self.dateFormatter1 = [[NSDateFormatter alloc] init];
     self.dateFormatter1.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.dateFormatter1.dateFormat = @"yyyy/MM/dd";
+    
+    self.dateFormatter2 = [[NSDateFormatter alloc] init];
+    self.dateFormatter2.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.dateFormatter2.dateFormat = @"yyyy/MM/dd hh:mm a";
+    
+    
 }
 
 - (void) getInfo{
@@ -90,10 +100,13 @@
     return 0;
 }
 
+
+
+
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
     NSLog(@"did select date %@",[self.dateFormatter1 stringFromDate:date]);
-    [self showAlert: date];
+    [self selectDate: date];
     if (monthPosition == FSCalendarMonthPositionNext || monthPosition == FSCalendarMonthPositionPrevious) {
         [calendar setCurrentPage:date animated:YES];
     }
@@ -103,7 +116,7 @@
     
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@"Book Appointment"
-                                 message:[NSString stringWithFormat:@"Date: %@", [self.dateFormatter1 stringFromDate:date]]
+                                 message:[NSString stringWithFormat:@"Date: %@", [self.dateFormatter2 stringFromDate:date]]
                                  preferredStyle:UIAlertControllerStyleAlert];
     
     //Add Buttons
@@ -143,5 +156,41 @@
             //there is a problem
         }
     }];
+}
+
+
+- (void) selectDate:(NSDate *)date{
+    picker = [[UIDatePicker alloc]init];
+    picker.backgroundColor = [UIColor whiteColor];
+    [picker setValue:[UIColor blackColor] forKey:@"textColor"];
+    
+    picker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    picker.datePickerMode = UIDatePickerModeDateAndTime;
+    [picker setDate: date];
+    
+    [picker addTarget:self action:@selector(dueDateChanged:) forControlEvents:UIControlEventValueChanged];
+    picker.frame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height - 300, [UIScreen mainScreen].bounds.size.width, 300);
+    [self.view addSubview:picker];
+    
+    toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 300, [UIScreen mainScreen].bounds.size.width, 50)];
+    toolbar.barStyle = UIBarStyleBlack;
+    toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick)]];
+    [toolbar sizeToFit];
+    [self.view addSubview:toolbar];
+}
+
+- (void) dueDateChanged:(UIDatePicker *)sender{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSLog(@"Picked the date %@", [dateFormatter stringFromDate:[sender date]]);
+    
+}
+
+- (void)onDoneButtonClick{
+    [toolbar removeFromSuperview];
+    [picker removeFromSuperview];
+    [self showAlert:[picker date]];
 }
 @end

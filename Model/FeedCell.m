@@ -18,8 +18,11 @@
     self.bookAppointmentButton.layer.cornerRadius = 20; // this value vary as per your desire
     self.bookAppointmentButton.clipsToBounds = YES;
 }
-
-
+/*
+- (void) prepareForReuse{
+    [super prepareForReuse];
+}
+*/
 - (void)setProfile:(Professional *)profile {
     _profile = profile;
     
