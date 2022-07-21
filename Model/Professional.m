@@ -24,10 +24,8 @@
 }
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
-    
     Professional *newProfile = [Professional new];
     newProfile.image = [self getPFFileFromImage:image];
-    
     [newProfile saveInBackgroundWithBlock: completion];
 }
 
@@ -37,16 +35,13 @@
     if (!image) {
         return nil;
     }
-    
     NSData *imageData = UIImagePNGRepresentation(image);
     // get image data and check if that is not nil
     if (!imageData) {
         return nil;
     }
-    
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
-
 
 @end
 

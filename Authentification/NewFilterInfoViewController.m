@@ -60,7 +60,6 @@
         [locationManager requestWhenInUseAuthorization];
 
     [locationManager startUpdatingLocation];
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -97,6 +96,26 @@
 
     }];
 }
+
+/*
+- (void) didTapSpeciality:(Speciality *)speciality{
+    if(!speciality.isSelected) {
+        [_specialityArray addObject:speciality.label];
+        speciality.button.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+        speciality.isSelected = YES;
+    } else {
+        [_specialityArray removeObject:speciality.label];
+        speciality.isSelected = NO;
+        speciality.button.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+    }
+}
+ 
+ - (IBAction)tappedFamily:(id)sender
+ {
+     [didTapSpeciality: family];
+ }
+*/
+
 
 //Speciality
 - (IBAction)tappedFamily:(id)sender {
@@ -151,7 +170,6 @@
         _countStress = @0;
     }
     NSLog(@"%@",_specialityArray);
-
 }
 
 - (IBAction)tappedGeneral:(id)sender {
@@ -257,7 +275,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"uploadPictureSegue"]){
 //        NSString*objectToUpdate = (NSString *) sender;
-        
         ProfessionalProfilePictureViewController * vc = [segue destinationViewController];
         vc.objectToUpdatePicture = self.objectToUpdate;
     }

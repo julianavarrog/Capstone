@@ -7,7 +7,7 @@
 
 #import "UserFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
-#import "userTypeViewController.h"
+#import "UserTypeViewController.h"
 #import "UserProfilePictureViewController.h"
 
 @interface UserFinalRegistrationViewController ()<CLLocationManagerDelegate> {
@@ -23,27 +23,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _userLocation = [[NSMutableArray alloc] init];
-    
     [self CurrentLocationIdentifier];
-    // Do any additional setup after loading the view.
 }
 
-
+//initalizes Current Location.
 - (void) CurrentLocationIdentifier{
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
         [locationManager requestWhenInUseAuthorization];
-
     [locationManager startUpdatingLocation];
     
 }
 
+//create an array and add lat and long to it as strings.
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [locationManager stopUpdatingLocation];
     CLLocation *location = [locations lastObject];
@@ -68,6 +64,7 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"PFUser for User registered successfully");
+            //initalize PFObject
             PFObject *userDetail = [PFObject objectWithClassName:@"UserDetail"];
             userDetail[@"userID"] = newUser.objectId;
             userDetail[@"Name"]= self.nameField.text;
@@ -76,28 +73,18 @@
                 if (succeeded){
                     [self performSegueWithIdentifier:@"uploadPictureSegue" sender:newUser.objectId];
                 }else{
-                    //there is a problem
+                    NSLog(@"Error: %@", error.localizedDescription);
                 }
             }];
         }
     }];
-    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)signUpButton:(id)sender {
     [self registerUser];
 }
 
+//must send objectId to next View Controller to update its corresponding Parse table
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"uploadPictureSegue"]){
         NSString *objectId = (NSString *) sender;

@@ -10,9 +10,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UserFinalRegistrationViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
 - (IBAction)signUpButton:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray * userLocation;

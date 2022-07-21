@@ -7,7 +7,7 @@
 
 #import "ProfessionalFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
-#import "userTypeViewController.h"
+#import "UserTypeViewController.h"
 #import "NewFilterInfoViewController.h"
 
 
@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 
@@ -28,7 +27,6 @@
     PFUser *newUser = [PFUser user];
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
-    
     
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
@@ -47,7 +45,6 @@
                 }else{
                     NSLog(@"Professional registration failed");
                     [self displayMessageToUser:error.localizedDescription];
-                    //there is a problem
                 }
             }];
         }
@@ -71,7 +68,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"filterInfoSegue"]){
         NSString *objectId = (NSString *) sender;

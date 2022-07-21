@@ -16,12 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfessionalProfilePictureViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet PFImageView *chosenProfilePicture;
-- (IBAction)didChooseImage:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *uploadPictureLabel;
-- (IBAction)didSignUp:(id)sender;
-
 @property (strong, nonatomic) NSString * objectToUpdatePicture;
+@property (weak, nonatomic) IBOutlet PFImageView *chosenProfilePicture;
+
+- (IBAction)didChooseImage:(id)sender;
+- (IBAction)didSignUp:(id)sender;
 
 @end
 

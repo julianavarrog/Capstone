@@ -18,41 +18,36 @@
     self.bookAppointmentButton.layer.cornerRadius = 20; // this value vary as per your desire
     self.bookAppointmentButton.clipsToBounds = YES;
 }
+
+// trying to fix the reusability of my PFImageView in the Homefeed.
 /*
 - (void) prepareForReuse{
     [super prepareForReuse];
 }
 */
+
 - (void)setProfile:(Professional *)profile {
     _profile = profile;
-    
+    // set image
     self.feedImage.file = profile[@"Image"];
     self.feedImage.layer.cornerRadius  = self.feedImage.frame.size.width/2;
-    
+    //set username
     NSString *atName = @"@";
     NSString *screenName = [atName stringByAppendingString:profile[@"username"]];
     self.feedUsername.text = screenName;
-    
+    //set name
     self.feedName.text = profile[@"Name"];
-    
+    //set description
     self.feedDescription.text = profile[@"Description"];
     [self.feedImage loadInBackground];
-    
-    /*
-    PFUser *user = [PFUser currentUser];
-    user[@"profilePic"] = self.feedProfilePicture.file;
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-    }];
-     */
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (IBAction)feedBookAppointmentButton:(id)sender {
 }
+
 @end
 

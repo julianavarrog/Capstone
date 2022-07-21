@@ -68,6 +68,7 @@
     Filter* filter = [[Filter alloc] init];
     filter.selectedPrice = @(self.priceSlider.value);
     filter.selectedAge = @(self.ageSlider.value);
+    //filter.selectedDistance = @(self.distanceSlider.value);
     filter.selectedSpeciality = self.specialityArray;
     filter.selectedLanguage = self.languageArray;
     
@@ -240,5 +241,11 @@
     self.selectedPrice =  @(self.priceSlider.value);
 }
 
+/*
+- (IBAction)didChangeDistance:(id)sender {
+    self.distanceAmount.text = [NSString stringWithFormat:@"%0.0f", self.distanceSlider.value];
+    //self.selectedDistance =  @(self.distanceSlider.value);
+}
+*/
 
 @end

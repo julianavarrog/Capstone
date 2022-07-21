@@ -14,13 +14,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FeedCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *feedUsername;
 @property (weak, nonatomic) IBOutlet UILabel *feedDescription;
 @property (weak, nonatomic) IBOutlet UILabel *feedName;
 @property (weak, nonatomic) IBOutlet UIButton *bookAppointmentButton;
-
 @property (weak, nonatomic) IBOutlet PFImageView *feedImage;
-
 
 @property (strong, nonatomic) Professional *profile;
 

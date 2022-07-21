@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) setSelectedPrice:(NSNumber * _Nonnull)selectedPrice;
 - (void) setSelectedAge:(NSNumber * _Nonnull)selectedAge;
+- (void) setSelectedDistance:(NSNumber * _Nonnull)selectedDistance;
 - (void) setSpeciality:(NSString * _Nonnull)speciality;
 - (void) setLanguage:(NSString * _Nonnull)language;
 

@@ -1,5 +1,5 @@
 //
-//  userTypeViewController.h
+//  UserTypeViewController.h
 //  Ment
 //
 //  Created by Julia Navarro Goldaraz on 7/4/22.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface userTypeViewController : UIViewController
+@interface UserTypeViewController : UIViewController
 - (IBAction)didTapUser:(id)sender;
 - (IBAction)didTapProfessional:(id)sender;
 

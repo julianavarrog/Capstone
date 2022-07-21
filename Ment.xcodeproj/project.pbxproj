@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10657454287C8C16003E8877 /* FilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657453287C8C16003E8877 /* FilterInfoViewController.m */; };
 		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
 		1065745A287CA6D0003E8877 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Languages.m */; };
 		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
@@ -25,11 +24,11 @@
 		106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3628701D290091D1A6 /* CalendarViewController.m */; };
 		106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3928701D420091D1A6 /* ProfileViewController.m */; };
 		106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3C28701D730091D1A6 /* ProfileCell.m */; };
-		106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3F2870A1C20091D1A6 /* LoginViewController2.m */; };
+		106B4E402870A1C20091D1A6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E3F2870A1C20091D1A6 /* LoginViewController.m */; };
 		106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E422870AFA40091D1A6 /* NotificationsViewController.m */; };
 		106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E452870B19E0091D1A6 /* FilterViewController.m */; };
 		106B4E492870B48A0091D1A6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E482870B48A0091D1A6 /* SettingsViewController.m */; };
-		106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5B287372D60091D1A6 /* userTypeViewController.m */; };
+		106B4E5C287372D60091D1A6 /* UserTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5B287372D60091D1A6 /* UserTypeViewController.m */; };
 		106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */; };
 		106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E61287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m */; };
 		106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E642874B6500091D1A6 /* ProfessionalProfilePictureViewController.m */; };
@@ -45,7 +44,6 @@
 		10D3649B2887C39400FF5BBB /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */; };
 		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
-		10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEE2881DF5200F529D6 /* BookingViewController.m */; };
 		10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF12883A4AC00F529D6 /* Professional.m */; };
 		10E3EFF52883A69600F529D6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF42883A69600F529D6 /* Filter.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
@@ -72,8 +70,6 @@
 
 /* Begin PBXFileReference section */
 		0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.release.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.release.xcconfig"; sourceTree = "<group>"; };
-		10657452287C8C16003E8877 /* FilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterInfoViewController.h; sourceTree = "<group>"; };
-		10657453287C8C16003E8877 /* FilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterInfoViewController.m; sourceTree = "<group>"; };
 		10657455287C9F3D003E8877 /* Speciality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Speciality.h; sourceTree = "<group>"; };
 		10657456287C9F3D003E8877 /* Speciality.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Speciality.m; sourceTree = "<group>"; };
 		10657458287CA6D0003E8877 /* Languages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
@@ -105,16 +101,16 @@
 		106B4E3928701D420091D1A6 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		106B4E3B28701D730091D1A6 /* ProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		106B4E3C28701D730091D1A6 /* ProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
-		106B4E3E2870A1C20091D1A6 /* LoginViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController2.h; sourceTree = "<group>"; };
-		106B4E3F2870A1C20091D1A6 /* LoginViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController2.m; sourceTree = "<group>"; };
+		106B4E3E2870A1C20091D1A6 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		106B4E3F2870A1C20091D1A6 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		106B4E412870AFA40091D1A6 /* NotificationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
 		106B4E422870AFA40091D1A6 /* NotificationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
 		106B4E442870B19E0091D1A6 /* FilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		106B4E452870B19E0091D1A6 /* FilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		106B4E472870B48A0091D1A6 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		106B4E482870B48A0091D1A6 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		106B4E5A287372D60091D1A6 /* userTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userTypeViewController.h; sourceTree = "<group>"; };
-		106B4E5B287372D60091D1A6 /* userTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = userTypeViewController.m; sourceTree = "<group>"; };
+		106B4E5A287372D60091D1A6 /* UserTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTypeViewController.h; sourceTree = "<group>"; };
+		106B4E5B287372D60091D1A6 /* UserTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTypeViewController.m; sourceTree = "<group>"; };
 		106B4E5D287373070091D1A6 /* UserFinalRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserFinalRegistrationViewController.h; sourceTree = "<group>"; };
 		106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserFinalRegistrationViewController.m; sourceTree = "<group>"; };
 		106B4E60287384370091D1A6 /* ProfessionalFinalRegistrationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessionalFinalRegistrationViewController.h; sourceTree = "<group>"; };
@@ -146,8 +142,6 @@
 		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
 		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
 		10E3EFEB2880DE1900F529D6 /* NotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
-		10E3EFED2881DF5200F529D6 /* BookingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingViewController.h; sourceTree = "<group>"; };
-		10E3EFEE2881DF5200F529D6 /* BookingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingViewController.m; sourceTree = "<group>"; };
 		10E3EFF02883A4AC00F529D6 /* Professional.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Professional.h; sourceTree = "<group>"; };
 		10E3EFF12883A4AC00F529D6 /* Professional.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Professional.m; sourceTree = "<group>"; };
 		10E3EFF32883A69600F529D6 /* Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
@@ -197,6 +191,8 @@
 			children = (
 				106B4E59287371AB0091D1A6 /* Authentification */,
 				106B4E5228728CDF0091D1A6 /* Calendar */,
+				10D3649D2888C02400FF5BBB /* Profile */,
+				10D3649E2888C04E00FF5BBB /* Homefeed */,
 				106B4E312870199C0091D1A6 /* Model */,
 				106B4DF52870126A0091D1A6 /* Ment */,
 				106B4E112870126B0091D1A6 /* MentTests */,
@@ -232,26 +228,10 @@
 				106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */,
 				106B4E072870126B0091D1A6 /* Info.plist */,
 				106B4E082870126B0091D1A6 /* main.m */,
-				106B4E2E2870198C0091D1A6 /* FeedViewController.h */,
-				106B4E2F2870198C0091D1A6 /* FeedViewController.m */,
-				106B4E3828701D420091D1A6 /* ProfileViewController.h */,
-				106B4E3928701D420091D1A6 /* ProfileViewController.m */,
-				106B4E412870AFA40091D1A6 /* NotificationsViewController.h */,
-				106B4E422870AFA40091D1A6 /* NotificationsViewController.m */,
-				106B4E442870B19E0091D1A6 /* FilterViewController.h */,
-				106B4E452870B19E0091D1A6 /* FilterViewController.m */,
 				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
 				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
 				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
 				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
-				10657452287C8C16003E8877 /* FilterInfoViewController.h */,
-				10657453287C8C16003E8877 /* FilterInfoViewController.m */,
-				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
-				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
-				10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */,
-				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
-				10E3EFED2881DF5200F529D6 /* BookingViewController.h */,
-				10E3EFEE2881DF5200F529D6 /* BookingViewController.m */,
 				10D36495288621C000FF5BBB /* MapViewController.h */,
 				10D36496288621C000FF5BBB /* MapViewController.m */,
 			);
@@ -278,10 +258,6 @@
 		106B4E312870199C0091D1A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				106B4E32287019BD0091D1A6 /* FeedCell.h */,
-				106B4E33287019BD0091D1A6 /* FeedCell.m */,
-				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
-				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
 				106B4E6F2877EEFB0091D1A6 /* Event.h */,
 				106B4E702877EEFB0091D1A6 /* Event.m */,
 				106B4E722878A13F0091D1A6 /* User.h */,
@@ -290,14 +266,8 @@
 				10657456287C9F3D003E8877 /* Speciality.m */,
 				10657458287CA6D0003E8877 /* Languages.h */,
 				10657459287CA6D0003E8877 /* Languages.m */,
-				1096D83A287D318500A97C32 /* EventList.h */,
-				1096D83B287D318500A97C32 /* EventList.m */,
-				10E3EFEA2880DE1900F529D6 /* NotificationCell.h */,
-				10E3EFEB2880DE1900F529D6 /* NotificationCell.m */,
 				10E3EFF02883A4AC00F529D6 /* Professional.h */,
 				10E3EFF12883A4AC00F529D6 /* Professional.m */,
-				10E3EFF32883A69600F529D6 /* Filter.h */,
-				10E3EFF42883A69600F529D6 /* Filter.m */,
 				10D364922885F7B000FF5BBB /* UserDetail.h */,
 				10D364932885F7B000FF5BBB /* UserDetail.m */,
 			);
@@ -307,6 +277,8 @@
 		106B4E5228728CDF0091D1A6 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				1096D83A287D318500A97C32 /* EventList.h */,
+				1096D83B287D318500A97C32 /* EventList.m */,
 				106B4E3528701D290091D1A6 /* CalendarViewController.h */,
 				106B4E3628701D290091D1A6 /* CalendarViewController.m */,
 			);
@@ -316,10 +288,10 @@
 		106B4E59287371AB0091D1A6 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
-				106B4E3F2870A1C20091D1A6 /* LoginViewController2.m */,
-				106B4E3E2870A1C20091D1A6 /* LoginViewController2.h */,
-				106B4E5A287372D60091D1A6 /* userTypeViewController.h */,
-				106B4E5B287372D60091D1A6 /* userTypeViewController.m */,
+				106B4E3E2870A1C20091D1A6 /* LoginViewController.h */,
+				106B4E3F2870A1C20091D1A6 /* LoginViewController.m */,
+				106B4E5A287372D60091D1A6 /* UserTypeViewController.h */,
+				106B4E5B287372D60091D1A6 /* UserTypeViewController.m */,
 				106B4E5D287373070091D1A6 /* UserFinalRegistrationViewController.h */,
 				106B4E5E287373070091D1A6 /* UserFinalRegistrationViewController.m */,
 				106B4E60287384370091D1A6 /* ProfessionalFinalRegistrationViewController.h */,
@@ -330,8 +302,42 @@
 				106B4E672874E40A0091D1A6 /* OpenViewController.m */,
 				106B4E6C2877A1C90091D1A6 /* UserProfilePictureViewController.h */,
 				106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */,
+				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
+				10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */,
+				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
+				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
 			);
 			path = Authentification;
+			sourceTree = "<group>";
+		};
+		10D3649D2888C02400FF5BBB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
+				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
+				106B4E3928701D420091D1A6 /* ProfileViewController.m */,
+				106B4E3828701D420091D1A6 /* ProfileViewController.h */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		10D3649E2888C04E00FF5BBB /* Homefeed */ = {
+			isa = PBXGroup;
+			children = (
+				106B4E32287019BD0091D1A6 /* FeedCell.h */,
+				106B4E33287019BD0091D1A6 /* FeedCell.m */,
+				10E3EFEA2880DE1900F529D6 /* NotificationCell.h */,
+				10E3EFEB2880DE1900F529D6 /* NotificationCell.m */,
+				10E3EFF32883A69600F529D6 /* Filter.h */,
+				10E3EFF42883A69600F529D6 /* Filter.m */,
+				106B4E2E2870198C0091D1A6 /* FeedViewController.h */,
+				106B4E2F2870198C0091D1A6 /* FeedViewController.m */,
+				106B4E442870B19E0091D1A6 /* FilterViewController.h */,
+				106B4E452870B19E0091D1A6 /* FilterViewController.m */,
+				106B4E412870AFA40091D1A6 /* NotificationsViewController.h */,
+				106B4E422870AFA40091D1A6 /* NotificationsViewController.m */,
+			);
+			path = Homefeed;
 			sourceTree = "<group>";
 		};
 		583EB014884E5F2DFCC344EC /* Frameworks */ = {
@@ -602,15 +608,13 @@
 				106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */,
 				10D364942885F7B000FF5BBB /* UserDetail.m in Sources */,
 				106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */,
-				106B4E5C287372D60091D1A6 /* userTypeViewController.m in Sources */,
-				106B4E402870A1C20091D1A6 /* LoginViewController2.m in Sources */,
+				106B4E5C287372D60091D1A6 /* UserTypeViewController.m in Sources */,
+				106B4E402870A1C20091D1A6 /* LoginViewController.m in Sources */,
 				106B4E6E2877A1C90091D1A6 /* UserProfilePictureViewController.m in Sources */,
-				10657454287C8C16003E8877 /* FilterInfoViewController.m in Sources */,
 				10657457287C9F3D003E8877 /* Speciality.m in Sources */,
 				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
 				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
-				10E3EFEF2881DF5200F529D6 /* BookingViewController.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
 				10D36497288621C000FF5BBB /* MapViewController.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
@@ -802,6 +806,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ment/Ment.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -833,9 +838,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ment/Ment.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RC2T6N3RG9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -851,6 +857,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.julianavarro.Ment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

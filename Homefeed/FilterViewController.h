@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *ageAmount;
 @property (weak, nonatomic) IBOutlet UISlider *ageSlider;
 
+@property (weak, nonatomic) IBOutlet UISlider *distanceSlider;
+@property (weak, nonatomic) IBOutlet UILabel *distanceAmount;
 
 @property (strong, nonatomic) NSMutableArray *professionals;
 @property(nonatomic,assign)id delegate;

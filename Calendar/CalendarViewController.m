@@ -18,17 +18,22 @@
 @interface CalendarViewController()<FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (weak, nonatomic) IBOutlet UIView *calendarlist;
-@property (strong, nonatomic) NSDateFormatter * dateFormatter1;
-@property (strong, nonatomic) NSDateFormatter * dateFormatter2;
+@property (strong, nonatomic) NSDateFormatter * dateFormatter;
+@property (strong, nonatomic) NSDateFormatter * timeFormatter;
 
+
+// A mutable dictionary ordered by the events in the same date.
+// It will take this format [["2022/07/18": [Event1, Event2]]]
+// Dates can be accessed as keys and events as values.
 @property (strong, nonatomic) NSMutableDictionary *orderEvents;
+
+// All the events for that particular professional or user
 @property (strong, nonatomic) NSArray *distinctEvents;
 
 @property (weak, nonatomic) IBOutlet UITableView *eventsTableView;
 
-
-
 @property (strong, nonatomic) NSMutableArray *events;
+
 @property (strong, nonatomic) NSMutableArray *professionals;
 
 
@@ -40,14 +45,14 @@
     [super viewDidLoad];
     [self fetchProfesionals];
     
-    self.dateFormatter1 = [[NSDateFormatter alloc] init];
-    self.dateFormatter1.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
-    self.dateFormatter1.dateFormat = @"yyyy/MM/dd";
-    // Do any additional setup after loading the view.
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.dateFormatter.dateFormat = @"yyyy/MM/dd";
     
-    self.dateFormatter2 = [[NSDateFormatter alloc] init];
-    self.dateFormatter2.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
-    self.dateFormatter2.dateFormat = @"MMM d";
+
+    self.timeFormatter = [[NSDateFormatter alloc] init];
+    self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.timeFormatter.dateFormat = @"MMM d";
     
 }
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
@@ -67,7 +72,8 @@
 }
 
 
-//predicates will add to selectProfessioals Array if true, in this case if they are professionals
+//The predicate will add to selectProfessioals Array if True (in this case if they are professionals)
+// depending on the result it will query a Professional's or User's Events.
 - (void) fetchEvents{
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     
@@ -85,7 +91,7 @@
             [self.events addObjectsFromArray:events];
             
             for (Event * event in self.events){
-                event.dateString = [self.dateFormatter1 stringFromDate: event.date];
+                event.dateString = [self.dateFormatter stringFromDate: event.date];
             }
             
             self.orderEvents = [NSMutableDictionary new];
@@ -120,10 +126,10 @@
         }
     }];
 }
-
+// Returns the number of events per date using orderEvents
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date{
-    if ([self.distinctEvents containsObject:[self.dateFormatter1 stringFromDate:date]]){
-        NSArray * events = [self.orderEvents objectForKey:[self.dateFormatter1 stringFromDate:date]];
+    if ([self.distinctEvents containsObject:[self.dateFormatter stringFromDate:date]]){
+        NSArray * events = [self.orderEvents objectForKey:[self.dateFormatter stringFromDate:date]];
         return events.count;
     }
     return 0;
@@ -131,14 +137,14 @@
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
-    NSLog(@"did select date %@",[self.dateFormatter1 stringFromDate:date]);
+    NSLog(@"did select date %@",[self.dateFormatter stringFromDate:date]);
     if (monthPosition == FSCalendarMonthPositionNext || monthPosition == FSCalendarMonthPositionPrevious) {
         [calendar setCurrentPage:date animated:YES];
     }
 }
 
 //[["2022/07/18": [Event1, Event2]]]
-//first line obtains all the keys in the dictionary, all the dates
+//first line obtains all the keys in the dictionary (all the dates)
 //object for keys are the events per dates
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -147,7 +153,7 @@
     id aKey = [keys objectAtIndex: section];
     NSArray * events = (NSArray *)[self.orderEvents objectForKey: aKey];
     Event * event = [events firstObject];
-    return [self.dateFormatter2 stringFromDate:event.date];
+    return [self.timeFormatter stringFromDate:event.date];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -166,24 +172,23 @@
 }
 
 -(void)viewButtonTapped:(UIButton*)sender {
+    
     CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.eventsTableView];
     NSIndexPath *clickedButtonIndexPath = [self.eventsTableView indexPathForRowAtPoint:touchPoint];
-
     NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
     NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
-
     [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
 }
 
 -(void)cancelButtonTapped:(UIButton*)sender {
+    
     CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.eventsTableView];
     NSIndexPath *clickedButtonIndexPath = [self.eventsTableView indexPathForRowAtPoint:touchPoint];
-
     NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
     NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
-    NSArray *keys = [self.orderEvents allKeys];
-    id aKey = [keys objectAtIndex:clickedButtonIndexPath.section];
-    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aKey];
+    NSArray *allDates = [self.orderEvents allKeys];
+    id aDate = [allDates objectAtIndex:clickedButtonIndexPath.section];
+    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aDate];
     Event * event = [events objectAtIndex:clickedButtonIndexPath.row];
     [self showAlert: event];
 }
@@ -193,10 +198,8 @@
     
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@"Cancel Event"
-                                 message:[NSString stringWithFormat:@"Date: %@", [self.dateFormatter1 stringFromDate:event.date]]
+                                 message:[NSString stringWithFormat:@"Date: %@", [self.dateFormatter stringFromDate:event.date]]
                                  preferredStyle:UIAlertControllerStyleAlert];
-    
-    //Add Buttons
     
     UIAlertAction* yesButton = [UIAlertAction
                                 actionWithTitle:@"Delete Event"
@@ -218,7 +221,6 @@
         }
        }];
     }];
-    
     UIAlertAction* noButton = [UIAlertAction
                                 actionWithTitle:@"Hold Event"
                                 style:UIAlertActionStyleDestructive
@@ -227,7 +229,6 @@
     
     [alert addAction:yesButton];
     [alert addAction:noButton];
-    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -236,6 +237,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     NSArray *keys = [self.orderEvents allKeys];
     id aKey = [keys objectAtIndex:section];
     NSArray * events = (NSArray *)[self.orderEvents objectForKey:aKey];
@@ -246,14 +248,14 @@
     return 160;
 }
 
-
+// Get the new view controller using [segue destinationViewController].
+// Pass the selected object to the new view controller.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
     NSIndexPath * indexPath = (NSIndexPath*)sender;
-    NSArray *keys = [self.orderEvents allKeys];
-    id aKey = [keys objectAtIndex:indexPath.section];
-    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aKey];
+    NSArray *allDates = [self.orderEvents allKeys];
+    id aDate = [allDates objectAtIndex:indexPath.section];
+    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aDate];
     Event * event = [events objectAtIndex:indexPath.row];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", event.professionalID];
     NSArray *selectProfesional = [self.professionals filteredArrayUsingPredicate:predicate];

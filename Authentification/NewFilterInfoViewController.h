@@ -10,8 +10,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NewFilterInfoViewController : UIViewController
+
 - (IBAction)ageSliderAction:(id)sender;
 - (IBAction)priceSliderAction:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UISlider *priceSlider;
 @property (weak, nonatomic) IBOutlet UISlider *ageSlider;
 @property (weak, nonatomic) IBOutlet UILabel *priceAmount;

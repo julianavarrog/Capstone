@@ -6,7 +6,7 @@
 //
 
 #import "SettingsViewController.h"
-#import "LoginViewController2.h"
+#import "LoginViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 
@@ -43,7 +43,7 @@
             SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            LoginViewController2 *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController2"];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             sceneDelegate.window.rootViewController = loginViewController;
         }
    }];

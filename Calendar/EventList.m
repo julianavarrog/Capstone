@@ -16,6 +16,7 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    
     [super setSelected:selected animated:animated];
     
     self.cancelButton.layer.cornerRadius = 15;
@@ -28,6 +29,7 @@
 }
 
 - (void)setEvent:(Event*)event with:(Professional*) professional {
+    
     [self.profesionalName setText: [professional[@"Name"] capitalizedString]];
     [self.eventState setText: [event[@"state"] capitalizedString]];
     

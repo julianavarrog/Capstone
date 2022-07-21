@@ -44,12 +44,10 @@
 @implementation FeedViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    [super viewDidLoad];
     self.isFiltered = false;
     self.searchBar.delegate = self;
-    
     self.feedTableView.dataSource = self;
     self.feedTableView.delegate = self;
     [self getProfessionals];
@@ -60,6 +58,7 @@
 
 
 -(void) getProfessionals {
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
@@ -83,7 +82,6 @@
     if (searchText.length == 0) {
         self.isFiltered = false;
         [self.searchBar endEditing:YES];
-        
     } else {
         self.isFiltered = true;
         for (Professional *professional in self.profesionals ) {
@@ -98,6 +96,7 @@
 }
 
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
     Professional *profile = self.profesionalsFiltered[indexPath.row];
     [cell setProfile:profile];
@@ -106,19 +105,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.profesionalsFiltered.count;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(void)viewButtonTapped:(UIButton*)sender {
+    
     CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.feedTableView];
     NSIndexPath *clickedButtonIndexPath = [self.feedTableView indexPathForRowAtPoint:touchPoint];
 
@@ -129,17 +121,24 @@
 }
 
 - (IBAction)feedFilterButton:(id)sender {
+    
     [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
 
 }
 
 - (void) calculateDistance{
     
-    //_userLocation = userDetail["Location"];
-    // professionalLocation = professional["Location"];
-    // long = (userLocation.item[0] - professionalLocation.item[0])**2
-    // lat = (userLocation.item[1] - professionalLocation.item[1])**2
-    //distance = sqrt(long,lat);
+    for (UserDetail *userDetail in self.userDetail){
+        self.userLocation = userDetail[@"Location"];
+        NSLog(@"%@", _userLocation);
+    }
+    for (Professional *professional in self.profesionals ) {
+        self.professionalLocation = professional[@"Location"];
+        NSLog(@"%@", _professionalLocation);
+    }
+   // NSInteger* lon = (@([_userLocation.firstObject intValue]) - @([_professionalLocation.firstObject intValue]));
+    // NSInteger* lat = (@([_userLocation.lastObject intValue]) - @([_professionalLocation.lastObject intValue]));
+     //distance = sqrt(long,lat);
     
 }
 
@@ -150,6 +149,7 @@
 }
 
 - (void)sendDataToA:(nonnull Filter *)filter {
+    
     // predicates are conditionals to array.
     //NSPredicate *predicate0 = [NSPredicate predicateWithFormat:@"Location <= %d" filter.selectedDistance.intValue];
     NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];

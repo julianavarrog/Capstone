@@ -13,6 +13,30 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *specialityButton;
 @property (weak, nonatomic) IBOutlet UILabel *specialityLabel;
 
-@end
 
+/*
+ I would suggest you create an enum for speciality and languages in a helper file
+ like this:
+ 
+ typedef NS_ENUM(NSUInteger, SpecialityFilterType) {
+   SpecialityFilterTypeUnknown = 0,
+     SpecialityFilterTypeFamilyAndFriends,
+     SpecialityFilterTypeBehavioural,
+     SpecialityFilterTypeChildTherapist,
+     ......
+ };
+ And we could create a convert function like
+ 
+ (UILabel *) convertLabelFromSpecialistType: (SpecialityFilterType) type
+ {
+    switch (type)
+        case SpecialityFilterTypeFamilyAndFriends:
+                return @"familyandfriends";
+        case ....
+ }
+ 
+ It could be helpful when we create a new speciality object.
+ */
+
+@end
 NS_ASSUME_NONNULL_END

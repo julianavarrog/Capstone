@@ -21,7 +21,6 @@
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
         [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {

@@ -28,16 +28,15 @@
     
 }
 - (void)getPhotoLibrary{
+    
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
     
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
@@ -53,15 +52,10 @@
     //PFUser *user = [PFUser currentUser];
     PFObject *parseObject = [PFObject objectWithClassName:@"Professionals"];
     
-    
     //parseObject[@"Image"] = imageFile;
     [parseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    
-// Do something with the images (based on your use case)
-    
-    // Dismiss UIImagePickerController to go back to your original view controller=
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -85,16 +79,13 @@
     if (!image) {
         return nil;
     }
-    
     NSData *imageData = UIImagePNGRepresentation(image);
     // get image data and check if that is not nil
     if (!imageData) {
         return nil;
     }
-    
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
-
 
 - (IBAction)didSignUp:(id)sender {
     
@@ -103,20 +94,9 @@
     [query getFirstObjectInBackgroundWithBlock:^ (PFObject * professional, NSError *error) {
         PFFileObject *imageFile = [ProfessionalProfilePictureViewController getPFFileFromImage: self.chosenProfilePicture.image];
         professional[@"Image"] = imageFile;
-        //[professional saveInBackground];
         [professional save];
     }];
-    
-    // This is how to update my object with the chosen image. How do I get the object ID from the user I've 
-    /*
-    PFQuery *query = [PFQuery queryWithClassName:@"Professional"];
-    [query getObjectInBackgroundWithId:### block:^(PFObject *professional, NSError *error) {
-        professional[@"Image"] = self.chosenProfilePicture.image;
-        [professional saveInBackground];
-    }];}
-    */
-    
-     [self performSegueWithIdentifier:@"secondSegue" sender:nil];
+    [self performSegueWithIdentifier:@"secondSegue" sender:nil];
 }
 
 @end

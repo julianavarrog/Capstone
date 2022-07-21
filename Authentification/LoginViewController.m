@@ -1,32 +1,29 @@
 //
-//  LoginViewController2.m
+//  LoginViewController.m
 //  Ment
 //
 //  Created by Julia Navarro Goldaraz on 7/2/22.
 //
 
-#import "LoginViewController2.h"
+#import "LoginViewController.h"
 #import "Parse/Parse.h"
 #import "AuthenticationServices/AuthenticationServices.h"
 
 
 NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
 
-@interface LoginViewController2 ()
+@interface LoginViewController ()
 
 @end
 
-@implementation LoginViewController2
+@implementation LoginViewController
 @synthesize appleIDLoginInfoTextView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.dataSource = self;
-    //self.delegate = self;
     if (@available(iOS 13.0, *)) {
        [self observeAppleSignInState];
     }
-    // Do any additional setup after loading the view.
 }
 
 - (void)observeAppleSignInState {
@@ -41,7 +38,8 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
     NSLog(@"%@", noti);
 }
  
-
+// Logs in PFUSer, then querys "Professionals" to check if current objectId is present in userId in the PFObject
+//If it fails, it is not a Professional. It must be a user -> performs "userSegue"
 - (void) loginUser{
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
@@ -49,14 +47,13 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
-            
             PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
             [query whereKey:@"userID" equalTo:user.objectId];
             [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-                if (error != nil){
+                if (error != nil) {
                     NSLog(@"User log in failed: %@", error.localizedDescription);
                     [self performSegueWithIdentifier:@"userSegue" sender:nil];
-                }else{
+                } else{
                     NSLog(@"User logged in sucessfully");
                     [self performSegueWithIdentifier:@"professionalSegue" sender:nil];
                 }
@@ -73,8 +70,6 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
 }
 
 - (IBAction)signupButton:(id)sender {
-    // NSString *username = self.usernameField.text;
-    // NSString *password = self.passwordField.text;
     [self performSegueWithIdentifier:@"signupSegue" sender:nil];
 
 }
