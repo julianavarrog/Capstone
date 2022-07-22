@@ -51,10 +51,10 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
             [query whereKey:@"userID" equalTo:user.objectId];
             [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
                 if (error != nil) {
-                    NSLog(@"User log in failed: %@", error.localizedDescription);
+                    NSLog(@"User logged in sucessfully");
                     [self performSegueWithIdentifier:@"userSegue" sender:nil];
                 } else{
-                    NSLog(@"User logged in sucessfully");
+                    NSLog(@"Professional logged in sucessfully");
                     [self performSegueWithIdentifier:@"professionalSegue" sender:nil];
                 }
             }];

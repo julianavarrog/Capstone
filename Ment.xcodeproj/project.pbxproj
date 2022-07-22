@@ -302,8 +302,8 @@
 				106B4E672874E40A0091D1A6 /* OpenViewController.m */,
 				106B4E6C2877A1C90091D1A6 /* UserProfilePictureViewController.h */,
 				106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */,
-				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
 				10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */,
+				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
 				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
 				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
 			);

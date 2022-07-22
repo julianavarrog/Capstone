@@ -13,6 +13,7 @@
 #import "EventList.h"
 #import "Professional.h"
 #import "DetailFeedViewController.h"
+#import "EventKit/EventKit.h"
 
 
 @interface CalendarViewController()<FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
@@ -36,6 +37,11 @@
 
 @property (strong, nonatomic) NSMutableArray *professionals;
 
+@property (strong, nonatomic) NSMutableArray *calendarEvents;
+@property (strong, nonatomic) NSDate *minimumDate;
+@property (strong, nonatomic) NSDate *maximumDate;
+
+
 
 @end
 
@@ -54,6 +60,11 @@
     self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.timeFormatter.dateFormat = @"MMM d";
     
+    self.minimumDate = [self.dateFormatter dateFromString:@"2022/01/01"];
+    self.maximumDate = [self.dateFormatter dateFromString:@"2024/01/01"];
+    
+    [self loadCalendarEvents];
+
 }
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0){
@@ -126,13 +137,85 @@
         }
     }];
 }
+
+//adding to Apple Events
+- (void) loadCalendarEvents{
+    __weak typeof(self) weakSelf = self;
+    EKEventStore * store = [[EKEventStore alloc]init];
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+        if (granted){
+            NSDate *startDate = self.minimumDate;
+            NSDate *endDate = self.maximumDate;
+            NSPredicate *fechCalendarEvents = [store predicateForEventsWithStartDate:startDate endDate:endDate calendars:nil];
+            NSArray<EKEvent*> *eventList = [store eventsMatchingPredicate:fechCalendarEvents];
+            NSArray<EKEvent*> *events = [eventList filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(EKEvent * _Nullable event, NSDictionary<NSString *,id> * _Nullable bindings) {
+                return event.calendar.type == EKCalendarTypeLocal || event.calendar.type == EKCalendarTypeCalDAV;
+            }]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!weakSelf) return;
+                weakSelf.calendarEvents = [[NSMutableArray alloc] initWithArray: events];
+                [weakSelf.calendar reloadData];
+            });
+        }else{
+            //Alert
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Permission Error" message:@"Permission fo calendar is required for fetching events" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
+   
+}
+ 
+
 // Returns the number of events per date using orderEvents
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date{
     if ([self.distinctEvents containsObject:[self.dateFormatter stringFromDate:date]]){
+        int eventCount = 0;
         NSArray * events = [self.orderEvents objectForKey:[self.dateFormatter stringFromDate:date]];
-        return events.count;
+        eventCount = (int)events.count;
+        
+        for (EKEvent* event in self.calendarEvents){
+            NSString * startDateEvent = (NSString*)[self.dateFormatter stringFromDate:event.startDate];
+            if ([startDateEvent isEqual:[self.dateFormatter stringFromDate:date]]){
+                eventCount += 1;
+            }
+        }
+        return eventCount;
+    }else{
+        for (EKEvent* event in self.calendarEvents){
+            NSString * startDateEvent = (NSString*)[self.dateFormatter stringFromDate:event.startDate];
+            if ([startDateEvent isEqual:[self.dateFormatter stringFromDate:date]]){
+                return 1;
+            }
+        }
     }
     return 0;
+}
+
+-(NSArray *)calendar: (FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance eventDefaultColorsForDate:(NSDate *)date{
+    
+    if ([self.distinctEvents containsObject:[self.dateFormatter stringFromDate:date]]){
+        int eventCount = 0;
+        NSArray * events = [self.orderEvents objectForKey:[self.dateFormatter stringFromDate:date]];
+        eventCount = (int)events.count;
+        
+        for (EKEvent* event in self.calendarEvents){
+            NSString * startDateEvent = (NSString*)[self.dateFormatter stringFromDate:event.startDate];
+            if ([startDateEvent isEqual:[self.dateFormatter stringFromDate:date]]){
+                return @[appearance.eventDefaultColor, [UIColor blackColor]];
+            }
+        }
+        return @[appearance.eventDefaultColor];;
+    }else{
+        for (EKEvent* event in self.calendarEvents){
+            NSString * startDateEvent = (NSString*)[self.dateFormatter stringFromDate:event.startDate];
+            if ([startDateEvent isEqual:[self.dateFormatter stringFromDate:date]]){
+                return @[[UIColor blackColor]];
+            }
+        }
+    }
+    return nil;
 }
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition

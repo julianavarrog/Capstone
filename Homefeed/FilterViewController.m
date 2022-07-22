@@ -241,11 +241,8 @@
     self.selectedPrice =  @(self.priceSlider.value);
 }
 
-/*
 - (IBAction)didChangeDistance:(id)sender {
     self.distanceAmount.text = [NSString stringWithFormat:@"%0.0f", self.distanceSlider.value];
-    //self.selectedDistance =  @(self.distanceSlider.value);
 }
-*/
 
 @end
