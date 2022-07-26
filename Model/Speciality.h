@@ -9,34 +9,38 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Speciality : UICollectionViewCell
+@interface Speciality : NSObject
 @property (weak, nonatomic) IBOutlet UIButton *specialityButton;
 @property (weak, nonatomic) IBOutlet UILabel *specialityLabel;
-
+@property (nonatomic, assign) BOOL isSelected;
 
 /*
- I would suggest you create an enum for speciality and languages in a helper file
- like this:
- 
- typedef NS_ENUM(NSUInteger, SpecialityFilterType) {
-   SpecialityFilterTypeUnknown = 0,
+@property (strong, nonatomic) BOOL * countFamily;
+@property (strong, nonatomic) BOOL * countBehavioural;
+@property (strong, nonatomic) BOOL * countChild;
+@property (strong, nonatomic) BOOL * countStress;
+@property (strong, nonatomic) BOOL * countGeneral;
+@property (strong, nonatomic) BOOL * countLife;
+
+@property (strong, nonatomic) BOOL * countSpanish;
+@property (strong, nonatomic) BOOL * countEnglish;
+@property (strong, nonatomic) BOOL * countFrench;
+@property (strong, nonatomic) BOOL * countPortuguese;
+@property (strong, nonatomic) BOOL * countMandarin;
+@property (strong, nonatomic) BOOL * countOther;
+*/
+
+typedef NS_ENUM(NSUInteger, SpecialityFilterType) {
+    // SpecialityFilterTypeUnknown = 0,
      SpecialityFilterTypeFamilyAndFriends,
      SpecialityFilterTypeBehavioural,
      SpecialityFilterTypeChildTherapist,
-     ......
+     SpecialityFilterTypeStressManagment,
+     SpecialityFilterTypeGeneral,
+     SpecialityFilterTypeLifeCoaching
  };
- And we could create a convert function like
- 
- (UILabel *) convertLabelFromSpecialistType: (SpecialityFilterType) type
- {
-    switch (type)
-        case SpecialityFilterTypeFamilyAndFriends:
-                return @"familyandfriends";
-        case ....
- }
- 
- It could be helpful when we create a new speciality object.
- */
+
++ (NSString *) convertLabelFromSpecialistType: (SpecialityFilterType) type;
 
 @end
 NS_ASSUME_NONNULL_END

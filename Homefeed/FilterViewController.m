@@ -62,13 +62,24 @@
     self.ageSlider.value = maxAge.floatValue;
     self.ageAmount.text = [NSString stringWithFormat:@"%0.0f", self.ageSlider.value];
     
+    NSNumber * maxDistance = 0;
+    for (Professional* professional in self.professionals) {
+        NSNumber *distance = professional[@"Distance"];
+        if ([distance intValue] > [maxDistance intValue]) {
+            maxDistance = professional[@"Distance"];
+        }
+    }
+    self.distanceSlider.maximumValue = maxDistance.floatValue;
+    self.distanceSlider.value = maxDistance.floatValue;
+    self.distanceAmount.text = [NSString stringWithFormat:@"%0.0f", self.distanceSlider.value];
+    
 }
 
 - (IBAction)didApplyFilters:(id)sender {
     Filter* filter = [[Filter alloc] init];
     filter.selectedPrice = @(self.priceSlider.value);
     filter.selectedAge = @(self.ageSlider.value);
-    //filter.selectedDistance = @(self.distanceSlider.value);
+    filter.selectedDistance = @(self.distanceSlider.value);
     filter.selectedSpeciality = self.specialityArray;
     filter.selectedLanguage = self.languageArray;
     

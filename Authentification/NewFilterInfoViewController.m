@@ -11,6 +11,7 @@
 #import "Parse/Parse.h"
 #import "Professional.h"
 #import "ProfessionalProfilePictureViewController.h"
+#import "Speciality.h"
 
 
 @interface NewFilterInfoViewController ()<CLLocationManagerDelegate> {
@@ -26,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _countFamily = 0;
     _countBehavioural = 0;
     _countChild = 0;
@@ -46,9 +48,7 @@
     _userLocation = [[NSMutableArray alloc] init];
     
     [self CurrentLocationIdentifier];
-    
-    // Do any additional setup after loading the view.
-}
+    }
 
 - (void) CurrentLocationIdentifier{
     locationManager = [[CLLocationManager alloc] init];
@@ -97,40 +97,54 @@
     }];
 }
 
-/*
-- (void) didTapSpeciality:(Speciality *)speciality{
-    if(!speciality.isSelected) {
-        [_specialityArray addObject:speciality.label];
-        speciality.button.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        speciality.isSelected = YES;
-    } else {
-        [_specialityArray removeObject:speciality.label];
-        speciality.isSelected = NO;
-        speciality.button.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-    }
+
+//change to accept enums
+//initalize speciality
+
+- (void)didTapSpeciality:(SpecialityFilterType)speciality {
+    
+    NSString *filterString = [Speciality convertLabelFromSpecialistType:speciality];
+ //   [_specialityArray addObject:filterString];
+//    if(!speciality.isSelected) {
+//        [_specialityArray addObject:speciality.specialityLabel];
+//        speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+//        speciality.isSelected = YES;
+//    } else {
+//        [_specialityArray removeObject:speciality.specialityLabel];
+//        speciality.isSelected = NO;
+//        speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+//    }
 }
  
  - (IBAction)tappedFamily:(id)sender
  {
-     [didTapSpeciality: family];
+     [self didTapSpeciality: SpecialityFilterTypeFamilyAndFriends];
+     if (self.familyButton.isSelected) {
+         self.familyButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+     } else {
+         self.familyButton.backgroundColor  = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+     }
  }
-*/
+
+
+
 
 
 //Speciality
-- (IBAction)tappedFamily:(id)sender {
-    if (_countFamily == 0){
-        [_specialityArray addObject:@"Family & Friends"];
-        _familyButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countFamily = @1;
-    }else{
-        [_specialityArray removeObject:@"Family & Friends"];
-        _countFamily = 0;
-        _familyButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-
-    }
-    NSLog(@"%@",_specialityArray);
-}
+//- (IBAction)tappedFamily:(id)sender {
+//    if (_countFamily == 0){
+//        [_specialityArray addObject:@"Family & Friends"];
+//        _familyButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+//        _countFamily = @1;
+//    }else{
+//        [_specialityArray removeObject:@"Family & Friends"];
+//        _countFamily = 0;
+//        _familyButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+//
+//    }
+//    NSLog(@"%@",_specialityArray);
+//}
+ 
 - (IBAction)tappedBehavioural:(id)sender {
 
     if (_countBehavioural == 0){

@@ -11,6 +11,7 @@
 @implementation Filter
 @synthesize selectedPrice;
 @synthesize selectedAge;
+@synthesize selectedDistance;
 @synthesize selectedSpeciality;
 @synthesize selectedLanguage;
 

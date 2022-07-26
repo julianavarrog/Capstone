@@ -16,15 +16,17 @@
 #import "FilterViewController.h"
 
 
-@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (strong, nonatomic) NSArray *profileArray;
+@property (strong, nonatomic) NSMutableArray *userDetails;
 @property (strong, nonatomic) NSMutableArray *profesionals;
 @property (strong, nonatomic) NSMutableArray *profesionalsFiltered;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-@property (strong, nonatomic) NSArray *userLocation;
-@property (strong, nonatomic) NSArray *professionalLocation;
+@property (strong, nonatomic) NSMutableArray *userLocation;
+@property (strong, nonatomic) NSMutableArray *professionalLocation;
 
 
 // attempt at searchBar
@@ -34,10 +36,6 @@
 
 
 @property BOOL isFiltered;
-
-
-
-
 
 @end
 
@@ -54,6 +52,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
+    [self calculateDistance];
 }
 
 
@@ -78,19 +77,26 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
     if (searchText.length == 0) {
         self.isFiltered = false;
         [self.searchBar endEditing:YES];
     } else {
         self.isFiltered = true;
-        for (Professional *professional in self.profesionals ) {
+        PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
+        [query whereKey:@"Name" containsString:searchText];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *profesionals, NSError *error){
+            [self.refreshControl endRefreshing];
+            self.filteredProfessionals = [[NSMutableArray alloc] initWithArray:profesionals];
+            [self.feedTableView reloadData];
+        /*
+        for (Professional *professional in self.profile) {
             NSRange range = [professional[@"Name"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
             if (range.location != NSNotFound) {
-                
                 [self.filteredProfessionals addObject:professional];
             }
         }
+         */
+        }];
     }
     [self.feedTableView reloadData];
 }
@@ -128,20 +134,54 @@
 
 - (void) calculateDistance{
     
-    for (UserDetail *userDetail in self.userDetail){
-        self.userLocation = userDetail[@"Location"];
-        NSLog(@"%@", _userLocation);
-    }
-    for (Professional *professional in self.profesionals ) {
-        self.professionalLocation = professional[@"Location"];
-        NSLog(@"%@", _professionalLocation);
-    }
-   // NSInteger* lon = (@([_userLocation.firstObject intValue]) - @([_professionalLocation.firstObject intValue]));
-    // NSInteger* lat = (@([_userLocation.lastObject intValue]) - @([_professionalLocation.lastObject intValue]));
-     //distance = sqrt(long,lat);
+    //query current user location
+    PFQuery *userDistanceQuery = [PFQuery queryWithClassName:@"UserDetail"];
+    PFUser *user = [PFUser currentUser];
+    [userDistanceQuery whereKey:@"userID" equalTo:user.objectId];
+    [userDistanceQuery getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable userObject, NSError * _Nullable error) {
+        NSLog(@"sucessfully retrived User Object");
+        self.userLocation = userObject[@"Location"];
+        NSLog(@"%@", self.userLocation);
+        NSNumber *lonUser = @([self.userLocation.firstObject doubleValue]);
+        NSLog(@"%@", lonUser);
+        NSNumber *latUser = @([self.userLocation.lastObject doubleValue]);
+        NSLog(@"%@", latUser);
+        
+        //Query professionals
+        PFQuery *professionalDistanceQuery = [PFQuery queryWithClassName:@"Professional"];
+        [professionalDistanceQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable professional, NSError * _Nullable error) {
+            NSLog(@"sucessfully retrived Professional Object");
+            //self.professionals = [[NSMutableArray alloc]init];
+            [self.professionals addObjectsFromArray:professional];
+            NSLog(@"%@", self.professionals);
+            for (Professional * professionalDistance in self.professionals){
+                self.professionalLocation = professionalDistance[@"Location"];
+                NSLog(@"%@", self.professionalLocation);
+                NSNumber *lonProfessional = @([self.professionalLocation.firstObject doubleValue]);
+                NSLog(@"%@", lonProfessional);
+                NSNumber *latProfessional = @([self.professionalLocation.lastObject doubleValue]);
+                NSLog(@"%@", latProfessional);
+                
+                NSNumber *lon = @(lonUser.doubleValue - lonProfessional.doubleValue);
+                NSNumber *lat = @(latUser.doubleValue - latProfessional.doubleValue);
+                NSNumber *toSquare = @(pow(lon.doubleValue,2) + pow(lat.doubleValue,2));
+                NSNumber *distance = @(sqrt(toSquare.doubleValue));
+                NSLog(@"%@", distance);
+                professionalDistance[@"Distance"] = distance;
+            }
+        }];
+    }];
     
+   
+    
+    
+    
+    //NSNumber *finalDistance = [CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b)];
+    
+    //NSNumber *lon = @(lonUser - lonProfessional);
+    //NSNumber *lat = @(latUser - latProfessional);
+    // NSNumber *distance = @(sqrt(long,lat));
 }
-
 
 
 - (IBAction)feedNotificationButton:(id)sender {
@@ -151,10 +191,10 @@
 - (void)sendDataToA:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
-    //NSPredicate *predicate0 = [NSPredicate predicateWithFormat:@"Location <= %d" filter.selectedDistance.intValue];
-    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
-    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]];
+    NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"Location <= %d", filter.selectedDistance.intValue];
+    NSPredicate *predicatePrice = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
+    NSPredicate *predicateAge = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicateLocation, predicatePrice, predicateAge]];
     NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
     NSMutableArray * specialityFiltered = [[NSMutableArray alloc]init];
     

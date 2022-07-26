@@ -42,6 +42,7 @@
 		10D364942885F7B000FF5BBB /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364932885F7B000FF5BBB /* UserDetail.m */; };
 		10D36497288621C000FF5BBB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D36496288621C000FF5BBB /* MapViewController.m */; };
 		10D3649B2887C39400FF5BBB /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */; };
+		10D364A1288B52E500FF5BBB /* EventsCalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */; };
 		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF12883A4AC00F529D6 /* Professional.m */; };
@@ -138,6 +139,8 @@
 		10D36496288621C000FF5BBB /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		10D364992887749300FF5BBB /* Ment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ment.entitlements; sourceTree = "<group>"; };
 		10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		10D3649F288B52E500FF5BBB /* EventsCalendarTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventsCalendarTableViewController.h; sourceTree = "<group>"; };
+		10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsCalendarTableViewController.m; sourceTree = "<group>"; };
 		10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFilterInfoViewController.h; sourceTree = "<group>"; };
 		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
 		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 				1096D83B287D318500A97C32 /* EventList.m */,
 				106B4E3528701D290091D1A6 /* CalendarViewController.h */,
 				106B4E3628701D290091D1A6 /* CalendarViewController.m */,
+				10D3649F288B52E500FF5BBB /* EventsCalendarTableViewController.h */,
+				10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 				106B4E34287019BD0091D1A6 /* FeedCell.m in Sources */,
 				106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */,
 				106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */,
+				10D364A1288B52E500FF5BBB /* EventsCalendarTableViewController.m in Sources */,
 				106B4E092870126B0091D1A6 /* main.m in Sources */,
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,

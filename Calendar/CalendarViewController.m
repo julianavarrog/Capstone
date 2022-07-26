@@ -14,6 +14,7 @@
 #import "Professional.h"
 #import "DetailFeedViewController.h"
 #import "EventKit/EventKit.h"
+#import "EventsCalendarTableViewController.h"
 
 
 @interface CalendarViewController()<FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIView *calendarlist;
 @property (strong, nonatomic) NSDateFormatter * dateFormatter;
 @property (strong, nonatomic) NSDateFormatter * timeFormatter;
+@property (strong, nonatomic) NSDateFormatter * eventFormatter;
+
 
 
 // A mutable dictionary ordered by the events in the same date.
@@ -60,6 +63,11 @@
     self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.timeFormatter.dateFormat = @"MMM d";
     
+    self.eventFormatter = [[NSDateFormatter alloc] init];
+    self.eventFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.eventFormatter.dateFormat = @"yyyy/MM/dd hh:mm a";
+    
+    //start and end date for events to be loaded
     self.minimumDate = [self.dateFormatter dateFromString:@"2022/01/01"];
     self.maximumDate = [self.dateFormatter dateFromString:@"2024/01/01"];
     
@@ -138,7 +146,7 @@
     }];
 }
 
-//adding to Apple Events
+//adding Apple Events
 - (void) loadCalendarEvents{
     __weak typeof(self) weakSelf = self;
     EKEventStore * store = [[EKEventStore alloc]init];
@@ -221,6 +229,7 @@
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
     NSLog(@"did select date %@",[self.dateFormatter stringFromDate:date]);
+    [self performSegueWithIdentifier:@"eventsCalendarSegue" sender:date];
     if (monthPosition == FSCalendarMonthPositionNext || monthPosition == FSCalendarMonthPositionPrevious) {
         [calendar setCurrentPage:date animated:YES];
     }
@@ -335,16 +344,44 @@
 // Pass the selected object to the new view controller.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    NSIndexPath * indexPath = (NSIndexPath*)sender;
-    NSArray *allDates = [self.orderEvents allKeys];
-    id aDate = [allDates objectAtIndex:indexPath.section];
-    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aDate];
-    Event * event = [events objectAtIndex:indexPath.row];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", event.professionalID];
-    NSArray *selectProfesional = [self.professionals filteredArrayUsingPredicate:predicate];
-    Professional *professional = selectProfesional.firstObject;
-    DetailFeedViewController *detailsVC = [segue destinationViewController];
-    detailsVC.professional = professional;
+    if ([segue.identifier isEqual:@"professionalDetail"]){
+       
+        NSIndexPath * indexPath = (NSIndexPath*)sender;
+        NSArray *allDates = [self.orderEvents allKeys];
+        id aDate = [allDates objectAtIndex:indexPath.section];
+        NSArray * events = (NSArray *)[self.orderEvents objectForKey:aDate];
+        Event * event = [events objectAtIndex:indexPath.row];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", event.professionalID];
+        NSArray *selectProfesional = [self.professionals filteredArrayUsingPredicate:predicate];
+        Professional *professional = selectProfesional.firstObject;
+        DetailFeedViewController *detailsVC = [segue destinationViewController];
+        detailsVC.professional = professional;
+        
+    }else if([segue.identifier isEqual:@"eventsCalendarSegue"]){
+        NSString *dateKey = [self.dateFormatter stringFromDate: (NSDate *)sender];
+        NSArray * eventsArray = (NSArray *)[self.orderEvents objectForKey:dateKey];
+        NSMutableArray * events = [[NSMutableArray alloc]initWithArray: eventsArray];
+        
+        //events from calendar
+        //events from Parse
+        NSMutableArray *eventsCalendar = [[NSMutableArray alloc] init];
+        for (EKEvent *eventCalendar in self.calendarEvents){
+            NSString *startDateEvent = (NSString*)[self.dateFormatter stringFromDate:eventCalendar.startDate];
+            if([startDateEvent isEqual: [self.dateFormatter stringFromDate:(NSDate *)sender]]){
+                Event * event = [[Event alloc]init];
+                event.title = eventCalendar.title;
+                event.dateString = [NSString stringWithFormat:@"Range: %@ -%@", [self.eventFormatter stringFromDate:eventCalendar.startDate],[self.eventFormatter stringFromDate:eventCalendar.endDate]];
+                [eventsCalendar addObject:event];
+            }
+        }
+        
+        NSMutableDictionary * eventsDic = [[NSMutableDictionary alloc]init];
+        eventsDic[@"Ment Sessions"] = events;
+        eventsDic[@"Personal Event"] = eventsCalendar;
+        
+        EventsCalendarTableViewController *eventsCalendarVC = [segue destinationViewController];
+        eventsCalendarVC.eventsDic = eventsDic;
+    }
 }
 
 @end

@@ -551,9 +551,9 @@
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstItem="hBL-AS-ggZ" firstAttribute="centerY" secondItem="2JK-SH-CMy" secondAttribute="centerY" id="IOr-Nq-omN"/>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="LtG-fq-YcF"/>
                                                                         <constraint firstItem="2JK-SH-CMy" firstAttribute="leading" secondItem="c0W-dv-rnM" secondAttribute="leading" constant="25" id="QV8-E7-otL"/>
                                                                         <constraint firstItem="hBL-AS-ggZ" firstAttribute="leading" secondItem="2JK-SH-CMy" secondAttribute="trailing" constant="25" id="UCj-Og-UZ1"/>
-                                                                        <constraint firstAttribute="height" constant="80" id="b4C-fG-pQM"/>
                                                                         <constraint firstItem="2JK-SH-CMy" firstAttribute="centerY" secondItem="c0W-dv-rnM" secondAttribute="centerY" id="qAk-1O-QUT"/>
                                                                     </constraints>
                                                                 </view>
@@ -565,7 +565,7 @@
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBZ-ZZ-tGK">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="207" height="80"/>
-                                                                                    <color key="backgroundColor" red="0.76254964520000001" green="0.75127082020000002" blue="0.92333996299999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                                    <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="207" id="rAP-iX-Rr6"/>
                                                                                     </constraints>
@@ -578,7 +578,7 @@
                                                                                                 </attributes>
                                                                                             </fragment>
                                                                                         </attributedString>
-                                                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     </buttonConfiguration>
                                                                                 </button>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-NG-Xu9">
@@ -669,11 +669,41 @@
                         <outlet property="calendarlist" destination="MVT-VP-3fp" id="nKj-2T-Lwn"/>
                         <outlet property="eventsTableView" destination="rnc-GG-lJz" id="60k-Q7-Was"/>
                         <segue destination="E6r-jd-DKp" kind="presentation" identifier="professionalDetail" id="mah-3r-gX4"/>
+                        <segue destination="4kx-fe-IZH" kind="presentation" identifier="eventsCalendarSegue" id="4uS-Dr-8XI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuY-na-VEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7086" y="413"/>
+            <point key="canvasLocation" x="7085.507246376812" y="412.5"/>
+        </scene>
+        <!--Events Calendar Table View Controller-->
+        <scene sceneID="LGw-qP-LSl">
+            <objects>
+                <tableViewController id="4kx-fe-IZH" customClass="EventsCalendarTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aO9-oK-BdN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9O7-fP-j3c">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9O7-fP-j3c" id="1lR-oV-mHk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4kx-fe-IZH" id="slu-rG-290"/>
+                            <outlet property="delegate" destination="4kx-fe-IZH" id="quL-s9-Pi5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="I7m-Fm-R9k"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmZ-15-9Ta" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7043" y="-325"/>
         </scene>
         <!--Detail Feed View Controller-->
         <scene sceneID="FD6-q7-av7">
@@ -744,6 +774,7 @@
                         <outlet property="detailName" destination="Ie5-zj-w2Z" id="qOf-co-uJl"/>
                         <outlet property="detailSpeciality" destination="ndz-0W-dgm" id="f6W-nZ-l40"/>
                         <outlet property="detailUsername" destination="GgE-z7-kd4" id="MtW-Fk-l2Q"/>
+                        <segue destination="4kx-fe-IZH" kind="show" identifier="detailCalendarSegue" id="ewk-mc-Kmi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnY-EI-eLE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -883,9 +914,12 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="gear" catalog="system" title=""/>
                                 <connections>
-                                    <segue destination="gXR-MS-XGC" kind="show" id="w6F-lf-Nci"/>
+                                    <action selector="didTapSettings:" destination="TYd-3e-6QU" eventType="touchUpInside" id="fv2-KY-Ctj"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <segue destination="762-1P-zPk" kind="show" identifier="settingsSegue" id="6rn-I2-7KO"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -973,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvn-Vb-8zs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8902.898550724638" y="1232.8125"/>
+            <point key="canvasLocation" x="8001" y="1233"/>
         </scene>
         <!--Feed-->
         <scene sceneID="hH2-hx-M8d">
@@ -2410,25 +2444,6 @@
             </objects>
             <point key="canvasLocation" x="-26.086956521739133" y="84.375"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="trk-yC-HhY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gXR-MS-XGC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="bO3-4F-1gh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cyl-Qs-VPu">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="762-1P-zPk" kind="relationship" relationship="rootViewController" id="bI3-fY-7o6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ldg-vN-c9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7992.753623188406" y="1232.8125"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="8te-68-ljp">
             <objects>
@@ -2479,7 +2494,8 @@
         <segue reference="Jz1-hg-0kk"/>
         <segue reference="DwE-w3-B9y"/>
         <segue reference="p0U-Yw-8bJ"/>
-        <segue reference="YXv-Y5-Xgn"/>
+        <segue reference="mah-3r-gX4"/>
+        <segue reference="ewk-mc-Kmi"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PFImageView" width="128" height="128"/>

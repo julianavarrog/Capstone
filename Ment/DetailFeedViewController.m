@@ -13,9 +13,12 @@
 #import "Parse/PFImageView.h"
 #import "FSCalendar/FSCalendar.h"
 #import "Event.h"
+#import "EventsCalendarTableViewController.h"
+@import EventKit;
+@import EventKitUI;
 
 
-@interface DetailFeedViewController ()<FSCalendarDelegate, FSCalendarDataSource, UITextViewDelegate>
+@interface DetailFeedViewController ()<FSCalendarDelegate, FSCalendarDataSource, UITextViewDelegate, EKEventEditViewDelegate>
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (strong, nonatomic) NSMutableArray *events;
 @property (strong, nonatomic) NSDateFormatter * dateFormatter1;
@@ -28,9 +31,6 @@
 @end
 
 @implementation DetailFeedViewController
-
-UIToolbar* toolbar;
-UIDatePicker* picker;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,7 +106,8 @@ UIDatePicker* picker;
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
     NSLog(@"did select date %@",[self.dateFormatter1 stringFromDate:date]);
-    [self selectDate: date];
+    
+    [self showAlert: date];
     if (monthPosition == FSCalendarMonthPositionNext || monthPosition == FSCalendarMonthPositionPrevious) {
         [calendar setCurrentPage:date animated:YES];
     }
@@ -115,18 +116,26 @@ UIDatePicker* picker;
 - (void)showAlert:(NSDate *)date {
     
     UIAlertController * alert = [UIAlertController
-                                 alertControllerWithTitle:@"Book Appointment"
-                                 message:[NSString stringWithFormat:@"Date: %@", [self.dateFormatter2 stringFromDate:date]]
-                                 preferredStyle:UIAlertControllerStyleAlert];
+                                 alertControllerWithTitle:@"Selected Date"
+                                 message:[NSString stringWithFormat:@"%@", [self.dateFormatter2 stringFromDate:date]]
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
     
     //Add Buttons
     
-    UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"Book Now"
+    UIAlertAction* eventsButton = [UIAlertAction
+                                actionWithTitle:@"View Events"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
-        //Handle your yes please button action here
-        [self addEvent: date];
+        [self performSegueWithIdentifier:@"detailCalendarSegue" sender:date];
+
+        
+    }];
+    
+    UIAlertAction* createEventButton = [UIAlertAction
+                                actionWithTitle:@"Create Event"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+        [self createCalendarEvent: date];
     }];
     
     UIAlertAction* noButton = [UIAlertAction
@@ -135,18 +144,96 @@ UIDatePicker* picker;
                                 handler:nil];
     //Add your buttons to alert controller
     
-    [alert addAction:yesButton];
+    [alert addAction:eventsButton];
+    [alert addAction:createEventButton];
     [alert addAction:noButton];
     
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void) addEvent:(NSDate *)date {
+#pragma mark - createEvent -
+
+//
+- (void) createCalendarEvent: (NSDate *) date{
+    EKEventStore *eventStore = [[EKEventStore alloc]init];
+    if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]){
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+            if (!granted){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Permission Error" message:@"Permission of calendar is required for fetching events" preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                });
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    EKEventEditViewController *addController = [[EKEventEditViewController alloc] init];
+                    addController.event = [self createEvent:eventStore and:date];
+                    addController.eventStore = eventStore;
+                    
+                    [self presentViewController:addController animated:YES completion:nil];
+                    addController.editViewDelegate = self;
+                });
+            }
+        }];
+    }
+}
+
+- (EKEvent*) createEvent:(EKEventStore*)eventStore and:(NSDate *) date{
+    EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+    event.title = @"New Event";
+    
+    event.startDate = date;
+    event.endDate = date;
+    
+    event.allDay = NO;
+    event.notes = @"Event description";
+    
+    NSString*calendarName = @"Calendar";
+    EKCalendar * calendar;
+    EKSource *localSource;
+    for(EKSource *source in eventStore.sources){
+        if (source.sourceType == EKSourceTypeCalDAV && [source.title isEqualToString:@"iCould"]){
+            localSource = source;
+            break;
+        }
+    }
+    if (localSource == nil){
+        for(EKSource *source in eventStore.sources){
+            if (source.sourceType == EKSourceTypeLocal){
+                localSource = source;
+                break;
+            }
+        }
+    }
+    calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:eventStore];
+    calendar.source = localSource;
+    calendar.title = calendarName;
+    NSError * error;
+    [eventStore saveCalendar:calendar commit:YES error:&error];
+    return event;
+}
+
+#pragma mark -eventEditDelegate-
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action{
+    if (action ==EKEventEditViewActionCanceled){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    if (action == EKEventEditViewActionSaved){
+        [self addEvent:controller.event];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
+- (void) addEvent:(EKEvent *)eventCalendar {
     PFObject *event = [PFObject objectWithClassName:@"Event"];
     event[@"userID" ] = PFUser.currentUser.objectId;
     event[@"professionalID"] = self.professional[@"userID"];
-    event[@"title"] = [NSString stringWithFormat:@"Date: %@", [self.dateFormatter1 stringFromDate:date]];
-    event[@"date"] = date;
+    event[@"title"] = eventCalendar.title;
+    event[@"description"] = eventCalendar.notes;
+    event[@"date"] = eventCalendar.startDate;
+    event[@"endDate"] = eventCalendar.endDate;
+
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded){
             NSLog(@"Event registered sucessfully");
@@ -158,39 +245,18 @@ UIDatePicker* picker;
     }];
 }
 
-
-- (void) selectDate:(NSDate *)date{
-    picker = [[UIDatePicker alloc]init];
-    picker.backgroundColor = [UIColor whiteColor];
-    [picker setValue:[UIColor blackColor] forKey:@"textColor"];
-    
-    picker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    picker.datePickerMode = UIDatePickerModeDateAndTime;
-    [picker setDate: date];
-    
-    [picker addTarget:self action:@selector(dueDateChanged:) forControlEvents:UIControlEventValueChanged];
-    picker.frame = CGRectMake(0.0, [UIScreen mainScreen].bounds.size.height - 300, [UIScreen mainScreen].bounds.size.width, 300);
-    [self.view addSubview:picker];
-    
-    toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 300, [UIScreen mainScreen].bounds.size.width, 50)];
-    toolbar.barStyle = UIBarStyleBlack;
-    toolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(onDoneButtonClick)]];
-    [toolbar sizeToFit];
-    [self.view addSubview:toolbar];
-}
-
-- (void) dueDateChanged:(UIDatePicker *)sender{
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    
-    NSLog(@"Picked the date %@", [dateFormatter stringFromDate:[sender date]]);
-    
-}
-
-- (void)onDoneButtonClick{
-    [toolbar removeFromSuperview];
-    [picker removeFromSuperview];
-    [self showAlert:[picker date]];
+//detailCalendarSegue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:@"detailCalendarSegue"]){
+        NSString *dateKey = [self.dateFormatter1 stringFromDate: (NSDate *)sender];
+        NSArray * eventsArray = (NSArray *)[self.orderEvents objectForKey:dateKey];
+        NSMutableArray * events = [[NSMutableArray alloc]initWithArray: eventsArray];
+        
+        NSMutableDictionary * eventsDic = [[NSMutableDictionary alloc]init];
+        eventsDic[@"App Calendar"] = events;
+        
+        EventsCalendarTableViewController *eventsCalendarVC = [segue destinationViewController];
+        eventsCalendarVC.eventsDic = eventsDic;
+    }
 }
 @end

@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Professional *profile;
 
 
+@property (strong, nonatomic) NSMutableArray *professionals;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

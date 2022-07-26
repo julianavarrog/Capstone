@@ -49,11 +49,28 @@
 -(void) getCurrentUserInfo  {
     PFUser *user = [PFUser currentUser];
     self.profileUsername.text = user.username;
-    PFObject *userInfo = [PFObject objectWithClassName:@"UserDetail"];
-    
-    self.profilePicture.file = self.userDetail[@"Image"];
-    self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
-    
+    PFQuery *checkInfo= [PFQuery queryWithClassName:@"UserDetail"];
+    [checkInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable checkObject, NSError * _Nullable error) {
+        NSMutableArray *userInfoArray = checkObject[@"username"];
+        if([userInfoArray containsObject: user.username]){
+            PFQuery *userInfo= [PFQuery queryWithClassName:@"UserDetail"];
+            [userInfo whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+            [userInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable userObject, NSError * _Nullable error) {
+                self.profileName.text = userObject[@"Name"];
+                self.profilePicture.file = userObject[@"Image"];
+                self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
+            }];
+        }else{
+            PFQuery *professionalInfo = [PFQuery queryWithClassName:@"Professional"];
+            [professionalInfo whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
+            [professionalInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable professionalObject, NSError * _Nullable error) {
+                self.profileName.text = professionalObject[@"Name"];
+                self.profilePicture.file = professionalObject[@"Image"];
+                self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
+            }];
+        }
+    }];
+
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *profile, NSError *error){
         [self.refreshControl endRefreshing];
@@ -65,8 +82,6 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-
-    
 }
 
 
@@ -81,14 +96,8 @@
     return self.profileArray.count;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)didTapSettings:(id)sender {
+    [self performSegueWithIdentifier:@"settingsSegue" sender:nil];
 }
-*/
 
 @end
