@@ -20,6 +20,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *professional;
+@property CLLocation *location;
 
 @end
 
@@ -71,6 +72,7 @@
     [_userLocation addObject:latitudeString];
     [_userLocation addObject:longitudeString];
     NSLog(@"%@",_userLocation);
+    self.location = location;
 }
 
 - (IBAction)priceSliderAction:(id)sender {
@@ -90,6 +92,9 @@
         professional[@"Speciality"] = self.specialityArray;
         professional[@"Language"] = self.languageArray;
         professional[@"Location"] = self.userLocation;
+        professional[@"latitude"] = @(self.location.coordinate.latitude);
+        professional[@"longitude"] = @(self.location.coordinate.longitude);
+
         [professional save];
         
         [self performSegueWithIdentifier:@"uploadPictureSegue" sender: self.objectToUpdate];

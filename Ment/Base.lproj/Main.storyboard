@@ -551,7 +551,7 @@
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstItem="hBL-AS-ggZ" firstAttribute="centerY" secondItem="2JK-SH-CMy" secondAttribute="centerY" id="IOr-Nq-omN"/>
-                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="LtG-fq-YcF"/>
+                                                                        <constraint firstAttribute="height" constant="90" id="LtG-fq-YcF"/>
                                                                         <constraint firstItem="2JK-SH-CMy" firstAttribute="leading" secondItem="c0W-dv-rnM" secondAttribute="leading" constant="25" id="QV8-E7-otL"/>
                                                                         <constraint firstItem="hBL-AS-ggZ" firstAttribute="leading" secondItem="2JK-SH-CMy" secondAttribute="trailing" constant="25" id="UCj-Og-UZ1"/>
                                                                         <constraint firstItem="2JK-SH-CMy" firstAttribute="centerY" secondItem="c0W-dv-rnM" secondAttribute="centerY" id="qAk-1O-QUT"/>
@@ -563,39 +563,70 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="i19-dA-X3l">
                                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                                                             <subviews>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBZ-ZZ-tGK">
+                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-bV-oaU">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="207" height="80"/>
-                                                                                    <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                                                                    <subviews>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBZ-ZZ-tGK">
+                                                                                            <rect key="frame" x="15" y="15" width="177" height="50"/>
+                                                                                            <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="50" id="ogR-qv-t0h"/>
+                                                                                                <constraint firstAttribute="width" constant="207" id="rAP-iX-Rr6"/>
+                                                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="177" id="xDk-fK-0GA"/>
+                                                                                            </constraints>
+                                                                                            <state key="normal" title="Button"/>
+                                                                                            <buttonConfiguration key="configuration" style="plain">
+                                                                                                <attributedString key="attributedTitle">
+                                                                                                    <fragment content="Cancel">
+                                                                                                        <attributes>
+                                                                                                            <font key="NSFont" size="18" name="KohinoorTelugu-Regular"/>
+                                                                                                        </attributes>
+                                                                                                    </fragment>
+                                                                                                </attributedString>
+                                                                                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </buttonConfiguration>
+                                                                                        </button>
+                                                                                    </subviews>
+                                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                     <constraints>
-                                                                                        <constraint firstAttribute="width" constant="207" id="rAP-iX-Rr6"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="rBZ-ZZ-tGK" secondAttribute="trailing" constant="15" id="MQT-Dj-XOV"/>
+                                                                                        <constraint firstAttribute="height" constant="80" id="ed5-os-4m9"/>
+                                                                                        <constraint firstItem="rBZ-ZZ-tGK" firstAttribute="top" secondItem="fFU-bV-oaU" secondAttribute="top" constant="15" id="eh1-rJ-v2w"/>
+                                                                                        <constraint firstItem="rBZ-ZZ-tGK" firstAttribute="leading" secondItem="fFU-bV-oaU" secondAttribute="leading" constant="15" id="hBg-Cv-baJ"/>
+                                                                                        <constraint firstAttribute="bottom" secondItem="rBZ-ZZ-tGK" secondAttribute="bottom" constant="15" id="l9k-Ew-APL"/>
                                                                                     </constraints>
-                                                                                    <state key="normal" title="Button"/>
-                                                                                    <buttonConfiguration key="configuration" style="plain">
-                                                                                        <attributedString key="attributedTitle">
-                                                                                            <fragment content="Cancel">
-                                                                                                <attributes>
-                                                                                                    <font key="NSFont" size="18" name="KohinoorTelugu-Regular"/>
-                                                                                                </attributes>
-                                                                                            </fragment>
-                                                                                        </attributedString>
-                                                                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    </buttonConfiguration>
-                                                                                </button>
-                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-NG-Xu9">
+                                                                                </view>
+                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dap-bh-EAp">
                                                                                     <rect key="frame" x="207" y="0.0" width="207" height="80"/>
-                                                                                    <color key="backgroundColor" red="0.77405482530000003" green="0.75377428530000001" blue="0.93758255239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                    <state key="normal" title="Button"/>
-                                                                                    <buttonConfiguration key="configuration" style="plain">
-                                                                                        <attributedString key="attributedTitle">
-                                                                                            <fragment content="View">
-                                                                                                <attributes>
-                                                                                                    <font key="NSFont" size="18" name="KohinoorTelugu-Regular"/>
-                                                                                                </attributes>
-                                                                                            </fragment>
-                                                                                        </attributedString>
-                                                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    </buttonConfiguration>
-                                                                                </button>
+                                                                                    <subviews>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-NG-Xu9">
+                                                                                            <rect key="frame" x="15" y="15" width="177" height="50"/>
+                                                                                            <color key="backgroundColor" red="0.77405482530000003" green="0.75377428530000001" blue="0.93758255239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="width" constant="177" id="J2A-Xg-1hF"/>
+                                                                                                <constraint firstAttribute="height" constant="50" id="pUN-vC-xbf"/>
+                                                                                            </constraints>
+                                                                                            <state key="normal" title="Button"/>
+                                                                                            <buttonConfiguration key="configuration" style="plain">
+                                                                                                <attributedString key="attributedTitle">
+                                                                                                    <fragment content="View">
+                                                                                                        <attributes>
+                                                                                                            <font key="NSFont" size="18" name="KohinoorTelugu-Regular"/>
+                                                                                                        </attributes>
+                                                                                                    </fragment>
+                                                                                                </attributedString>
+                                                                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </buttonConfiguration>
+                                                                                        </button>
+                                                                                    </subviews>
+                                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="trailing" secondItem="Ic3-NG-Xu9" secondAttribute="trailing" constant="15" id="ROc-F2-gAw"/>
+                                                                                        <constraint firstItem="Ic3-NG-Xu9" firstAttribute="leading" secondItem="dap-bh-EAp" secondAttribute="leading" constant="15" id="UzI-PG-awY"/>
+                                                                                        <constraint firstItem="Ic3-NG-Xu9" firstAttribute="top" secondItem="dap-bh-EAp" secondAttribute="top" constant="15" id="maV-2c-MG8"/>
+                                                                                        <constraint firstAttribute="bottom" secondItem="Ic3-NG-Xu9" secondAttribute="bottom" constant="15" id="zTV-NQ-giD"/>
+                                                                                    </constraints>
+                                                                                </view>
                                                                             </subviews>
                                                                         </stackView>
                                                                     </subviews>
@@ -2495,7 +2526,7 @@
         <segue reference="DwE-w3-B9y"/>
         <segue reference="p0U-Yw-8bJ"/>
         <segue reference="mah-3r-gX4"/>
-        <segue reference="ewk-mc-Kmi"/>
+        <segue reference="4uS-Dr-8XI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PFImageView" width="128" height="128"/>

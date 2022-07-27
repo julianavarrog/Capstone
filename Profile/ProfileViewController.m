@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSArray *profileArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+@property Boolean isUser;
+
 @end
 
 @implementation ProfileViewController
@@ -47,39 +49,53 @@
 */
 
 -(void) getCurrentUserInfo  {
-    PFUser *user = [PFUser currentUser];
-    self.profileUsername.text = user.username;
+    self.isUser = NO;
+    PFUser *currentUser = [PFUser currentUser];
+    self.profileUsername.text = currentUser.username;
     PFQuery *checkInfo= [PFQuery queryWithClassName:@"UserDetail"];
-    [checkInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable checkObject, NSError * _Nullable error) {
-        NSMutableArray *userInfoArray = checkObject[@"username"];
-        if([userInfoArray containsObject: user.username]){
-            PFQuery *userInfo= [PFQuery queryWithClassName:@"UserDetail"];
-            [userInfo whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
-            [userInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable userObject, NSError * _Nullable error) {
-                self.profileName.text = userObject[@"Name"];
-                self.profilePicture.file = userObject[@"Image"];
+    [checkInfo findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        for (PFObject* user in users){
+            NSString *userID = user[@"userID"];
+            if([userID isEqual: currentUser.objectId]){
+                self.profileName.text = user[@"Name"];
+                self.profilePicture.file = user[@"Image"];
                 self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
-            }];
-        }else{
-            PFQuery *professionalInfo = [PFQuery queryWithClassName:@"Professional"];
-            [professionalInfo whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
+                self.isUser = YES;
+                
+                PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+                [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error){
+                    [self.refreshControl endRefreshing];
+                    if(events != nil){
+                        // do something with the array of object returned by call
+                        self.profileArray = events;
+                        [self.profileTableView reloadData];
+                    } else {
+                        NSLog(@"%@", error.localizedDescription);
+                    }
+                }];
+            }
+        }
+        if (self.isUser == NO){
+            PFQuery *professionalInfo = [PFQuery queryWithClassName:@"Professionals"];
+            [professionalInfo whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
             [professionalInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable professionalObject, NSError * _Nullable error) {
                 self.profileName.text = professionalObject[@"Name"];
                 self.profilePicture.file = professionalObject[@"Image"];
                 self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
             }];
-        }
-    }];
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *profile, NSError *error){
-        [self.refreshControl endRefreshing];
-        if(profile != nil){
-            // do something with the array of object returned by call
-            self.profileArray = profile;
-            [self.profileTableView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
+            PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+            [query whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error){
+                [self.refreshControl endRefreshing];
+                if(events != nil){
+                    // do something with the array of object returned by call
+                    self.profileArray = events;
+                    [self.profileTableView reloadData];
+                } else {
+                    NSLog(@"%@", error.localizedDescription);
+                }
+            }];
         }
     }];
 }

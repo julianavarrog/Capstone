@@ -14,10 +14,15 @@
 #import <Parse/PFObject+Subclass.h>
 #import "DetailFeedViewController.h"
 #import "FilterViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 
-@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate>
+
+@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate, CLLocationManagerDelegate>{
+        CLLocationManager *locationManager;
+        CLLocation *currentLocation;
+}
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (strong, nonatomic) NSArray *profileArray;
 @property (strong, nonatomic) NSMutableArray *userDetails;
@@ -27,6 +32,9 @@
 
 @property (strong, nonatomic) NSMutableArray *userLocation;
 @property (strong, nonatomic) NSMutableArray *professionalLocation;
+
+@property CLLocation *location;
+
 
 
 // attempt at searchBar
@@ -53,7 +61,30 @@
     [self.refreshControl addTarget:self action:@selector(getProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
     [self calculateDistance];
+    [self currentLocationIdentifier];
 }
+
+- (void) currentLocationIdentifier{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    self.location = location;
+    
+    
+}
+
 
 
 -(void) getProfessionals {
@@ -133,54 +164,21 @@
 }
 
 - (void) calculateDistance{
+    //Query professionals
+    PFQuery *professionalDistanceQuery = [PFQuery queryWithClassName:@"Professionals"];
+    [professionalDistanceQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable professionals, NSError * _Nullable error) {
+        NSLog(@"sucessfully retrived Professional Object");
+        NSLog(@"%@", self.professionals);
+        for (Professional * professional in professionals){
+            
+            NSNumber *latitude = professional[@"latitude"];
+            NSNumber *longitude = professional[@"longitude"];
     
-    //query current user location
-    PFQuery *userDistanceQuery = [PFQuery queryWithClassName:@"UserDetail"];
-    PFUser *user = [PFUser currentUser];
-    [userDistanceQuery whereKey:@"userID" equalTo:user.objectId];
-    [userDistanceQuery getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable userObject, NSError * _Nullable error) {
-        NSLog(@"sucessfully retrived User Object");
-        self.userLocation = userObject[@"Location"];
-        NSLog(@"%@", self.userLocation);
-        NSNumber *lonUser = @([self.userLocation.firstObject doubleValue]);
-        NSLog(@"%@", lonUser);
-        NSNumber *latUser = @([self.userLocation.lastObject doubleValue]);
-        NSLog(@"%@", latUser);
-        
-        //Query professionals
-        PFQuery *professionalDistanceQuery = [PFQuery queryWithClassName:@"Professional"];
-        [professionalDistanceQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable professional, NSError * _Nullable error) {
-            NSLog(@"sucessfully retrived Professional Object");
-            //self.professionals = [[NSMutableArray alloc]init];
-            [self.professionals addObjectsFromArray:professional];
-            NSLog(@"%@", self.professionals);
-            for (Professional * professionalDistance in self.professionals){
-                self.professionalLocation = professionalDistance[@"Location"];
-                NSLog(@"%@", self.professionalLocation);
-                NSNumber *lonProfessional = @([self.professionalLocation.firstObject doubleValue]);
-                NSLog(@"%@", lonProfessional);
-                NSNumber *latProfessional = @([self.professionalLocation.lastObject doubleValue]);
-                NSLog(@"%@", latProfessional);
-                
-                NSNumber *lon = @(lonUser.doubleValue - lonProfessional.doubleValue);
-                NSNumber *lat = @(latUser.doubleValue - latProfessional.doubleValue);
-                NSNumber *toSquare = @(pow(lon.doubleValue,2) + pow(lat.doubleValue,2));
-                NSNumber *distance = @(sqrt(toSquare.doubleValue));
-                NSLog(@"%@", distance);
-                professionalDistance[@"Distance"] = distance;
-            }
-        }];
+            CLLocation *professionalLocation = [[CLLocation alloc]initWithLatitude:latitude.doubleValue longitude:longitude.doubleValue];
+            CLLocationDistance distance = [self.location distanceFromLocation:professionalLocation];
+            NSLog (@"Current Location: [%f,%f] - Professional Location: [%f,%f] -> Distance: %f", self.location.coordinate.latitude, self.location.coordinate.longitude, latitude.doubleValue, longitude.doubleValue,distance);
+        }
     }];
-    
-   
-    
-    
-    
-    //NSNumber *finalDistance = [CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b)];
-    
-    //NSNumber *lon = @(lonUser - lonProfessional);
-    //NSNumber *lat = @(latUser - latProfessional);
-    // NSNumber *distance = @(sqrt(long,lat));
 }
 
 
