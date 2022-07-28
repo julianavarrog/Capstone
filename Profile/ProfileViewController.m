@@ -51,7 +51,10 @@
 -(void) getCurrentUserInfo  {
     self.isUser = NO;
     PFUser *currentUser = [PFUser currentUser];
-    self.profileUsername.text = currentUser.username;
+    NSString *atName = @"@";
+    NSString *screenName = [atName stringByAppendingString:currentUser.username];
+    self.profileUsername.text = screenName;
+    //self.profileUsername.text = currentUser.username;
     PFQuery *checkInfo= [PFQuery queryWithClassName:@"UserDetail"];
     [checkInfo findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         for (PFObject* user in users){
@@ -106,6 +109,10 @@
     Professional *profile = self.profileArray[indexPath.row];
     [cell setProfile:profile];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 180;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

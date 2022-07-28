@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10590E27289208D000966FD5 /* SessionSummaryViewController.m */; };
 		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
 		1065745A287CA6D0003E8877 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Languages.m */; };
 		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
@@ -71,6 +72,8 @@
 
 /* Begin PBXFileReference section */
 		0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.release.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.release.xcconfig"; sourceTree = "<group>"; };
+		10590E26289208D000966FD5 /* SessionSummaryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionSummaryViewController.h; sourceTree = "<group>"; };
+		10590E27289208D000966FD5 /* SessionSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionSummaryViewController.m; sourceTree = "<group>"; };
 		10657455287C9F3D003E8877 /* Speciality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Speciality.h; sourceTree = "<group>"; };
 		10657456287C9F3D003E8877 /* Speciality.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Speciality.m; sourceTree = "<group>"; };
 		10657458287CA6D0003E8877 /* Languages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
@@ -189,9 +192,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10590E252892068C00966FD5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				10D36495288621C000FF5BBB /* MapViewController.h */,
+				10D36496288621C000FF5BBB /* MapViewController.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		106B4DEA2870126A0091D1A6 = {
 			isa = PBXGroup;
 			children = (
+				10590E252892068C00966FD5 /* Map */,
 				106B4E59287371AB0091D1A6 /* Authentification */,
 				106B4E5228728CDF0091D1A6 /* Calendar */,
 				10D3649D2888C02400FF5BBB /* Profile */,
@@ -231,12 +244,8 @@
 				106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */,
 				106B4E072870126B0091D1A6 /* Info.plist */,
 				106B4E082870126B0091D1A6 /* main.m */,
-				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
-				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
 				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
 				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
-				10D36495288621C000FF5BBB /* MapViewController.h */,
-				10D36496288621C000FF5BBB /* MapViewController.m */,
 			);
 			path = Ment;
 			sourceTree = "<group>";
@@ -318,10 +327,14 @@
 		10D3649D2888C02400FF5BBB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
+				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
 				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
 				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
 				106B4E3928701D420091D1A6 /* ProfileViewController.m */,
 				106B4E3828701D420091D1A6 /* ProfileViewController.h */,
+				10590E26289208D000966FD5 /* SessionSummaryViewController.h */,
+				10590E27289208D000966FD5 /* SessionSummaryViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -620,6 +633,7 @@
 				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
 				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
+				10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
 				10D36497288621C000FF5BBB /* MapViewController.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,

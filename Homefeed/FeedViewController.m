@@ -189,10 +189,10 @@
 - (void)sendDataToA:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
-    NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"Location <= %d", filter.selectedDistance.intValue];
+   // NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"Location <= %d", filter.selectedDistance.intValue];
     NSPredicate *predicatePrice = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
     NSPredicate *predicateAge = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicateLocation, predicatePrice, predicateAge]];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicatePrice, predicateAge]];
     NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
     NSMutableArray * specialityFiltered = [[NSMutableArray alloc]init];
     

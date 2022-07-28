@@ -44,8 +44,11 @@
     CGSize resizeSize = CGSizeMake(80, 80);
     if (editedImage) {
         self.chosenProfilePicture.image = [self resizeImage:editedImage withSize:resizeSize];
+        self.chosenProfilePicture.layer.cornerRadius  = self.chosenProfilePicture.frame.size.width/2;
     } else {
         self.chosenProfilePicture.image = [self resizeImage:originalImage withSize:resizeSize];
+        self.chosenProfilePicture.layer.cornerRadius  = self.chosenProfilePicture.frame.size.width/2;
+
     }
     
     //PFUser *user = [PFUser currentUser];
@@ -96,6 +99,13 @@
         [professional save];
     }];
     [self performSegueWithIdentifier:@"secondSegue" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:@"sessionSegue"]){
+        [self performSegueWithIdentifier:@"sessionSegue" sender:nil];
+
+    }
 }
 
 @end

@@ -52,7 +52,11 @@
 - (void) getInfo{
 
     self.detailName.text = [self.professional[@"Name"] capitalizedString];
-    self.detailUsername.text = self.professional[@"username"];
+    NSString *atName = @"@";
+    NSString *screenName = [atName stringByAppendingString:self.professional[@"username"]];
+    self.detailUsername.text = screenName;
+    
+    //self.detailUsername.text = self.professional[@"username"];
     self.detailDescription.text = self.professional[@"Description"];
     NSString * specialityString = [[self.professional[@"Speciality"] valueForKey:@"description"] componentsJoinedByString:@", "];
     self.detailSpeciality.text = specialityString;

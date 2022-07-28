@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, readonly) MKUserLocation *userLocation;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property(nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
+@property(nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
+@property(nonatomic, getter=isPitchEnabled) BOOL pitchEnabled;
 
 
 @end

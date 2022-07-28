@@ -13,13 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSNumber* selectedPrice;
 @property (nonatomic, strong) NSNumber* selectedAge;
-@property (nonatomic, strong) NSNumber* selectedDistance;
+//@property (nonatomic, strong) NSNumber* selectedDistance;
 @property (nonatomic, strong) NSArray * selectedSpeciality;
 @property (nonatomic, strong) NSArray * selectedLanguage;
 
 - (void) setSelectedPrice:(NSNumber * _Nonnull)selectedPrice;
 - (void) setSelectedAge:(NSNumber * _Nonnull)selectedAge;
-- (void) setSelectedDistance:(NSNumber * _Nonnull)selectedDistance;
+//- (void) setSelectedDistance:(NSNumber * _Nonnull)selectedDistance;
 - (void) setSpeciality:(NSString * _Nonnull)speciality;
 - (void) setLanguage:(NSString * _Nonnull)language;
 

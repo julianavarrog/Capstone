@@ -17,10 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *profileCellImage;
 @property (weak, nonatomic) IBOutlet UILabel *profileCellDate;
 @property (strong, nonatomic) Professional *profile;
-@property (weak, nonatomic) IBOutlet UILabel *profileDescription;
-@property (weak, nonatomic) IBOutlet UILabel *profileUsername;
+@property (weak, nonatomic) IBOutlet UILabel *profileName;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *viewButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *activityProgressView;
+@property (weak, nonatomic) IBOutlet UILabel *activityAmount;
 
-- (void)setEvent:(Event*)event;
+- (void)setEvent:(Event*)event with:(Professional*) professional;
 
 @end
 
