@@ -1,4 +1,3 @@
-//
 //  FeedViewController.m
 //  Ment
 //
@@ -16,9 +15,6 @@
 #import "FilterViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-
-
-
 @interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate, CLLocationManagerDelegate>{
         CLLocationManager *locationManager;
         CLLocation *currentLocation;
@@ -26,23 +22,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (strong, nonatomic) NSArray *profileArray;
 @property (strong, nonatomic) NSMutableArray *userDetails;
-@property (strong, nonatomic) NSMutableArray *profesionals;
 @property (strong, nonatomic) NSMutableArray *profesionalsFiltered;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-
 @property (strong, nonatomic) NSMutableArray *userLocation;
 @property (strong, nonatomic) NSMutableArray *professionalLocation;
-
 @property CLLocation *location;
-
-
-
-// attempt at searchBar
-
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *filteredProfessionals;
-
-
 @property BOOL isFiltered;
 
 @end
@@ -60,32 +46,27 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
-    [self calculateDistance];
     [self currentLocationIdentifier];
 }
 
 - (void) currentLocationIdentifier{
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
         [locationManager requestWhenInUseAuthorization];
-
     [locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
     [locationManager stopUpdatingLocation];
     CLLocation *location = [locations lastObject];
     NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
     self.location = location;
-    
-    
 }
-
-
 
 -(void) getProfessionals {
     
@@ -94,42 +75,30 @@
     [query includeKey:@"author"];
     [self refreshControl];
     //fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *profesionals, NSError *error){
+    [query findObjectsInBackgroundWithBlock:^(NSArray *professionals, NSError *error){
         [self.refreshControl endRefreshing];
-        if(profesionals != nil){
+        if(professionals != nil){
+            self.professionals = [[NSMutableArray alloc] init];
+            self.profesionalsFiltered = [[NSMutableArray alloc] init];
+            
+            for (Professional * professional in professionals){
+                
+                NSNumber *latitude = professional[@"latitude"];
+                NSNumber *longitude = professional[@"longitude"];
+        
+                CLLocation *professionalLocation = [[CLLocation alloc]initWithLatitude:latitude.doubleValue longitude:longitude.doubleValue];
+                CLLocationDistance distance = [self.location distanceFromLocation:professionalLocation];
+                NSLog (@"Current Location %@: [%f,%f] - Professional Location: [%f,%f] -> Distance: %f",professional[@"Name"], self.location.coordinate.latitude, self.location.coordinate.longitude, latitude.doubleValue, longitude.doubleValue,distance);
+                professional[@"distance"] = @(distance);
+                [self.professionals addObject:professional];
+                [self.profesionalsFiltered addObject:professional];
+            }
             // do something with the array of object returned by call
-            self.profesionals = [[NSMutableArray alloc] initWithArray:profesionals];
-            self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:profesionals];
             [self.feedTableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (searchText.length == 0) {
-        self.isFiltered = false;
-        [self.searchBar endEditing:YES];
-    } else {
-        self.isFiltered = true;
-        PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
-        [query whereKey:@"Name" containsString:searchText];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *profesionals, NSError *error){
-            [self.refreshControl endRefreshing];
-            self.filteredProfessionals = [[NSMutableArray alloc] initWithArray:profesionals];
-            [self.feedTableView reloadData];
-        /*
-        for (Professional *professional in self.profile) {
-            NSRange range = [professional[@"Name"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
-            if (range.location != NSNotFound) {
-                [self.filteredProfessionals addObject:professional];
-            }
-        }
-         */
-        }];
-    }
-    [self.feedTableView reloadData];
 }
 
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -160,27 +129,7 @@
 - (IBAction)feedFilterButton:(id)sender {
     
     [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
-
 }
-
-- (void) calculateDistance{
-    //Query professionals
-    PFQuery *professionalDistanceQuery = [PFQuery queryWithClassName:@"Professionals"];
-    [professionalDistanceQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable professionals, NSError * _Nullable error) {
-        NSLog(@"sucessfully retrived Professional Object");
-        NSLog(@"%@", self.professionals);
-        for (Professional * professional in professionals){
-            
-            NSNumber *latitude = professional[@"latitude"];
-            NSNumber *longitude = professional[@"longitude"];
-    
-            CLLocation *professionalLocation = [[CLLocation alloc]initWithLatitude:latitude.doubleValue longitude:longitude.doubleValue];
-            CLLocationDistance distance = [self.location distanceFromLocation:professionalLocation];
-            NSLog (@"Current Location: [%f,%f] - Professional Location: [%f,%f] -> Distance: %f", self.location.coordinate.latitude, self.location.coordinate.longitude, latitude.doubleValue, longitude.doubleValue,distance);
-        }
-    }];
-}
-
 
 - (IBAction)feedNotificationButton:(id)sender {
     
@@ -189,13 +138,12 @@
 - (void)sendDataToA:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
-   // NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"Location <= %d", filter.selectedDistance.intValue];
+    NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"distance <= %d", filter.selectedDistance.intValue];
     NSPredicate *predicatePrice = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
     NSPredicate *predicateAge = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicatePrice, predicateAge]];
-    NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicatePrice, predicateAge, predicateLocation]];
+    NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.professionals filteredArrayUsingPredicate:predicate]];
     NSMutableArray * specialityFiltered = [[NSMutableArray alloc]init];
-    
     if (filter.selectedSpeciality.count > 0){
         for (Professional* professional in firstFiltered){
             NSArray * specialitys = professional[@"Speciality"];
@@ -229,6 +177,27 @@
     [self.feedTableView reloadData];
 }
 
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length == 0) {
+        self.isFiltered = false;
+        [self.searchBar endEditing:YES];
+        
+    } else {
+        self.isFiltered = true;
+        self.profesionalsFiltered = [[NSMutableArray alloc] init];
+        for (Professional *professional in self.professionals) {
+            NSRange range = [professional[@"Name"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (range.location != NSNotFound) {
+                
+                [self.profesionalsFiltered addObject: professional];
+            }
+        }
+    }
+    [self.feedTableView reloadData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -242,12 +211,11 @@
     } else if ([segue.identifier isEqual:@"professionalsFilter"]) {
         FilterViewController *filterVC = [segue destinationViewController];
         filterVC.delegate = self;
-        filterVC.professionals = self.profesionals;
+        filterVC.professionals = self.professionals;
     }
 }
 
 @end
-
 
 
 

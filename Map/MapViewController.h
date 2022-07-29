@@ -1,3 +1,4 @@
+
 //
 //  MapViewController.h
 //  Ment
@@ -18,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
 @property(nonatomic, getter=isPitchEnabled) BOOL pitchEnabled;
 
+@property (strong, nonatomic) NSMutableArray *professionals;
+@property (strong, nonatomic) NSMutableArray *professionalsFiltered;
 
 @end
 

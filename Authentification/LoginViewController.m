@@ -52,6 +52,7 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
             [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
                 if (error != nil) {
                     NSLog(@"User logged in sucessfully");
+                    //self.window.rootViewController = [UIStoryboard instantiateViewControllerWithIdentifier:@"TabBarController"];
                     [self performSegueWithIdentifier:@"userSegue" sender:nil];
                 } else{
                     NSLog(@"Professional logged in sucessfully");

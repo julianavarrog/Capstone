@@ -101,11 +101,4 @@
     [self performSegueWithIdentifier:@"secondSegue" sender:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqual:@"sessionSegue"]){
-        [self performSegueWithIdentifier:@"sessionSegue" sender:nil];
-
-    }
-}
-
 @end

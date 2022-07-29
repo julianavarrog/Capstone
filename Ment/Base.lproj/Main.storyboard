@@ -96,9 +96,9 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qFw-ih-wzS">
-                                <rect key="frame" x="66" y="417" width="280" height="35"/>
+                                <rect key="frame" x="66" y="417" width="280" height="34"/>
                                 <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
                                     <action selector="passwordField:" destination="oO3-Bb-IlY" eventType="editingDidEnd" id="fKj-ZD-3Ev"/>
                                 </connections>
@@ -186,7 +186,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9v-40-Jm1">
-                                <rect key="frame" x="213" y="477" width="133" height="31"/>
+                                <rect key="frame" x="213" y="476" width="133" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Forgot Password">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -373,7 +373,7 @@
                                 <rect key="frame" x="67" y="415" width="280" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" smartDashesType="no" textContentType="password"/>
                                 <connections>
                                     <action selector="passwordField:" destination="oO3-Bb-IlY" eventType="editingDidEnd" id="FhO-y1-BcA"/>
                                 </connections>
@@ -924,7 +924,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UN8-1a-8oV">
-                                                                    <rect key="frame" x="275" y="13" width="86" height="21"/>
+                                                                    <rect key="frame" x="261" y="13" width="86" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -950,6 +950,17 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APN-4R-sVd">
+                                                                    <rect key="frame" x="362" y="13" width="38" height="34"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" title="">
+                                                                        <backgroundConfiguration key="background" image="venmo01"/>
+                                                                    </buttonConfiguration>
+                                                                    <connections>
+                                                                        <action selector="venmoClicked:" destination="pU3-Mb-7BK" eventType="touchUpInside" id="lbo-9P-KfU"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <color key="tintColor" red="0.77405482530593872" green="0.75377428531646729" blue="0.93758255243301392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1086,7 +1097,7 @@
                                 </connections>
                             </button>
                             <connections>
-                                <segue destination="762-1P-zPk" kind="show" identifier="settingsSegue" id="6rn-I2-7KO"/>
+                                <segue destination="762-1P-zPk" kind="presentation" identifier="settingsSegue" id="6rn-I2-7KO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1203,7 +1214,7 @@
             <objects>
                 <viewController title="Settings" id="762-1P-zPk" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ViF-57-ZCZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7V-z7-9ZX">
@@ -1287,7 +1298,7 @@
                                     <constraint firstAttribute="height" constant="640.5" id="rfx-hr-E4A"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FeedCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedCell" rowHeight="241" id="rCG-Kt-fGK" customClass="FeedCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FeedCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedCell" focusStyle="custom" rowHeight="241" id="rCG-Kt-fGK" customClass="FeedCell">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="241"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rCG-Kt-fGK" id="LNT-XC-Tkg">
@@ -1465,6 +1476,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <size key="titleShadowOffset" width="21" height="21"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Child Therapist"/>
                                                         <connections>
@@ -1877,7 +1889,7 @@
                                 <rect key="frame" x="67" y="415" width="280" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="KohinoorTelugu-Regular" family="Kohinoor Telugu" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
                                     <action selector="passwordField:" destination="oO3-Bb-IlY" eventType="editingDidEnd" id="CgO-C9-1nb"/>
                                 </connections>
@@ -2756,15 +2768,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HQZ-3M-zBK">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HQZ-3M-zBK" customClass="MapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o7G-Sh-9Wg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="Bea-Qw-rr4"/>
+                    <navigationItem key="navigationItem" title="Map" id="Bea-Qw-rr4">
+                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" style="plain" id="e1J-6C-wcX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6vR-bz-Rdf">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system" title=" ">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="filterButtonTapped:" destination="Xm1-GE-U0W" eventType="touchUpInside" id="JZD-70-YOA"/>
+                                    <segue destination="liB-On-MeG" kind="presentation" identifier="mapFilter" id="zZs-Vh-BWf"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="filterButtonTapped:" destination="Xm1-GE-U0W" id="CB8-HJ-TXQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="HQZ-3M-zBK" id="R7l-zv-kZB"/>
                     </connections>
@@ -2795,11 +2826,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="dhl-fX-hjp"/>
-        <segue reference="4qJ-if-fKg"/>
-        <segue reference="7gr-dl-lZ9"/>
-        <segue reference="p0U-Yw-8bJ"/>
+        <segue reference="Jz1-hg-0kk"/>
+        <segue reference="DwE-w3-B9y"/>
+        <segue reference="VoE-Bp-W3B"/>
+        <segue reference="zZs-Vh-BWf"/>
         <segue reference="YXv-Y5-Xgn"/>
-        <segue reference="4uS-Dr-8XI"/>
+        <segue reference="ewk-mc-Kmi"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PFImageView" width="128" height="128"/>
@@ -2812,6 +2844,7 @@
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="undraw_Showing_support_re_5f2v" width="901" height="674"/>
+        <image name="venmo01" width="276" height="276"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

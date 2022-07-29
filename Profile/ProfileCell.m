@@ -32,6 +32,9 @@
 }
 
 
+- (IBAction)venmoClicked:(id)sender {
+    //https://venmo.com/account/sign-in
+}
 
 - (void)setEvent:(Event*)event with:(Professional*) professional {
     
