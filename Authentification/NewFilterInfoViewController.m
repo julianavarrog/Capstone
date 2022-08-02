@@ -108,8 +108,26 @@
 
 - (void)didTapSpeciality:(SpecialityFilterType)speciality {
     
+    /**
+     In this case, I would suggest you to create a class Specialities or a map to stored all the Speciality.
+     And then instead of  `convertLabelFromSpecialistType`, we could return a Speciality, like `fetchSpecialityFromSpecialistType`. Or just fetch from a map[SpecialistType]
+     So that you can use a uniform tap function:
+     
+     Speciality *speciality = map[SpecialistType];
+     
+     [_specialityArray addObject:speciality.label];
+     if(!speciality.isSelected) {
+         [_specialityArray addObject:speciality.specialityLabel];
+         speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+         speciality.isSelected = YES;
+     } else {
+         [_specialityArray removeObject:speciality.specialityLabel];
+         speciality.isSelected = NO;
+         speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+     }
+     */
     NSString *filterString = [Speciality convertLabelFromSpecialistType:speciality];
- //   [_specialityArray addObject:filterString];
+//    [_specialityArray addObject:filterString];
 //    if(!speciality.isSelected) {
 //        [_specialityArray addObject:speciality.specialityLabel];
 //        speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];

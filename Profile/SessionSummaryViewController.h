@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SessionSummaryViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UISwitch *switch1;
+@property (weak, nonatomic) IBOutlet UISwitch *switch1; //It would be better if we could have more clear naming and avoid number, ex.switchForTaskOne
 @property (weak, nonatomic) IBOutlet UISwitch *switch2;
 @property (weak, nonatomic) IBOutlet UISwitch *switch3;
 - (IBAction)switch1Action:(id)sender;

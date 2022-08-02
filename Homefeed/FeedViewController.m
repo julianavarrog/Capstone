@@ -60,14 +60,6 @@
     [locationManager startUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    [locationManager stopUpdatingLocation];
-    CLLocation *location = [locations lastObject];
-    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
-    self.location = location;
-}
-
 -(void) getProfessionals {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
@@ -99,20 +91,6 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-}
-
--(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
-    Professional *profile = self.profesionalsFiltered[indexPath.row];
-    [cell setProfile:profile];
-    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.profesionalsFiltered.count;
 }
 
 -(void)viewButtonTapped:(UIButton*)sender {
@@ -177,6 +155,33 @@
     [self.feedTableView reloadData];
 }
 
+#pragma mark - LocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    self.location = location;
+}
+
+#pragma mark - UITableView
+
+-(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
+    Professional *profile = self.profesionalsFiltered[indexPath.row];
+    [cell setProfile:profile];
+    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.profesionalsFiltered.count;
+}
+
+#pragma mark - UISearchBar
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     

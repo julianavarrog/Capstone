@@ -103,6 +103,7 @@
     }else{
         [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
     }
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
         if (!error){
             NSLog(@"sucessfully retrived Event");

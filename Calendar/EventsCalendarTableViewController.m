@@ -46,7 +46,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCalendarCell"];
     NSArray *keys = [self.eventsDic allKeys];
-    id aKey = [keys objectAtIndex : indexPath.section];
+    id aKey = [keys objectAtIndex : indexPath.section]; // What is aKey? Please use more clear naming :)
     NSMutableArray * events = (NSMutableArray *)[self.eventsDic objectForKey:aKey];
     Event * event = [events objectAtIndex:indexPath.row];
     cell.textLabel.text = event.title;
