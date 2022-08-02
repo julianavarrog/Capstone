@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)didTapUploadButton:(id)sender;
 - (IBAction)didSignup:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 
 

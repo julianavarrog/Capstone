@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)didChooseImage:(id)sender;
 - (IBAction)didSignUp:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 @end
 

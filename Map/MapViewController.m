@@ -10,10 +10,14 @@
 #import "MapPin.h"
 #import "Professional.h"
 #import "FilterViewController.h"
+#import "MapCircle.h"
 
 @interface MapViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic)  CLLocationManager *locationManager;
 @property CLLocation *location;
+@property CLLocationCoordinate2D *coordinate;
+
+
 @end
 
 @implementation MapViewController
@@ -23,6 +27,7 @@
     self.zoomEnabled = YES;
     self.scrollEnabled = YES;
     self.pitchEnabled = YES;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,6 +82,7 @@
                 [self.professionalsFiltered addObject:professional];
             }
             [self buildPointsInMap];
+            [self addCircleInMap];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -94,12 +100,22 @@
         [self.mapView addAnnotation:point];
     }
 }
+
+-(void)addCircleInMap {
+    MapCircle * circle = [[MapCircle alloc]
+                          circleWithCenterCoordinate:self.location.coordinate
+                          radius: 10000.00];
+    [self.mapView addOverlay:circle];
+}
+
+
+
 - (IBAction)filterButtonTapped:(id)sender {
     [self performSegueWithIdentifier:@"mapFilter" sender:nil];
 }
 
 
-- (void)sendDataToA:(nonnull Filter *)filter {
+- (void)sendDataToMap:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
     NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"distance <= %d", filter.selectedDistance.intValue];

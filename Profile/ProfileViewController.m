@@ -54,7 +54,6 @@
     NSString *atName = @"@";
     NSString *screenName = [atName stringByAppendingString:currentUser.username];
     self.profileUsername.text = screenName;
-    //self.profileUsername.text = currentUser.username;
     PFQuery *checkInfo= [PFQuery queryWithClassName:@"UserDetail"];
     [checkInfo findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         for (PFObject* user in users){

@@ -1,5 +1,5 @@
 //
-//  NewFilterInfoViewController.h
+//  ProfessionalInfoViewController.h
 //  Ment
 //
 //  Created by Julia Navarro Goldaraz on 7/13/22.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NewFilterInfoViewController : UIViewController
+@interface ProfessionalInfoViewController : UIViewController
 
 - (IBAction)ageSliderAction:(id)sender;
 - (IBAction)priceSliderAction:(id)sender;
@@ -54,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSMutableArray * userLocation;
 
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
 
 @end
 

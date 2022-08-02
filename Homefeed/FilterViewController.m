@@ -73,6 +73,9 @@
     self.distanceSlider.maximumValue = maxDistance.floatValue;
     self.distanceSlider.value = maxDistance.floatValue;
     self.distanceAmount.text = [NSString stringWithFormat:@"%0.0f KM", (maxDistance.floatValue/1000.0)];
+    
+    self.applyFilters.layer.cornerRadius = 10;
+    self.applyFilters.clipsToBounds = YES;
 
 }
 

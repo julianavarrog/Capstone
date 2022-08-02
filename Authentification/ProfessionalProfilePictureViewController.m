@@ -19,6 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.signupButton.layer.cornerRadius = 20;
+    self.signupButton.clipsToBounds = YES;
 }
 
 

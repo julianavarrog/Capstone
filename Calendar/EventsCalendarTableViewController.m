@@ -45,14 +45,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventsCalendarCell"];
-    NSArray *keys = [self.eventsDic allKeys];
-    id aKey = [keys objectAtIndex : indexPath.section];
-    NSMutableArray * events = (NSMutableArray *)[self.eventsDic objectForKey:aKey];
+    NSArray *allDates = [self.eventsDic allKeys];
+    id aDate = [allDates objectAtIndex : indexPath.section];
+    NSMutableArray * events = (NSMutableArray *)[self.eventsDic objectForKey:aDate];
     Event * event = [events objectAtIndex:indexPath.row];
     cell.textLabel.text = event.title;
     cell.detailTextLabel.text = event.dateString;
     return cell;
 }
-
 
 @end

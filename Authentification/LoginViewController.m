@@ -24,6 +24,11 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
     if (@available(iOS 13.0, *)) {
        [self observeAppleSignInState];
     }
+    self.loginButton.layer.cornerRadius = 20;
+    self.loginButton.clipsToBounds = YES;
+    
+    self.appleButton.layer.cornerRadius = 20;
+    self.appleButton.clipsToBounds = YES;
 }
 
 - (void)observeAppleSignInState {

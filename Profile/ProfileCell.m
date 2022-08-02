@@ -6,11 +6,6 @@
 //
 
 #import "ProfileCell.h"
-#import "Professional.h"
-#import "PFUser.h"
-#import "Parse/Parse.h"
-#import "Parse/PFImageView.h"
-#import "Event.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ProfileCell
@@ -39,9 +34,8 @@
 - (void)setEvent:(Event*)event with:(Professional*) professional {
     
     [self.profileName setText: [professional[@"Name"] capitalizedString]];
-    
     self.profileCellImage.file = professional[@"Image"];
-    //self.profileCellImage.layer.cornerRadius = self.profesionalImage.frame.size.width/2;
+    self.profileCellImage.layer.cornerRadius = self.profileCellImage.frame.size.width/2;
     [self.profileCellImage loadInBackground];
     
 }

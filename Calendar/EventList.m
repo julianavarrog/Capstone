@@ -12,7 +12,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.eventFormatter = [[NSDateFormatter alloc] init];
+    self.eventFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.eventFormatter.dateFormat = @"hh:mm a";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,7 +35,7 @@
     
     [self.profesionalName setText: [professional[@"Name"] capitalizedString]];
     [self.eventState setText: [event[@"state"] capitalizedString]];
-    
+    self.dateTime.text = [NSString stringWithFormat:@"%@ - %@", [self.eventFormatter stringFromDate:event[@"date"]],[self.eventFormatter stringFromDate:event[@"endDate"]]];
     self.profesionalImage.file = professional[@"Image"];
     self.profesionalImage.layer.cornerRadius = self.profesionalImage.frame.size.width/2;
     [self.profesionalImage loadInBackground];

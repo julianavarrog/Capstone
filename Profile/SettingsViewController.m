@@ -19,10 +19,18 @@
 @implementation SettingsViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    self.changePicture.layer.cornerRadius = 20;
+    self.changePicture.clipsToBounds = YES;
+    self.changePassword.layer.cornerRadius = 20;
+    self.changePassword.clipsToBounds = YES;
+    self.logoutButton.layer.cornerRadius = 20;
+    self.logoutButton.clipsToBounds = YES;
 }
 
 - (IBAction)logoutButton:(id)sender {
+    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
         if(error) {

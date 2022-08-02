@@ -15,7 +15,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.bookAppointmentButton.layer.cornerRadius = 20; // this value vary as per your desire
+    self.bookAppointmentButton.layer.cornerRadius = 20;
     self.bookAppointmentButton.clipsToBounds = YES;
 }
 

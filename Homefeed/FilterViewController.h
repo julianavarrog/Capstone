@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *professionals;
 @property(nonatomic,assign)id delegate;
 
+@property (weak, nonatomic) IBOutlet UIButton *applyFilters;
+
 - (IBAction)didApplyFilters:(id)sender;
 
 @property (strong, nonatomic) NSMutableArray *specialityArray;

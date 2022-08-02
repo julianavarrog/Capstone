@@ -24,8 +24,6 @@
 @property (strong, nonatomic) NSDateFormatter * timeFormatter;
 @property (strong, nonatomic) NSDateFormatter * eventFormatter;
 
-
-
 // A mutable dictionary ordered by the events in the same date.
 // It will take this format [["2022/07/18": [Event1, Event2]]]
 // Dates can be accessed as keys and events as values.
@@ -65,7 +63,8 @@
     
     self.eventFormatter = [[NSDateFormatter alloc] init];
     self.eventFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
-    self.eventFormatter.dateFormat = @"yyyy/MM/dd hh:mm a";
+    self.eventFormatter.dateFormat = @"hh:mm a";
+    //@"yyyy/MM/dd hh:mm a"
     
     //start and end date for events to be loaded
     self.minimumDate = [self.dateFormatter dateFromString:@"2022/01/01"];
@@ -339,6 +338,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     return 160;
 }
+- (IBAction)notificationTapped:(id)sender {
+    [self performSegueWithIdentifier:@"professionalNotificationSegue" sender: nil];
+}
 
 // Get the new view controller using [segue destinationViewController].
 // Pass the selected object to the new view controller.
@@ -370,7 +372,7 @@
             if([startDateEvent isEqual: [self.dateFormatter stringFromDate:(NSDate *)sender]]){
                 Event * event = [[Event alloc]init];
                 event.title = eventCalendar.title;
-                event.dateString = [NSString stringWithFormat:@"Range: %@ -%@", [self.eventFormatter stringFromDate:eventCalendar.startDate],[self.eventFormatter stringFromDate:eventCalendar.endDate]];
+                event.dateString = [NSString stringWithFormat:@"Time: %@ - %@", [self.eventFormatter stringFromDate:eventCalendar.startDate],[self.eventFormatter stringFromDate:eventCalendar.endDate]];
                 [eventsCalendar addObject:event];
             }
         }

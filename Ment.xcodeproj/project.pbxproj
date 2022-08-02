@@ -10,6 +10,8 @@
 		10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10590E27289208D000966FD5 /* SessionSummaryViewController.m */; };
 		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
 		1065745A287CA6D0003E8877 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Languages.m */; };
+		106B1EA028987624005F0BFF /* MapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B1E9F28987624005F0BFF /* MapCircle.m */; };
+		106B1EA3289991AE005F0BFF /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B1EA2289991AE005F0BFF /* Notification.m */; };
 		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
 		106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFA2870126A0091D1A6 /* SceneDelegate.m */; };
 		106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFD2870126A0091D1A6 /* ViewController.m */; };
@@ -44,7 +46,7 @@
 		10D36497288621C000FF5BBB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D36496288621C000FF5BBB /* MapViewController.m */; };
 		10D3649B2887C39400FF5BBB /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */; };
 		10D364A1288B52E500FF5BBB /* EventsCalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */; };
-		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
+		10E3EFE9287F625B00F529D6 /* ProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF12883A4AC00F529D6 /* Professional.m */; };
 		10E3EFF52883A69600F529D6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF42883A69600F529D6 /* Filter.m */; };
@@ -79,6 +81,10 @@
 		10657456287C9F3D003E8877 /* Speciality.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Speciality.m; sourceTree = "<group>"; };
 		10657458287CA6D0003E8877 /* Languages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
 		10657459287CA6D0003E8877 /* Languages.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Languages.m; sourceTree = "<group>"; };
+		106B1E9E28987624005F0BFF /* MapCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapCircle.h; sourceTree = "<group>"; };
+		106B1E9F28987624005F0BFF /* MapCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapCircle.m; sourceTree = "<group>"; };
+		106B1EA1289991AE005F0BFF /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		106B1EA2289991AE005F0BFF /* Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		106B4DF32870126A0091D1A6 /* Ment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		106B4DF62870126A0091D1A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		106B4DF72870126A0091D1A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -145,8 +151,8 @@
 		10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		10D3649F288B52E500FF5BBB /* EventsCalendarTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventsCalendarTableViewController.h; sourceTree = "<group>"; };
 		10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsCalendarTableViewController.m; sourceTree = "<group>"; };
-		10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFilterInfoViewController.h; sourceTree = "<group>"; };
-		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
+		10E3EFE7287F625B00F529D6 /* ProfessionalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessionalInfoViewController.h; sourceTree = "<group>"; };
+		10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessionalInfoViewController.m; sourceTree = "<group>"; };
 		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
 		10E3EFEB2880DE1900F529D6 /* NotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		10E3EFF02883A4AC00F529D6 /* Professional.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Professional.h; sourceTree = "<group>"; };
@@ -202,6 +208,8 @@
 				10D36496288621C000FF5BBB /* MapViewController.m */,
 				10EC28B228931E3900E9E5E2 /* MapPin.h */,
 				10EC28B328931E3900E9E5E2 /* MapPin.m */,
+				106B1E9E28987624005F0BFF /* MapCircle.h */,
+				106B1E9F28987624005F0BFF /* MapCircle.m */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -287,6 +295,8 @@
 				10E3EFF12883A4AC00F529D6 /* Professional.m */,
 				10D364922885F7B000FF5BBB /* UserDetail.h */,
 				10D364932885F7B000FF5BBB /* UserDetail.m */,
+				106B1EA1289991AE005F0BFF /* Notification.h */,
+				106B1EA2289991AE005F0BFF /* Notification.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,8 +331,8 @@
 				106B4E672874E40A0091D1A6 /* OpenViewController.m */,
 				106B4E6C2877A1C90091D1A6 /* UserProfilePictureViewController.h */,
 				106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */,
-				10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */,
-				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
+				10E3EFE7287F625B00F529D6 /* ProfessionalInfoViewController.h */,
+				10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */,
 				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
 				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
 			);
@@ -638,6 +648,7 @@
 				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
 				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
+				106B1EA3289991AE005F0BFF /* Notification.m in Sources */,
 				10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
 				10D36497288621C000FF5BBB /* MapViewController.m in Sources */,
@@ -648,11 +659,12 @@
 				106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */,
 				106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */,
 				10EC28B428931E3900E9E5E2 /* MapPin.m in Sources */,
+				106B1EA028987624005F0BFF /* MapCircle.m in Sources */,
 				10D364A1288B52E500FF5BBB /* EventsCalendarTableViewController.m in Sources */,
 				106B4E092870126B0091D1A6 /* main.m in Sources */,
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
-				10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */,
+				10E3EFE9287F625B00F529D6 /* ProfessionalInfoViewController.m in Sources */,
 				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
 				10E3EFF52883A69600F529D6 /* Filter.m in Sources */,

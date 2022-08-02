@@ -49,25 +49,6 @@
     [self currentLocationIdentifier];
 }
 
-- (void) currentLocationIdentifier{
-    
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-        [locationManager requestWhenInUseAuthorization];
-    [locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    [locationManager stopUpdatingLocation];
-    CLLocation *location = [locations lastObject];
-    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
-    self.location = location;
-}
-
 -(void) getProfessionals {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
@@ -99,40 +80,6 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-}
-
--(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
-    Professional *profile = self.profesionalsFiltered[indexPath.row];
-    [cell setProfile:profile];
-    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.profesionalsFiltered.count;
-}
-
--(void)viewButtonTapped:(UIButton*)sender {
-    
-    CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.feedTableView];
-    NSIndexPath *clickedButtonIndexPath = [self.feedTableView indexPathForRowAtPoint:touchPoint];
-
-    NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
-    NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
-
-    [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
-}
-
-- (IBAction)feedFilterButton:(id)sender {
-    
-    [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
-}
-
-- (IBAction)feedNotificationButton:(id)sender {
-    
 }
 
 - (void)sendDataToA:(nonnull Filter *)filter {
@@ -177,7 +124,43 @@
     [self.feedTableView reloadData];
 }
 
+#pragma mark - UITableView
 
+-(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
+    Professional *profile = self.profesionalsFiltered[indexPath.row];
+    [cell setProfile:profile];
+    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.profesionalsFiltered.count;
+}
+
+#pragma mark - LocationManagerDelegate
+- (void) currentLocationIdentifier{
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    self.location = location;
+}
+
+#pragma mark - UISearchBar
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     if (searchText.length == 0) {
@@ -199,6 +182,26 @@
 }
 
 #pragma mark - Navigation
+
+- (IBAction)feedFilterButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
+}
+
+- (IBAction) feedNotificationButton:(id)sender{
+    [self performSegueWithIdentifier:@"userNotificationSegue" sender:nil];
+}
+
+-(void)viewButtonTapped:(UIButton*)sender {
+    
+    CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.feedTableView];
+    NSIndexPath *clickedButtonIndexPath = [self.feedTableView indexPathForRowAtPoint:touchPoint];
+
+    NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
+    NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
+
+    [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

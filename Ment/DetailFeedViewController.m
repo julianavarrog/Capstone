@@ -19,14 +19,14 @@
 
 
 @interface DetailFeedViewController ()<FSCalendarDelegate, FSCalendarDataSource, UITextViewDelegate, EKEventEditViewDelegate>
+
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (strong, nonatomic) NSMutableArray *events;
 @property (strong, nonatomic) NSDateFormatter * dateFormatter1;
 @property (strong, nonatomic) NSDateFormatter * dateFormatter2;
+@property (strong, nonatomic) NSDateFormatter * dateFormatter3;
 @property (strong, nonatomic) NSMutableDictionary *orderEvents;
 @property (strong, nonatomic) NSArray *distinctEvents;
-
-
 
 @end
 
@@ -34,7 +34,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self fetchEvents];
     [self getInfo];
     
@@ -46,7 +45,9 @@
     self.dateFormatter2.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.dateFormatter2.dateFormat = @"yyyy/MM/dd hh:mm a";
     
-    
+    self.dateFormatter3 = [[NSDateFormatter alloc] init];
+    self.dateFormatter3.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.dateFormatter3.dateFormat = @"hh:mm a";
 }
 
 - (void) getInfo{
@@ -55,8 +56,6 @@
     NSString *atName = @"@";
     NSString *screenName = [atName stringByAppendingString:self.professional[@"username"]];
     self.detailUsername.text = screenName;
-    
-    //self.detailUsername.text = self.professional[@"username"];
     self.detailDescription.text = self.professional[@"Description"];
     NSString * specialityString = [[self.professional[@"Speciality"] valueForKey:@"description"] componentsJoinedByString:@", "];
     self.detailSpeciality.text = specialityString;
@@ -93,7 +92,6 @@
             NSLog(@"failed to retrived Event");
         }
     }];
-        //[self.refreshControl endRefreshing];
 }
 
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date{
@@ -103,9 +101,6 @@
     }
     return 0;
 }
-
-
-
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
@@ -241,10 +236,31 @@
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded){
             NSLog(@"Event registered sucessfully");
+            [self addNotification:eventCalendar and: event];
             [self fetchEvents];
         }else{
             NSLog(@"Event registration failed");
             //there is a problem
+        }
+    }];
+}
+
+- (void) addNotification:(EKEvent *) eventCalendar  and:(PFObject *) eventLocal{
+    PFObject *notification = [PFObject objectWithClassName:@"Notification"];
+    notification[@"userID"] = self.professional[@"userID"];
+    notification[@"typeID"] = @"EVENT";
+    notification[@"title"] = eventCalendar.title;
+    notification[@"description"] = [NSString stringWithFormat:@"%@ %@ - %@",
+                                    [self.dateFormatter1 stringFromDate: eventCalendar.startDate],
+                                    [self.dateFormatter3 stringFromDate: eventCalendar.startDate],
+                                    [self.dateFormatter3 stringFromDate: eventCalendar.endDate]];
+    notification[@"extraArgument"] = eventLocal.objectId;
+    
+    [notification saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded){
+            NSLog(@"Notification registered sucessfully");
+        }else{
+            NSLog(@"Notification registration failed");
         }
     }];
 }

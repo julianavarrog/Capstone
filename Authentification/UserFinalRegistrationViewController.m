@@ -25,6 +25,9 @@
     [super viewDidLoad];
     _userLocation = [[NSMutableArray alloc] init];
     [self CurrentLocationIdentifier];
+    
+    self.signupButton.layer.cornerRadius = 20;
+    self.signupButton.clipsToBounds = YES;
 }
 
 //initalizes Current Location.
