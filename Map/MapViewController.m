@@ -98,7 +98,7 @@
     [self performSegueWithIdentifier:@"mapFilter" sender:nil];
 }
 
-
+// What is A ??
 - (void)sendDataToA:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.

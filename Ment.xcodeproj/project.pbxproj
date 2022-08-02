@@ -334,8 +334,8 @@
 			children = (
 				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
 				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
-				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
 				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
+				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
 				106B4E3928701D420091D1A6 /* ProfileViewController.m */,
 				106B4E3828701D420091D1A6 /* ProfileViewController.h */,
 				10590E26289208D000966FD5 /* SessionSummaryViewController.h */,

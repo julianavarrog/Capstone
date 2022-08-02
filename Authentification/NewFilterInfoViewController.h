@@ -22,6 +22,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *specialityArray;
 @property (strong, nonatomic) NSMutableArray *languageArray;
 
+// Can we use your Speciality & Language class here for cleaness?
+// For example,
+// @property (strong, nonatomic) Speciality *family;
+// Then in your codes,
+// countFamily => family.isSelected
+// familyButton => family.specialityButton
+// familyLabel => family.specialityLabel
+//
+// And if you want, you can also store all these specialitis to a array/map,like NSArray/NSMap *allSpeciality
+
 @property (strong, nonatomic) NSNumber * countFamily;
 @property (strong, nonatomic) NSNumber * countBehavioural;
 @property (strong, nonatomic) NSNumber * countChild;

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// Why do you have a FilterViewController and a NewFilterViewController? They look the same to me..
+
 @interface FilterViewController : UIViewController
 
 @property (weak, nonatomic) NSArray *specialityFilterArray;
