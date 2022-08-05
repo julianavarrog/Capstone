@@ -1,4 +1,4 @@
-//
+
 //  ProfileCellTableViewCell.h
 //  Ment
 //
@@ -23,7 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIProgressView *activityProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *activityAmount;
 
-- (void)setEvent:(Event*)event with:(Professional*) professional;
+@property(nonatomic, readonly, strong) UISceneOpenURLOptions *options;
+
+- (void)setActivity:(PFObject*) activity with:(PFObject*) user;
+@property (nonatomic, copy) void(^viewButtonTapHandler)(void);
+@property (nonatomic, copy) void(^cancelButtonTapHandler)(void);
 
 @end
 

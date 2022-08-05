@@ -22,20 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *specialityArray;
 @property (strong, nonatomic) NSMutableArray *languageArray;
 
-@property (strong, nonatomic) NSNumber * countFamily;
-@property (strong, nonatomic) NSNumber * countBehavioural;
-@property (strong, nonatomic) NSNumber * countChild;
-@property (strong, nonatomic) NSNumber * countStress;
-@property (strong, nonatomic) NSNumber * countGeneral;
-@property (strong, nonatomic) NSNumber * countLife;
-
-@property (strong, nonatomic) NSNumber * countSpanish;
-@property (strong, nonatomic) NSNumber * countEnglish;
-@property (strong, nonatomic) NSNumber * countFrench;
-@property (strong, nonatomic) NSNumber * countPortuguese;
-@property (strong, nonatomic) NSNumber * countMandarin;
-@property (strong, nonatomic) NSNumber * countOther;
-
 @property (weak, nonatomic) IBOutlet UIButton *familyButton;
 @property (weak, nonatomic) IBOutlet UIButton *childButton;
 @property (weak, nonatomic) IBOutlet UIButton *stressButton;

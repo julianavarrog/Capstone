@@ -22,6 +22,7 @@
 @implementation UserFinalRegistrationViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     _userLocation = [[NSMutableArray alloc] init];
     [self CurrentLocationIdentifier];
@@ -29,6 +30,8 @@
     self.signupButton.layer.cornerRadius = 20;
     self.signupButton.clipsToBounds = YES;
 }
+
+#pragma mark - Fetching user location
 
 //initalizes Current Location.
 - (void) CurrentLocationIdentifier{
@@ -53,6 +56,8 @@
     [_userLocation addObject:longitudeString];
     NSLog(@"%@",_userLocation);
 }
+
+#pragma mark - Final Registration for PFUser and PFObject(UserDetail)
 
 - (void) registerUser{
     // initialize a user object
@@ -86,7 +91,7 @@
 - (IBAction)signUpButton:(id)sender {
     [self registerUser];
 }
-
+#pragma mark - Navegation
 //must send objectId to next View Controller to update its corresponding Parse table
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"uploadPictureSegue"]){

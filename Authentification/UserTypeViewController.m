@@ -11,27 +11,27 @@
 
 
 @interface UserTypeViewController ()
-//@property (strong, nonatomic) NSString *type;
-
 @end
 
 @implementation UserTypeViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.userButton.layer.cornerRadius = 20;
     self.userButton.clipsToBounds = YES;
-    
     self.professionalButton.layer.cornerRadius = 20;
     self.professionalButton.clipsToBounds = YES;
 }
 
 - (IBAction)didTapProfessional:(id)sender {
+    
     [self performSegueWithIdentifier:@"professionalSegue" sender:nil];
     
 }
 
 - (IBAction)didTapUser:(id)sender {
+    
     [self performSegueWithIdentifier:@"userSegue" sender:nil];
 }
 

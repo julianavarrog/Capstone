@@ -14,6 +14,8 @@
 #import "DetailFeedViewController.h"
 #import "FilterViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Helper.h"
+
 
 @interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate, CLLocationManagerDelegate>{
         CLLocationManager *locationManager;
@@ -82,7 +84,9 @@
     }];
 }
 
-- (void)sendDataToA:(nonnull Filter *)filter {
+#pragma mark - Filtering with Predicates
+
+- (void)sendDataToFilter:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
     NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"distance <= %d", filter.selectedDistance.intValue];
@@ -202,6 +206,8 @@
 
     [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
 }
+
+#pragma mark - Navegation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

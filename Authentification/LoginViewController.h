@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)loginButton:(id)sender;
 - (IBAction)signupButton:(id)sender;
-- (IBAction)forgotPassword:(id)sender;
 
 @end
 

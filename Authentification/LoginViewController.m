@@ -51,6 +51,14 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            //animation for incorrect password
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+            animation.keyPath = @"position.x";
+            animation.values = @[ @0, @10, @-10, @10, @0 ];
+            animation.keyTimes = @[ @0, @(1 / 6.0), @(3 / 6.0), @(5 / 6.0), @1 ];
+            animation.duration = 0.4;
+            animation.additive = YES;
+            [self.passwordField.layer addAnimation:animation forKey:@"shake"];
         } else {
             PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
             [query whereKey:@"userID" equalTo:user.objectId];
@@ -70,9 +78,6 @@ NSString* const setCurrentIdentifier = @"setCurrentIdentifier";
 
 - (IBAction)appleSignIn:(id)sender {
     [self handleAuthrization];
-}
-
-- (IBAction)forgotPassword:(id)sender {
 }
 
 - (IBAction)signupButton:(id)sender {

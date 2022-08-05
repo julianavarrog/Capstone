@@ -7,6 +7,7 @@
 
 #import "EventList.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Helper.h"
 
 @implementation EventList
 
@@ -16,17 +17,19 @@
     self.eventFormatter = [[NSDateFormatter alloc] init];
     self.eventFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.eventFormatter.dateFormat = @"hh:mm a";
+    
+    if (![Helper sharedObject].isUser) {
+        [self.viewButton setTitle:@"Create Task" forState: UIControlStateNormal];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     
     [super setSelected:selected animated:animated];
-    
     self.cancelButton.layer.cornerRadius = 15;
     self.cancelButton.clipsToBounds = YES;
     self.cancelButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.cancelButton.layer.borderWidth = 1;
-    
     self.viewButton.layer.cornerRadius = 15;
     self.viewButton.clipsToBounds = YES;
 }

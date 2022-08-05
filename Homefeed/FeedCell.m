@@ -19,13 +19,6 @@
     self.bookAppointmentButton.clipsToBounds = YES;
 }
 
-// trying to fix the reusability of my PFImageView in the Homefeed.
-/*
-- (void) prepareForReuse{
-    [super prepareForReuse];
-}
-*/
-
 - (void)setProfile:(Professional *)profile {
     _profile = profile;
     // set image

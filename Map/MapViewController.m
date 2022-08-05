@@ -12,7 +12,7 @@
 #import "FilterViewController.h"
 #import "MapCircle.h"
 
-@interface MapViewController () <CLLocationManagerDelegate>
+@interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 @property (strong, nonatomic)  CLLocationManager *locationManager;
 @property CLLocation *location;
 @property CLLocationCoordinate2D *coordinate;
@@ -23,18 +23,21 @@
 @implementation MapViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.zoomEnabled = YES;
     self.scrollEnabled = YES;
     self.pitchEnabled = YES;
-    
+    [self.mapView setDelegate: self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear: animated];
     [self startUserLocationSearch];
 }
 
+#pragma mark - CLLocation Manager
 -(void)startUserLocationSearch{
 
      self.locationManager = [[CLLocationManager alloc]init];
@@ -50,17 +53,17 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
 
-     [self.locationManager stopUpdatingLocation];
-     //CGFloat usersLatitude = self.locationManager.location.coordinate.latitude;
-     //CGFloat usersLongidute = self.locationManager.location.coordinate.longitude;
-
-    //Now you have your user's cooridinates
+    [self.locationManager stopUpdatingLocation];
     self.location = self.locationManager.location;
+    self.mapView.showsUserLocation = YES;
+    self.mapView.zoomEnabled = YES;
     [self.mapView setCenterCoordinate: self.locationManager.location.coordinate];
     [self getProfessionals];
 }
 
+#pragma mark - Query Professional's location
 -(void) getProfessionals {
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
@@ -82,12 +85,14 @@
                 [self.professionalsFiltered addObject:professional];
             }
             [self buildPointsInMap];
-            [self addCircleInMap];
+            [self buildCircleInMap: @300000 andMaxCoordinate: self.location.coordinate];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
 }
+
+#pragma mark - Map Annotations and Overlays
 
 -(void)buildPointsInMap {
     [self.mapView removeAnnotations: self.mapView.annotations];
@@ -101,21 +106,37 @@
     }
 }
 
--(void)addCircleInMap {
-    MapCircle * circle = [[MapCircle alloc]
-                          circleWithCenterCoordinate:self.location.coordinate
-                          radius: 10000.00];
-    [self.mapView addOverlay:circle];
+-(void) buildCircleInMap:(NSNumber *) distance andMaxCoordinate: (CLLocationCoordinate2D) coordinate {
+    [self.mapView removeOverlays: self.mapView.overlays];
+    CLLocationDistance fenceDistance = [distance intValue] <= 3000000 ? [distance doubleValue] : 0;
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.location.coordinate radius:fenceDistance];
+    [self.mapView addOverlay: circle];
+    
+    if ( [distance intValue] > 3000000) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.location.coordinate, [distance intValue], [distance intValue]);
+        MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+        [self.mapView setRegion:adjustedRegion animated:YES];
+    }
 }
 
+- (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id)overlay {
+    MKCircleRenderer* aRenderer = [[MKCircleRenderer
+                                    alloc]initWithCircle:(MKCircle *)overlay];
+    aRenderer.fillColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
+    aRenderer.strokeColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.9];
+    aRenderer.lineWidth = 2;
+    aRenderer.lineDashPattern = @[@2, @5];
+    aRenderer.alpha = 0.5;
+    return aRenderer;
+}
 
-
+#pragma mark - Filter Map
 - (IBAction)filterButtonTapped:(id)sender {
     [self performSegueWithIdentifier:@"mapFilter" sender:nil];
 }
 
 
-- (void)sendDataToMap:(nonnull Filter *)filter {
+- (void)sendDataToFilter:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
     NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"distance <= %d", filter.selectedDistance.intValue];
@@ -140,7 +161,6 @@
     } else{
         self.professionalsFiltered = [[NSMutableArray alloc] initWithArray: firstFiltered];
     }
-    
     NSMutableArray* languagesFiltered = [[NSMutableArray alloc] init];
     if (filter.selectedLanguage.count > 0){
         for (Professional* professional in self.professionalsFiltered){
@@ -156,14 +176,13 @@
         self.professionalsFiltered = [[NSMutableArray alloc] initWithArray:languagesFiltered];
     }
     [self buildPointsInMap];
+    [self buildCircleInMap: filter.selectedDistance andMaxCoordinate: self.location.coordinate];
 }
 
 
 #pragma mark - Navigation
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
     if ([segue.identifier isEqual:@"mapFilter"]) {
         FilterViewController *filterVC = [segue destinationViewController];
         filterVC.delegate = self;

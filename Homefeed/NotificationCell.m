@@ -12,10 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     self.cancelButton.layer.cornerRadius = 15;
     self.cancelButton.clipsToBounds = YES;
-    
     self.acceptButton.layer.cornerRadius = 15;
     self.acceptButton.clipsToBounds = YES;
 }

@@ -18,12 +18,13 @@
 @implementation ProfessionalFinalRegistrationViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.continueButton.layer.cornerRadius = 20;
     self.continueButton.clipsToBounds = YES;
 }
 
-
+#pragma mark - Final Registration for PFUser and PFObject (Professionals)
 - (void) registerProfessional{
     
     PFUser *newUser = [PFUser user];

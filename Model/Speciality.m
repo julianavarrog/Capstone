@@ -5,6 +5,7 @@
 //  Created by Julia Navarro Goldaraz on 7/11/22.
 //
 
+#import <Foundation/Foundation.h>
 #import "Speciality.h"
 
 @implementation Speciality

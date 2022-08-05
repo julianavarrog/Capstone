@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *detailSpeciality;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescription;
 @property (weak, nonatomic) IBOutlet UILabel *detailLanguage;
+@property (weak, nonatomic) IBOutlet UILabel *detailPrice;
 @property (weak, nonatomic) IBOutlet PFImageView *detailImage;
 
 @property (strong, nonatomic) Professional *professional;

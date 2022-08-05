@@ -36,11 +36,7 @@
         if(error) {
             // Failure
         } else {
-            // Success
-            //UIApplication.sharedApplication.delegate.window.rootViewController
-            
             SceneDelegate *scenceDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-            
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             scenceDelegate.window.rootViewController = loginViewController;

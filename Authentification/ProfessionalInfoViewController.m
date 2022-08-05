@@ -12,6 +12,8 @@
 #import "Professional.h"
 #import "ProfessionalProfilePictureViewController.h"
 #import "Speciality.h"
+#import "Language.h"
+
 
 
 @interface ProfessionalInfoViewController ()<CLLocationManagerDelegate> {
@@ -28,31 +30,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _countFamily = 0;
-    _countBehavioural = 0;
-    _countChild = 0;
-    _countStress = 0;
-    _countGeneral = 0;
-    _countLife = 0;
-    
-    _countSpanish = 0;
-    _countEnglish = 0;
-    _countFrench = 0;
-    _countPortuguese = 0;
-    _countMandarin = 0;
-    _countOther = 0;
-    
     _specialityArray = [[NSMutableArray alloc] init];
     _languageArray = [[NSMutableArray alloc] init];
-    
     _userLocation = [[NSMutableArray alloc] init];
-    
     [self CurrentLocationIdentifier];
     
     self.continueButton.layer.cornerRadius = 20;
     self.continueButton.clipsToBounds = YES;
     }
+
+#pragma mark - Location Manager for Professionals
 
 - (void) CurrentLocationIdentifier{
     locationManager = [[CLLocationManager alloc] init];
@@ -62,7 +49,6 @@
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
         [locationManager requestWhenInUseAuthorization];
-
     [locationManager startUpdatingLocation];
 }
 
@@ -77,6 +63,8 @@
     NSLog(@"%@",_userLocation);
     self.location = location;
 }
+
+#pragma mark - Update Filter Information
 
 - (IBAction)priceSliderAction:(id)sender {
     self.priceAmount.text = [NSString stringWithFormat:@"%0.0f", self.priceSlider.value];
@@ -105,198 +93,46 @@
     }];
 }
 
+// accepts enum tag
+#pragma mark - Specialities
+- (IBAction)tappedSpeciality:(id)sender
+{
+    [self didTapSpeciality:(UIButton*) sender];
+}
 
-//change to accept enums
-//initalize speciality
+- (void)didTapSpeciality:(UIButton *) button {
+   NSString *filterString = [Speciality convertLabelFromSpecialistType:button.tag];
+   if ([_specialityArray containsObject: filterString]) {
+       [_specialityArray removeObject: filterString];
+       button.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+   } else {
+       [_specialityArray addObject: filterString];
+       button.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
+   }
+   
+   NSLog(@"%@",_specialityArray);
+}
 
-- (void)didTapSpeciality:(SpecialityFilterType)speciality {
-    
-    NSString *filterString = [Speciality convertLabelFromSpecialistType:speciality];
-    
-    /*
-    Speciality *speciality = map[SpecialistType];
-    
-    [_specialityArray addObject:speciality.label];
-    if(!speciality.isSelected) {
-        [_specialityArray addObject:speciality.specialityLabel];
-        speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        speciality.isSelected = YES;
+#pragma mark - Languages
+- (IBAction)tappedLanguage:(id)sender
+{
+    [self didTapLanguage:(UIButton*) sender];
+}
+
+- (void)didTapLanguage:(UIButton *) button {
+    NSString *filterString = [Language convertLabelFromLanguageType:button.tag];
+    if ([_languageArray containsObject: filterString]) {
+        [_languageArray removeObject: filterString];
+        button.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
     } else {
-        [_specialityArray removeObject:speciality.specialityLabel];
-        speciality.isSelected = NO;
-        speciality.specialityButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
+        [_languageArray addObject: filterString];
+        button.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
     }
-    */
-}
-
- 
- - (IBAction)tappedFamily:(id)sender
- {
-     [self didTapSpeciality: SpecialityFilterTypeFamilyAndFriends];
-     if (self.familyButton.isSelected) {
-         self.familyButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-     } else {
-         self.familyButton.backgroundColor  = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-     }
- }
-
-//Speciality
-//- (IBAction)tappedFamily:(id)sender {
-//    if (_countFamily == 0){
-//        [_specialityArray addObject:@"Family & Friends"];
-//        _familyButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-//        _countFamily = @1;
-//    }else{
-//        [_specialityArray removeObject:@"Family & Friends"];
-//        _countFamily = 0;
-//        _familyButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-//
-//    }
-//    NSLog(@"%@",_specialityArray);
-//}
-
- 
-- (IBAction)tappedBehavioural:(id)sender {
-
-    if (_countBehavioural == 0){
-        [_specialityArray addObject:@"Behavioural"];
-        _behaviouralButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countBehavioural = @1;
-    }else{
-        [_specialityArray removeObject:@"Behavioural"];
-        _countBehavioural = @0;
-        _behaviouralButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-    }
-    NSLog(@"%@",_specialityArray);
-
-}
-- (IBAction)tappedChild:(id)sender {
-    if (_countChild == 0){
-        [_specialityArray addObject:@"Child Therapist"];
-        _childButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countChild = @1;
-    }else{
-        [_specialityArray removeObject:@"Child Therapist"];
-        _childButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countChild = @0;
-    }
-    NSLog(@"%@",_specialityArray);
-
-}
-
-- (IBAction)tappedStress:(id)sender {
-    if (_countStress == 0){
-        [_specialityArray addObject:@"Stress Managment"];
-        _stressButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countStress = @1;
-    }else{
-        [_specialityArray removeObject:@"Stress Managment"];
-        _stressButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countStress = @0;
-    }
-    NSLog(@"%@",_specialityArray);
-}
-
-- (IBAction)tappedGeneral:(id)sender {
-    if (_countGeneral == 0){
-        [_specialityArray addObject:@"General"];
-        _generalButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countGeneral = @1;
-    }else{
-        [_specialityArray removeObject:@"General"];
-        _generalButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countGeneral = @0;
-    }
-    NSLog(@"%@",_specialityArray);
-
-}
-- (IBAction)tappedLife:(id)sender {
-    if (_countLife == 0){
-        [_specialityArray addObject:@"Life Coaching"];
-        _lifeButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countLife = @1;
-    }else{
-        [_specialityArray removeObject:@"Life Coaching"];
-        _lifeButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countLife = @0;
-    }
-    NSLog(@"%@",_specialityArray);
-}
-
-//Languages
-- (IBAction)tappedSpanish:(id)sender {
-    if (_countSpanish == 0){
-        [_languageArray addObject:@"Spanish"];
-        _spanishButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countSpanish = @1;
-    }else{
-        [_languageArray removeObject:@"Spanish"];
-        _spanishButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countSpanish = @0;
-    }
-    NSLog(@"%@",_languageArray);
-}
-- (IBAction)tappedEnglish:(id)sender {
-    if (_countEnglish == 0){
-        [_languageArray addObject:@"English"];
-        _englishButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countSpanish = @1;
-    }else{
-        [_languageArray removeObject:@"English"];
-        _englishButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countEnglish = @0;
-    }
-    NSLog(@"%@",_languageArray);
-}
-- (IBAction)tappedFrench:(id)sender {
-    if (_countFrench == 0){
-        [_languageArray addObject:@"French"];
-        _frenchButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countFrench = @1;
-    }else{
-        [_languageArray removeObject:@"French"];
-        _frenchButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countFrench = @0;
-    }
-    NSLog(@"%@",_languageArray);
-}
-- (IBAction)tappedPortuguese:(id)sender {
-    if (_countPortuguese == 0){
-        [_languageArray addObject:@"Portuguese"];
-        _portugueseButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countPortuguese = @1;
-    }else{
-        [_languageArray removeObject:@"Portuguese"];
-        _portugueseButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countPortuguese = @0;
-    }
-    NSLog(@"%@",_languageArray);
-}
-- (IBAction)tappedMandarin:(id)sender {
-    if (_countMandarin == 0){
-        [_languageArray addObject:@"Mandarin"];
-        _mandarinButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countMandarin = @1;
-    }else{
-        [_languageArray removeObject:@"Mandarin"];
-        _mandarinButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countMandarin = @0;
-    }
-    NSLog(@"%@",_languageArray);
-}
-- (IBAction)tappedOther:(id)sender {
-    if (_countOther == 0){
-        [_languageArray addObject:@"Other"];
-        _otherButton.backgroundColor = [UIColor colorWithRed:0.82 green:0.77 blue:0.94 alpha:1.0];
-        _countOther = @1;
-    }else{
-        [_languageArray removeObject:@"Other"];
-        _otherButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0];
-        _countOther = @0;
-    }
+    
     NSLog(@"%@",_languageArray);
 }
 
+#pragma mark - Navegation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"uploadPictureSegue"]){
 //        NSString*objectToUpdate = (NSString *) sender;

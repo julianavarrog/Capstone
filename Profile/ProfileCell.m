@@ -26,20 +26,29 @@
     self.viewButton.clipsToBounds = YES;
 }
 
-
 - (IBAction)venmoClicked:(id)sender {
-    //https://venmo.com/account/sign-in
+    NSURL *myURL = [NSURL URLWithString:@"https://venmo.com/account/sign-in"];
+    
 }
 
-- (void)setEvent:(Event*)event with:(Professional*) professional {
-    
-    [self.profileName setText: [professional[@"Name"] capitalizedString]];
-    self.profileCellImage.file = professional[@"Image"];
+- (void)setActivity:(PFObject*) activity with:(PFObject*) user {
+    [self.profileName setText: [user[@"Name"] capitalizedString]];
+    [self.profileCellDate setText: activity[@"dateEvent"]];
+    NSString* countString = [NSString stringWithFormat:@"%@", activity[@"count"]];
+    self.activityAmount.text = countString;
+    self.activityProgressView.progress = [(NSNumber *)activity[@"count"] floatValue] / 3;
+    self.profileCellImage.file = user[@"Image"];
     self.profileCellImage.layer.cornerRadius = self.profileCellImage.frame.size.width/2;
     [self.profileCellImage loadInBackground];
-    
+    [self.cancelButton setHidden: [(NSNumber *)activity[@"count"] intValue] == 3 ? YES : NO];
 }
 
+- (IBAction)viewButtonTapped:(id)sender {
+    self.viewButtonTapHandler();
+}
 
+- (IBAction)cancelButtonTapped:(id)sender {
+    self.cancelButtonTapHandler();
+}
 
 @end

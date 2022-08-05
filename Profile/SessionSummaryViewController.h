@@ -6,8 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol SessionSummaryProtocol <NSObject>
+-(void) dismissActivity;
+@end
 
 @interface SessionSummaryViewController : UIViewController
 //update Button
@@ -17,16 +22,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UISwitch *switchForTaskOne;
 @property (weak, nonatomic) IBOutlet UISwitch *switchForTaskTwo;
 @property (weak, nonatomic) IBOutlet UISwitch *switchForTaskThree;
-- (IBAction)switch1Action:(id)sender;
-- (IBAction)switch2Action:(id)sender;
-- (IBAction)switch3Action:(id)sender;
+
 //task definitions
 @property (weak, nonatomic) IBOutlet UITextField *taskOne;
 @property (weak, nonatomic) IBOutlet UITextField *taskTwo;
 @property (weak, nonatomic) IBOutlet UITextField *taskThree;
 @property (weak, nonatomic) IBOutlet UITextView *reflectionBox;
 
-
+@property (strong, nonatomic) PFObject * activity;
+@property bool isUser;
+@property(nonatomic,assign)id delegate;
 @end
 
 NS_ASSUME_NONNULL_END

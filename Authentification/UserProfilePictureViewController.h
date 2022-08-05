@@ -19,10 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString * objectToUpdatePicture;
 @property (weak, nonatomic) IBOutlet PFImageView *chosenProfilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *uploadPictureLabel;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
+
 
 - (IBAction)didTapUploadButton:(id)sender;
 - (IBAction)didSignup:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 
 

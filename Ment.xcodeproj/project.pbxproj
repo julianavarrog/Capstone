@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10590E27289208D000966FD5 /* SessionSummaryViewController.m */; };
 		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
-		1065745A287CA6D0003E8877 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Languages.m */; };
+		1065745A287CA6D0003E8877 /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Language.m */; };
 		106B1EA028987624005F0BFF /* MapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B1E9F28987624005F0BFF /* MapCircle.m */; };
 		106B1EA3289991AE005F0BFF /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B1EA2289991AE005F0BFF /* Notification.m */; };
 		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
@@ -51,6 +51,7 @@
 		10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF12883A4AC00F529D6 /* Professional.m */; };
 		10E3EFF52883A69600F529D6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF42883A69600F529D6 /* Filter.m */; };
 		10EC28B428931E3900E9E5E2 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EC28B328931E3900E9E5E2 /* MapPin.m */; };
+		10F58BDE289CCD7700E80F19 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F58BDD289CCD7700E80F19 /* Helper.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
 		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
 		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
@@ -79,8 +80,8 @@
 		10590E27289208D000966FD5 /* SessionSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionSummaryViewController.m; sourceTree = "<group>"; };
 		10657455287C9F3D003E8877 /* Speciality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Speciality.h; sourceTree = "<group>"; };
 		10657456287C9F3D003E8877 /* Speciality.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Speciality.m; sourceTree = "<group>"; };
-		10657458287CA6D0003E8877 /* Languages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
-		10657459287CA6D0003E8877 /* Languages.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Languages.m; sourceTree = "<group>"; };
+		10657458287CA6D0003E8877 /* Language.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
+		10657459287CA6D0003E8877 /* Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
 		106B1E9E28987624005F0BFF /* MapCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapCircle.h; sourceTree = "<group>"; };
 		106B1E9F28987624005F0BFF /* MapCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapCircle.m; sourceTree = "<group>"; };
 		106B1EA1289991AE005F0BFF /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
@@ -161,6 +162,8 @@
 		10E3EFF42883A69600F529D6 /* Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		10EC28B228931E3900E9E5E2 /* MapPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
 		10EC28B328931E3900E9E5E2 /* MapPin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		10F58BDC289CCD7700E80F19 /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		10F58BDD289CCD7700E80F19 /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
 		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,8 +260,6 @@
 				106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */,
 				106B4E072870126B0091D1A6 /* Info.plist */,
 				106B4E082870126B0091D1A6 /* main.m */,
-				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
-				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
 			);
 			path = Ment;
 			sourceTree = "<group>";
@@ -289,14 +290,16 @@
 				106B4E732878A13F0091D1A6 /* User.m */,
 				10657455287C9F3D003E8877 /* Speciality.h */,
 				10657456287C9F3D003E8877 /* Speciality.m */,
-				10657458287CA6D0003E8877 /* Languages.h */,
-				10657459287CA6D0003E8877 /* Languages.m */,
+				10657458287CA6D0003E8877 /* Language.h */,
+				10657459287CA6D0003E8877 /* Language.m */,
 				10E3EFF02883A4AC00F529D6 /* Professional.h */,
 				10E3EFF12883A4AC00F529D6 /* Professional.m */,
 				10D364922885F7B000FF5BBB /* UserDetail.h */,
 				10D364932885F7B000FF5BBB /* UserDetail.m */,
 				106B1EA1289991AE005F0BFF /* Notification.h */,
 				106B1EA2289991AE005F0BFF /* Notification.m */,
+				10F58BDC289CCD7700E80F19 /* Helper.h */,
+				10F58BDD289CCD7700E80F19 /* Helper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -333,8 +336,8 @@
 				106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */,
 				10E3EFE7287F625B00F529D6 /* ProfessionalInfoViewController.h */,
 				10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */,
-				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
 				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
+				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -369,6 +372,8 @@
 				106B4E452870B19E0091D1A6 /* FilterViewController.m */,
 				106B4E412870AFA40091D1A6 /* NotificationsViewController.h */,
 				106B4E422870AFA40091D1A6 /* NotificationsViewController.m */,
+				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
+				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
 			);
 			path = Homefeed;
 			sourceTree = "<group>";
@@ -637,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				106B4E712877EEFB0091D1A6 /* Event.m in Sources */,
+				10F58BDE289CCD7700E80F19 /* Helper.m in Sources */,
 				1096D83C287D318500A97C32 /* EventList.m in Sources */,
 				106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */,
 				10D364942885F7B000FF5BBB /* UserDetail.m in Sources */,
@@ -665,7 +671,7 @@
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
 				10E3EFE9287F625B00F529D6 /* ProfessionalInfoViewController.m in Sources */,
-				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
+				1065745A287CA6D0003E8877 /* Language.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
 				10E3EFF52883A69600F529D6 /* Filter.m in Sources */,
 				106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */,

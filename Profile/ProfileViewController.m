@@ -10,12 +10,19 @@
 #import "Parse/Parse.h"
 #import "Professional.h"
 #import <Parse/PFObject+Subclass.h>
+#import "SessionSummaryViewController.h"
+#import "Helper.h"
+
 
 
 @interface ProfileViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
-@property (strong, nonatomic) NSArray *profileArray;
+@property (strong, nonatomic) NSMutableArray * activities;
+@property (strong, nonatomic) NSMutableArray * activitiesFiltered;
+@property (strong, nonatomic) NSMutableArray * professionals;
+@property (strong, nonatomic) NSMutableArray * users;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSDateFormatter * timeFormatter;
 
 @property Boolean isUser;
 
@@ -25,88 +32,124 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getCurrentUserInfo];
+    [self fetchProfessionals];
     
     self.profileTableView.dataSource = self;
     self.profileTableView.delegate = self;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getCurrentUserInfo) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.profileTableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.timeFormatter = [[NSDateFormatter alloc] init];
+    self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+    self.timeFormatter.dateFormat = @"MMM d";
 }
 
-
-/*
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
-    if (sender.selectedSegmentIndex == 0){
-        [self.calendar setHidden:false];
-        [self.calendarlist setHidden:true];
-    }else{
-        [self.calendar setHidden:true];
-        [self.calendarlist setHidden:false];
-    }
+    [self updateActivitiesByState: sender.selectedSegmentIndex];
 }
-*/
 
--(void) getCurrentUserInfo  {
-    self.isUser = NO;
-    PFUser *currentUser = [PFUser currentUser];
-    NSString *atName = @"@";
-    NSString *screenName = [atName stringByAppendingString:currentUser.username];
-    self.profileUsername.text = screenName;
-    PFQuery *checkInfo= [PFQuery queryWithClassName:@"UserDetail"];
-    [checkInfo findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
-        for (PFObject* user in users){
-            NSString *userID = user[@"userID"];
-            if([userID isEqual: currentUser.objectId]){
-                self.profileName.text = user[@"Name"];
-                self.profilePicture.file = user[@"Image"];
-                self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
-                self.isUser = YES;
-                
-                PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-                [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
-                [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error){
-                    [self.refreshControl endRefreshing];
-                    if(events != nil){
-                        // do something with the array of object returned by call
-                        self.profileArray = events;
-                        [self.profileTableView reloadData];
-                    } else {
-                        NSLog(@"%@", error.localizedDescription);
-                    }
-                }];
-            }
-        }
-        if (self.isUser == NO){
-            PFQuery *professionalInfo = [PFQuery queryWithClassName:@"Professionals"];
-            [professionalInfo whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
-            [professionalInfo getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable professionalObject, NSError * _Nullable error) {
-                self.profileName.text = professionalObject[@"Name"];
-                self.profilePicture.file = professionalObject[@"Image"];
-                self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
-            }];
-            PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-            [query whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error){
-                [self.refreshControl endRefreshing];
-                if(events != nil){
-                    // do something with the array of object returned by call
-                    self.profileArray = events;
-                    [self.profileTableView reloadData];
-                } else {
-                    NSLog(@"%@", error.localizedDescription);
-                }
-            }];
+
+-(void) fetchProfessionals {
+    PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    [self refreshControl];
+    //fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *professionals, NSError *error){
+        [self.refreshControl endRefreshing];
+        if(professionals != nil){
+            self.professionals = [[NSMutableArray alloc] initWithArray: professionals];
+            [self fetchUsers];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
         }
     }];
 }
 
+-(void) fetchUsers {
+    PFQuery *query = [PFQuery queryWithClassName:@"UserDetail"];
+    [self refreshControl];
+    //fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error){
+        [self.refreshControl endRefreshing];
+        if(users != nil){
+            self.users = [[NSMutableArray alloc] initWithArray: users];
+            
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID == %@", PFUser.currentUser.objectId];
+            UserDetail * user = [[NSMutableArray alloc] initWithArray:[self.users filteredArrayUsingPredicate:predicate]].firstObject;
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"Activities"];
+            if (user != nil) {
+                self.isUser = YES;
+                [self setupProfileInfo: user];
+                [query whereKey:@"userId" equalTo:PFUser.currentUser.objectId];
+            } else {
+                Professional * professional = [[NSMutableArray alloc] initWithArray:[self.professionals filteredArrayUsingPredicate:predicate]].firstObject;
+                [self setupProfileInfo: professional];
+                self.isUser = NO;
+                [query whereKey:@"professionalId" equalTo:PFUser.currentUser.objectId];
+            }
+            [query findObjectsInBackgroundWithBlock:^(NSArray *activities, NSError *error){
+                [self.refreshControl endRefreshing];
+                if(activities != nil){
+                    // do something with the array of object returned by call
+                    self.activities = [[NSMutableArray alloc] initWithArray: activities];
+                    [self updateActivitiesByState: self.segmentedProfile.selectedSegmentIndex];
+                } else {
+                    NSLog(@"%@", error.localizedDescription);
+                }
+            }];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+-(void) setupProfileInfo:(PFObject *) currentUser {
+    self.profileName.text = currentUser[@"Name"];
+    self.profilePicture.file = currentUser[@"Image"];
+    self.profileUsername.text = currentUser[@"username"];
+    self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
+}
+
+- (void) updateActivitiesByState:(NSInteger) complete {
+    if (complete == 1) {
+        NSPredicate *predicateComplete = [NSPredicate predicateWithFormat:@"count == %d", 3];
+        self.activitiesFiltered = [[NSMutableArray alloc] initWithArray:[self.activities filteredArrayUsingPredicate:predicateComplete]];
+    } else {
+        NSPredicate *predicateComplete = [NSPredicate predicateWithFormat:@"count < %d", 3];
+        self.activitiesFiltered =  [[NSMutableArray alloc] initWithArray:[self.activities filteredArrayUsingPredicate:predicateComplete]];
+    }
+    [self.profileTableView reloadData];
+}
+
+- (void) dismissActivity {
+    [self fetchProfessionals];
+}
+
+#pragma mark - UITableView
 
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
-    Professional *profile = self.profileArray[indexPath.row];
-    [cell setProfile:profile];
+    PFObject *activity = self.activitiesFiltered[indexPath.row];
+    
+    if (self.isUser) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID == %@", activity[@"professionalId"]];
+        Professional * professional = [[NSMutableArray alloc] initWithArray:[self.professionals filteredArrayUsingPredicate:predicate]].firstObject;
+        [cell setActivity: activity with: professional];
+    } else {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID == %@", activity[@"userId"]];
+        UserDetail * user = [[NSMutableArray alloc] initWithArray:[self.users filteredArrayUsingPredicate:predicate]].firstObject;
+        [cell setActivity: activity with: user];
+    }
+    cell.viewButtonTapHandler = ^{
+        [self performSegueWithIdentifier:@"activityDetailSegue" sender:activity];
+    };
+    cell.cancelButtonTapHandler = ^{
+        
+    };
     return cell;
 }
 
@@ -115,11 +158,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.profileArray.count;
+    return self.activitiesFiltered.count;
+}
+
+
+#pragma mark - Navegation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual: @"activityDetailSegue"]) {
+        SessionSummaryViewController *viewController = [segue destinationViewController];
+        PFObject* activity = (PFObject *)sender;
+        viewController.activity = activity;
+        viewController.isUser = self.isUser;
+        viewController.delegate = self;
+    }
 }
 
 - (IBAction)didTapSettings:(id)sender {
     [self performSegueWithIdentifier:@"settingsSegue" sender:nil];
 }
+
 
 @end

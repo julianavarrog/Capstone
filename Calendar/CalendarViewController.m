@@ -15,6 +15,8 @@
 #import "DetailFeedViewController.h"
 #import "EventKit/EventKit.h"
 #import "EventsCalendarTableViewController.h"
+#import "Helper.h"
+
 
 
 @interface CalendarViewController()<FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
@@ -37,6 +39,8 @@
 @property (strong, nonatomic) NSMutableArray *events;
 
 @property (strong, nonatomic) NSMutableArray *professionals;
+@property (strong, nonatomic) NSMutableArray *users;
+
 
 @property (strong, nonatomic) NSMutableArray *calendarEvents;
 @property (strong, nonatomic) NSDate *minimumDate;
@@ -94,24 +98,19 @@
 // depending on the result it will query a Professional's or User's Events.
 - (void) fetchEvents{
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", PFUser.currentUser.objectId];
-    NSArray *selectProfessional = [self.professionals filteredArrayUsingPredicate:predicate];
-    if([self.professionals containsObject: selectProfessional.firstObject]){
-        [query whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
-    }else{
+    if([Helper sharedObject].isUser){
         [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+    }else{
+        [query whereKey:@"professionalID" equalTo:PFUser.currentUser.objectId];
     }
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable events, NSError * _Nullable error) {
         if (!error){
             NSLog(@"sucessfully retrived Event");
             self.events = [[NSMutableArray alloc]init];
             [self.events addObjectsFromArray:events];
-            
             for (Event * event in self.events){
                 event.dateString = [self.dateFormatter stringFromDate: event.date];
             }
-            
             self.orderEvents = [NSMutableDictionary new];
             self.distinctEvents = [self.events valueForKeyPath:@"@distinctUnionOfObjects.dateString"];
             for (NSString *date in self.distinctEvents){
@@ -120,10 +119,8 @@
                 [self.orderEvents setObject:events forKey:date];
             }
             NSLog(@"%@", self.orderEvents);
-            
             [self.calendar reloadData];
             [self.eventsTableView reloadData];
-            
         }else{
             NSLog(@"failed to retrived Event");
         }
@@ -234,34 +231,6 @@
     }
 }
 
-//[["2022/07/18": [Event1, Event2]]]
-//first line obtains all the keys in the dictionary (all the dates)
-//object for keys are the events per dates
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
-    NSArray *keys = [self.orderEvents allKeys];
-    id aKey = [keys objectAtIndex: section];
-    NSArray * events = (NSArray *)[self.orderEvents objectForKey: aKey];
-    Event * event = [events firstObject];
-    return [self.timeFormatter stringFromDate:event.date];
-}
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    EventList * cell = [tableView dequeueReusableCellWithIdentifier:@"EventListCell" forIndexPath:indexPath];
-    NSArray *keys = [self.orderEvents allKeys];
-    id aKey = [keys objectAtIndex:indexPath.section];
-    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aKey];
-    Event * event = [events objectAtIndex:indexPath.row];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", event.professionalID];
-    NSArray *selectProfesional = [self.professionals filteredArrayUsingPredicate:predicate];
-    [cell setEvent: event with:selectProfesional.firstObject];
-    [cell.viewButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.cancelButton addTarget:self action:@selector(cancelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
-}
-
 -(void)viewButtonTapped:(UIButton*)sender {
     
     CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.eventsTableView];
@@ -284,6 +253,7 @@
     [self showAlert: event];
 }
 
+#pragma mark - UIAlerts
 
 - (void)showAlert:(Event *)event {
     
@@ -316,14 +286,15 @@
                                 actionWithTitle:@"Hold Event"
                                 style:UIAlertActionStyleDestructive
                                 handler:nil];
-    //Add your buttons to alert controller
-    
     [alert addAction:yesButton];
     [alert addAction:noButton];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark - UITableView
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return self.orderEvents.count;
 }
 
@@ -341,6 +312,44 @@
 - (IBAction)notificationTapped:(id)sender {
     [self performSegueWithIdentifier:@"professionalNotificationSegue" sender: nil];
 }
+
+//[["2022/07/18": [Event1, Event2]]]
+//first line obtains all the keys in the dictionary (all the dates)
+//object for keys are the events per dates
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    NSArray *keys = [self.orderEvents allKeys];
+    id aDate = [keys objectAtIndex: section];
+    NSArray * events = (NSArray *)[self.orderEvents objectForKey: aDate];
+    Event * event = [events firstObject];
+    return [self.timeFormatter stringFromDate:event.date];
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    EventList * cell = [tableView dequeueReusableCellWithIdentifier:@"EventListCell" forIndexPath:indexPath];
+    NSArray *keys = [self.orderEvents allKeys];
+    id aDate = [keys objectAtIndex:indexPath.section];
+    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aDate];
+    Event * event = [events objectAtIndex:indexPath.row];
+    
+    if ([Helper sharedObject].isUser) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", event.professionalID];
+        NSArray *selectProfesional = [self.professionals filteredArrayUsingPredicate:predicate];
+        [cell setEvent: event with:selectProfesional.firstObject];
+    }else{
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userID =%@", event.userID];
+        NSArray *selectUser = [self.users filteredArrayUsingPredicate:predicate];
+        [cell setEvent: event with:selectUser.firstObject];
+    }
+    [cell.viewButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.cancelButton addTarget:self action:@selector(cancelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+
+
+#pragma mark - Navegation
 
 // Get the new view controller using [segue destinationViewController].
 // Pass the selected object to the new view controller.
@@ -376,10 +385,9 @@
                 [eventsCalendar addObject:event];
             }
         }
-        
         NSMutableDictionary * eventsDic = [[NSMutableDictionary alloc]init];
-        eventsDic[@"Ment Sessions"] = events;
-        eventsDic[@"Personal Event"] = eventsCalendar;
+       // eventsDic[@"Ment Sessions"] = events;
+        eventsDic[@"My Events This Date"] = eventsCalendar;
         
         EventsCalendarTableViewController *eventsCalendarVC = [segue destinationViewController];
         eventsCalendarVC.eventsDic = eventsDic;

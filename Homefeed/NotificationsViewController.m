@@ -38,37 +38,6 @@
     }];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Notifications";
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.notifications.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NotificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
-    Notification * notification = [self.notifications objectAtIndex: indexPath.row];
-    cell.acceptButtonTapHandler = ^{
-        [self updateEvent: notification and: @"accepted"];
-    };
-    
-    cell.cancelButtonTapHandler = ^{
-        [self updateEvent: notification and: @"canceled"];
-    };
-    
-    [cell setup: notification];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 194;
-}
-
 -(void)updateEvent:(Notification*) notification and:(NSString *) state {
     PFQuery *query = [PFQuery queryWithClassName:@"Notification"];
     [query whereKey:@"objectId" equalTo: notification.objectId];
@@ -109,6 +78,42 @@
             NSLog(@"Notification registration failed");
         }
     }];
+}
+
+
+#pragma mark - UITableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    return @"Notifications";
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.notifications.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NotificationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
+    Notification * notification = [self.notifications objectAtIndex: indexPath.row];
+    cell.acceptButtonTapHandler = ^{
+        [self updateEvent: notification and: @"accepted"];
+    };
+    cell.cancelButtonTapHandler = ^{
+        [self updateEvent: notification and: @"canceled"];
+    };
+    [cell setup: notification];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 194;
 }
 
 @end

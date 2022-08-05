@@ -15,11 +15,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapStart:(id)sender {
-   // [self performSegueWithIdentifier:@"openSegue" sender:nil];
+    [self performSegueWithIdentifier:@"openSegue" sender:nil];
 
 }
 @end
