@@ -237,9 +237,10 @@
 
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded){
-            NSLog(@"Event registered sucessfully");
             [self addNotification:eventCalendar and: event];
             [self fetchEvents];
+            [self addActivity: event];
+            NSLog(@"Event registered sucessfully");
         }else{
             NSLog(@"Event registration failed");
             //there is a problem

@@ -134,13 +134,26 @@
             NSLog(@"sucessfully retrived Event");
             self.professionals = [[NSMutableArray alloc]init];
             [self.professionals addObjectsFromArray:professionals];
-            
-            [self fetchEvents];
+            [self fetchUsers];
         }else{
             NSLog(@"failed to retrived Event");
         }
     }];
 }
+
+-(void) fetchUsers {
+    PFQuery *query = [PFQuery queryWithClassName:@"UserDetail"];
+    //fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error){
+        if(users != nil){
+            self.users = [[NSMutableArray alloc] initWithArray: users];
+            [self fetchEvents];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 
 //adding Apple Events
 - (void) loadCalendarEvents{
@@ -168,7 +181,6 @@
             [self presentViewController:alertController animated:YES completion:nil];
         }
     }];
-   
 }
  
 
@@ -300,9 +312,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSArray *keys = [self.orderEvents allKeys];
-    id aKey = [keys objectAtIndex:section];
-    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aKey];
+    NSArray *dates = [self.orderEvents allKeys];
+    id aDate = [dates objectAtIndex:section];
+    NSArray * events = (NSArray *)[self.orderEvents objectForKey:aDate];
     return events.count;
 }
 
@@ -386,7 +398,7 @@
             }
         }
         NSMutableDictionary * eventsDic = [[NSMutableDictionary alloc]init];
-       // eventsDic[@"Ment Sessions"] = events;
+        eventsDic[@"Ment Sessions"] = events;
         eventsDic[@"My Events This Date"] = eventsCalendar;
         
         EventsCalendarTableViewController *eventsCalendarVC = [segue destinationViewController];
