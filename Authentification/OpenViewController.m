@@ -6,6 +6,7 @@
 //
 
 #import "OpenViewController.h"
+#import "LoginViewController.h"
 
 @interface OpenViewController ()
 
@@ -15,10 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.getStartedButton.layer.cornerRadius = 20;
+    self.getStartedButton.clipsToBounds = YES;
 }
 
 - (IBAction)didTapStart:(id)sender {
     [self performSegueWithIdentifier:@"openSegue" sender:nil];
 
 }
+
 @end
+
