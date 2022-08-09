@@ -45,6 +45,7 @@
     self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.timeFormatter.dateFormat = @"MMM d";
     
+    //swipe gesture initialization
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
                                            initWithTarget:self action:@selector(detectSwipe:)];
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -56,11 +57,7 @@
     [self.view addGestureRecognizer:swipeRight];
 }
 
-- (IBAction)segmentedTapped:(UISegmentedControl *)sender {
-    [self updateActivitiesByState: sender.selectedSegmentIndex];
-}
-
-
+# pragma mark - Query Parse Data
 -(void) fetchProfessionals {
     PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
     [query orderByDescending:@"createdAt"];
@@ -116,15 +113,6 @@
         }
     }];
 }
-- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
-    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
-        NSLog(@"%lu",self.tabBarController.selectedIndex);
-        self.tabBarController.selectedIndex +=1;
-        NSLog(@"%lu",self.tabBarController.selectedIndex);
-   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
-       self.tabBarController.selectedIndex -=1;
-   }
-}
 
 -(void) setupProfileInfo:(PFObject *) currentUser {
     self.profileName.text = currentUser[@"Name"];
@@ -135,6 +123,7 @@
     self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
 }
 
+# pragma mark - Update Activities
 - (void) updateActivitiesByState:(NSInteger) complete {
     if (complete == 1) {
         NSPredicate *predicateComplete = [NSPredicate predicateWithFormat:@"count == %d", 3];
@@ -150,6 +139,17 @@
     [self fetchProfessionals];
 }
 
+#pragma mark - Swipe Gesture Recognizer
+
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+        self.tabBarController.selectedIndex +=1;
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+       self.tabBarController.selectedIndex -=1;
+   }
+}
 #pragma mark - UITableView
 
 -(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -175,7 +175,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 180;
+    return 200;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -184,6 +184,10 @@
 
 
 #pragma mark - Navegation
+
+- (IBAction)segmentedTapped:(UISegmentedControl *)sender {
+    [self updateActivitiesByState: sender.selectedSegmentIndex];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"activityDetailSegue"]) {

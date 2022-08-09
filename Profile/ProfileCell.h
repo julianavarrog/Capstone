@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *viewButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *activityProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *activityAmount;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property(nonatomic, readonly, strong) UISceneOpenURLOptions *options;
 

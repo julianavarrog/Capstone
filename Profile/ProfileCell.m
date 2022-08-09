@@ -10,13 +10,10 @@
 
 @implementation ProfileCell
 
+@synthesize containerView;
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
     self.cancelButton.layer.cornerRadius = 15;
     self.cancelButton.clipsToBounds = YES;
     self.cancelButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -24,6 +21,12 @@
     
     self.viewButton.layer.cornerRadius = 15;
     self.viewButton.clipsToBounds = YES;
+    
+    [self setupContainerView];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 }
 
 - (IBAction)venmoClicked:(id)sender {
@@ -49,6 +52,15 @@
 
 - (IBAction)cancelButtonTapped:(id)sender {
     self.cancelButtonTapHandler();
+}
+
+-(void) setupContainerView {
+    containerView.layer.cornerRadius = 10.0;
+    containerView.layer.shadowRadius  = 3.0f;
+    containerView.layer.shadowColor   = UIColor.grayColor.CGColor;
+    containerView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    containerView.layer.shadowOpacity = 0.9f;
+    containerView.layer.masksToBounds = NO;
 }
 
 @end

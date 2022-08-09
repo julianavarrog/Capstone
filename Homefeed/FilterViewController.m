@@ -52,7 +52,6 @@
     for (Professional* professional in self.professionals) {
         NSNumber *distance = professional[@"distance"];
         if ([distance floatValue] > [maxDistance floatValue]) {
-         //   maxDistance = professional[@"distance"];
             maxDistance = @50000.000;
         }
     }

@@ -50,6 +50,7 @@
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
     [self currentLocationIdentifier];
     
+    //swipe gesture initialization
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
                                            initWithTarget:self action:@selector(detectSwipe:)];
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -59,8 +60,9 @@
                                             initWithTarget:self  action:@selector(detectSwipe:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
-    
 }
+
+
 
 -(void) getProfessionals {
     
@@ -95,7 +97,7 @@
     }];
 }
 
-#pragma mark - Swipe Gesture Attempt
+#pragma mark - Swipe Gesture Recognizer
 
 - (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
@@ -106,8 +108,6 @@
        self.tabBarController.selectedIndex -=1;
    }
 }
-
-
 #pragma mark - Filtering with Predicates
 
 - (void)sendDataToFilter:(nonnull Filter *)filter {

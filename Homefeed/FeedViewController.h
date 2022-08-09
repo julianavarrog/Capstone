@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) UserDetail *userDetail;
 @property (strong, nonatomic) Professional *profile;
 @property (strong, nonatomic) NSMutableArray *professionals;
-@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGesture;
 
 
 @end

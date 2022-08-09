@@ -40,6 +40,14 @@
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear: animated];
+    [self startUserLocationSearch];
+}
+
+#pragma mark - Swipe Gesture Recognizer
 - (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
         NSLog(@"%lu",self.tabBarController.selectedIndex);
@@ -48,12 +56,6 @@
    } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
        self.tabBarController.selectedIndex -=1;
    }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear: animated];
-    [self startUserLocationSearch];
 }
 
 #pragma mark - CLLocation Manager

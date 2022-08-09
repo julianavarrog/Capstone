@@ -76,7 +76,6 @@
             PFObject *userDetail = [PFObject objectWithClassName:@"UserDetail"];
             userDetail[@"userID"] = newUser.objectId;
             userDetail[@"Name"]= self.nameField.text;
-            userDetail[@"username"] = self.usernameField.text;
             userDetail[@"Location"] = self.userLocation;
             [userDetail saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded){

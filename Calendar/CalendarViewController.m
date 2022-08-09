@@ -46,8 +46,6 @@
 @property (strong, nonatomic) NSDate *minimumDate;
 @property (strong, nonatomic) NSDate *maximumDate;
 
-
-
 @end
 
 @implementation CalendarViewController
@@ -60,7 +58,6 @@
     self.dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.dateFormatter.dateFormat = @"yyyy/MM/dd";
     
-
     self.timeFormatter = [[NSDateFormatter alloc] init];
     self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.timeFormatter.dateFormat = @"MMM d";
@@ -75,7 +72,8 @@
     self.maximumDate = [self.dateFormatter dateFromString:@"2024/01/01"];
     
     [self loadCalendarEvents];
-
+    
+    //swipe gesture initialization
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
                                            initWithTarget:self action:@selector(detectSwipe:)];
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -85,17 +83,17 @@
                                             initWithTarget:self  action:@selector(detectSwipe:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
+
 }
-- (IBAction)segmentedTapped:(UISegmentedControl *)sender {
-    if (sender.selectedSegmentIndex == 0){
-        [self.calendar setHidden:false];
-        [self.calendarlist setHidden:true];
-    }else{
-        [self.calendar setHidden:true];
-        [self.calendarlist setHidden:false];
-    }
+
+// will load professional data again
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self fetchProfesionals];
 }
-- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe{
+
+#pragma mark - Swipe Gesture Recognizer
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
         NSLog(@"%lu",self.tabBarController.selectedIndex);
         self.tabBarController.selectedIndex +=1;
@@ -105,12 +103,7 @@
    }
 }
 
-// will load professional data again
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self fetchProfesionals];
-}
-
+#pragma mark - Query AppleEvents, App Events, Professionals and Users
 
 //The predicate will add to selectProfessioals Array if True (in this case if they are professionals)
 // depending on the result it will query a Professional's or User's Events.
@@ -201,6 +194,7 @@
     }];
 }
  
+#pragma mark - Calendar and UITableViewCell setup
 
 // Returns the number of events per date using orderEvents
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date{
@@ -380,6 +374,16 @@
 
 
 #pragma mark - Navegation
+
+- (IBAction)segmentedTapped:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0){
+        [self.calendar setHidden:false];
+        [self.calendarlist setHidden:true];
+    }else{
+        [self.calendar setHidden:true];
+        [self.calendarlist setHidden:false];
+    }
+}
 
 // Get the new view controller using [segue destinationViewController].
 // Pass the selected object to the new view controller.

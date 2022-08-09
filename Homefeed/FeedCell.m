@@ -13,10 +13,19 @@
 
 @implementation FeedCell
 
+@synthesize containerView;
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.bookAppointmentButton.layer.cornerRadius = 20;
     self.bookAppointmentButton.clipsToBounds = YES;
+    [self setupContainerView];
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self.feedImage setFile: nil];
+    [self.feedImage setImage: nil];
 }
 
 - (void)setProfile:(Professional *)profile {
@@ -40,6 +49,16 @@
 }
 
 - (IBAction)feedBookAppointmentButton:(id)sender {
+}
+
+#pragma mark - Shadow container
+-(void) setupContainerView {
+    containerView.layer.cornerRadius = 15.0;
+    containerView.layer.shadowRadius  = 3.0f;
+    containerView.layer.shadowColor   = UIColor.grayColor.CGColor;
+    containerView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    containerView.layer.shadowOpacity = 0.9f;
+    containerView.layer.masksToBounds = NO;
 }
 
 @end
