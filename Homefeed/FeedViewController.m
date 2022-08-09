@@ -49,6 +49,17 @@
     [self.refreshControl addTarget:self action:@selector(getProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
     [self currentLocationIdentifier];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(detectSwipe:)];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]
+                                            initWithTarget:self  action:@selector(detectSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
 }
 
 -(void) getProfessionals {
@@ -83,6 +94,19 @@
         }
     }];
 }
+
+#pragma mark - Swipe Gesture Attempt
+
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+        self.tabBarController.selectedIndex +=1;
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+       self.tabBarController.selectedIndex -=1;
+   }
+}
+
 
 #pragma mark - Filtering with Predicates
 

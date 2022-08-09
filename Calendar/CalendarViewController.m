@@ -76,6 +76,15 @@
     
     [self loadCalendarEvents];
 
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(detectSwipe:)];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]
+                                            initWithTarget:self  action:@selector(detectSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
 }
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0){
@@ -85,6 +94,15 @@
         [self.calendar setHidden:true];
         [self.calendarlist setHidden:false];
     }
+}
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe{
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+        self.tabBarController.selectedIndex +=1;
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+       self.tabBarController.selectedIndex -=1;
+   }
 }
 
 // will load professional data again

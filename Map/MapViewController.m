@@ -29,6 +29,25 @@
     self.scrollEnabled = YES;
     self.pitchEnabled = YES;
     [self.mapView setDelegate: self];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(detectSwipe:)];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]
+                                            initWithTarget:self  action:@selector(detectSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+}
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+        self.tabBarController.selectedIndex +=1;
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+       self.tabBarController.selectedIndex -=1;
+   }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -122,8 +141,8 @@
 - (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id)overlay {
     MKCircleRenderer* aRenderer = [[MKCircleRenderer
                                     alloc]initWithCircle:(MKCircle *)overlay];
-    aRenderer.fillColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
-    aRenderer.strokeColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.9];
+    aRenderer.fillColor = [[UIColor systemPurpleColor] colorWithAlphaComponent:0.5];
+    aRenderer.strokeColor = [[UIColor systemPurpleColor] colorWithAlphaComponent:0.9];
     aRenderer.lineWidth = 2;
     aRenderer.lineDashPattern = @[@2, @5];
     aRenderer.alpha = 0.5;

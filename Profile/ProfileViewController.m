@@ -44,6 +44,16 @@
     self.timeFormatter = [[NSDateFormatter alloc] init];
     self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.timeFormatter.dateFormat = @"MMM d";
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(detectSwipe:)];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]
+                                            initWithTarget:self  action:@selector(detectSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
 }
 
 - (IBAction)segmentedTapped:(UISegmentedControl *)sender {
@@ -106,11 +116,22 @@
         }
     }];
 }
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+        self.tabBarController.selectedIndex +=1;
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+       self.tabBarController.selectedIndex -=1;
+   }
+}
 
 -(void) setupProfileInfo:(PFObject *) currentUser {
     self.profileName.text = currentUser[@"Name"];
     self.profilePicture.file = currentUser[@"Image"];
-    self.profileUsername.text = currentUser[@"username"];
+    NSString *atName = @"@";
+    NSString *screenName = [atName stringByAppendingString:currentUser[@"username"]];
+    self.profileUsername.text = screenName;
     self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
 }
 
