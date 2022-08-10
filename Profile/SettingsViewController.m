@@ -43,4 +43,7 @@
         }
    }];
 }
+- (IBAction)changeProfilePicture:(id)sender {
+    [self performSegueWithIdentifier:@"updateProfilePictureSegue" sender:nil];
+}
 @end

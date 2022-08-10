@@ -1,8 +1,11 @@
 {
   "data" : [
     {
+      "idiom" : "universal"
+    },
+    {
       "filename" : "99115-help-blue.gif",
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "universal-type-identifier" : "public.data"
     }
   ],

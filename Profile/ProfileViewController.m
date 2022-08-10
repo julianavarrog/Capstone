@@ -45,6 +45,8 @@
     self.timeFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
     self.timeFormatter.dateFormat = @"MMM d";
     
+    [self.profilePicture setFile:nil];
+    
     //swipe gesture initialization
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
                                            initWithTarget:self action:@selector(detectSwipe:)];
@@ -116,6 +118,7 @@
 
 -(void) setupProfileInfo:(PFObject *) currentUser {
     self.profileName.text = currentUser[@"Name"];
+    self.profilePicture.file = nil;
     self.profilePicture.file = currentUser[@"Image"];
     NSString *atName = @"@";
     if (currentUser[@"username"] != nil){

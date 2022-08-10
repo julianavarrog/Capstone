@@ -26,7 +26,6 @@
     self.chosenProfilePicture.clipsToBounds = YES;
 }
 
-
 - (IBAction)didChooseImage:(id)sender {
     [self getPhotoLibrary];
     

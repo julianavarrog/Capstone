@@ -22,18 +22,35 @@
     self.viewButton.layer.cornerRadius = 15;
     self.viewButton.clipsToBounds = YES;
     
+    self.profileCellImage.file = nil;
+    
     [self setupContainerView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
+/*
+#pragma mark - Reuse Image
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self.profileCellImage setFile: nil];
+    [self.profileCellImage setImage: nil];
+}
+*/
+#pragma mark - Venmo Link
 
 - (IBAction)venmoClicked:(id)sender {
     NSURL *myURL = [NSURL URLWithString:@"https://venmo.com/account/sign-in"];
     [[UIApplication sharedApplication] openURL: myURL];
-    
 }
+- (IBAction)messengerClicked:(id)sender {
+    NSURL *myURL = [NSURL URLWithString:@"https://www.messenger.com/login/?next=https%3A%2F%2Fwww.messenger.com%2F"];
+    [[UIApplication sharedApplication] openURL: myURL];
+}
+
+#pragma mark - Activities
 
 - (void)setActivity:(PFObject*) activity with:(PFObject*) user {
     [self.profileName setText: [user[@"Name"] capitalizedString]];
@@ -47,6 +64,8 @@
     [self.cancelButton setHidden: [(NSNumber *)activity[@"count"] intValue] == 3 ? YES : NO];
 }
 
+#pragma mark - UITableViewCell handlers
+
 - (IBAction)viewButtonTapped:(id)sender {
     self.viewButtonTapHandler();
 }
@@ -55,6 +74,7 @@
     self.cancelButtonTapHandler();
 }
 
+#pragma mark - UIContainer setup
 -(void) setupContainerView {
     containerView.layer.cornerRadius = 10.0;
     containerView.layer.shadowRadius  = 3.0f;
