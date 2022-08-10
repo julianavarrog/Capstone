@@ -13,11 +13,19 @@
 @end
 
 @implementation OpenViewController
+@synthesize animationView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.getStartedButton.layer.cornerRadius = 20;
     self.getStartedButton.clipsToBounds = YES;
+    
+    animationView.animationImages = [[NSArray alloc]initWithObjects:
+                                     [UIImage imageNamed:@"helpAnimation.gif"], nil];
+    animationView.animationDuration = 4.0f;
+    animationView.animationRepeatCount = 0;
+    [animationView startAnimating];
+    //[self.view addSubview: animationView];
 }
 
 - (IBAction)didTapStart:(id)sender {

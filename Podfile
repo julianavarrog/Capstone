@@ -12,6 +12,7 @@ target 'Ment' do
   pod 'GTMAppAuth'
   pod 'AppAuth'
   pod 'FSCalendar'
+  pod 'lottie-ios'
 
 
   target 'MentTests' do

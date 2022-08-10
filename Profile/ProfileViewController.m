@@ -118,8 +118,12 @@
     self.profileName.text = currentUser[@"Name"];
     self.profilePicture.file = currentUser[@"Image"];
     NSString *atName = @"@";
-    NSString *screenName = [atName stringByAppendingString:currentUser[@"username"]];
-    self.profileUsername.text = screenName;
+    if (currentUser[@"username"] != nil){
+        NSString *screenName = [atName stringByAppendingString:currentUser[@"username"]];
+        self.profileUsername.text = screenName;
+    }else{
+        [self.profileUsername setHidden:YES];
+    }
     self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
 }
 

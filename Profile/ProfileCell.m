@@ -31,6 +31,7 @@
 
 - (IBAction)venmoClicked:(id)sender {
     NSURL *myURL = [NSURL URLWithString:@"https://venmo.com/account/sign-in"];
+    [[UIApplication sharedApplication] openURL: myURL];
     
 }
 
