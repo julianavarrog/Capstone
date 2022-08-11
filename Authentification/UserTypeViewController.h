@@ -10,6 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UserTypeViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *professionalButton;
+@property (weak, nonatomic) IBOutlet UIButton *userButton;
 - (IBAction)didTapUser:(id)sender;
 - (IBAction)didTapProfessional:(id)sender;
 

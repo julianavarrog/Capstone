@@ -11,16 +11,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LoginViewController : UIViewController
-<ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding>
+<ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding, UIWindowSceneDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) UITextField * appleIDLoginInfoTextView;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *appleButton;
 
 - (IBAction)loginButton:(id)sender;
 - (IBAction)signupButton:(id)sender;
-- (IBAction)forgotPassword:(id)sender;
 
 @end
 

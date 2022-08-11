@@ -8,7 +8,7 @@
 #import "ProfessionalFinalRegistrationViewController.h"
 #import "Parse/Parse.h"
 #import "UserTypeViewController.h"
-#import "NewFilterInfoViewController.h"
+#import "ProfessionalInfoViewController.h"
 
 
 @interface ProfessionalFinalRegistrationViewController ()
@@ -18,10 +18,13 @@
 @implementation ProfessionalFinalRegistrationViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    self.continueButton.layer.cornerRadius = 20;
+    self.continueButton.clipsToBounds = YES;
 }
 
-
+#pragma mark - Final Registration for PFUser and PFObject (Professionals)
 - (void) registerProfessional{
     
     PFUser *newUser = [PFUser user];
@@ -71,7 +74,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual: @"filterInfoSegue"]){
         NSString *objectId = (NSString *) sender;
-        NewFilterInfoViewController * vc = [segue destinationViewController];
+        ProfessionalInfoViewController * vc = [segue destinationViewController];
         vc.objectToUpdate = objectId;
     }
 }

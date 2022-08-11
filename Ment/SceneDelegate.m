@@ -7,6 +7,8 @@
 
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
+#import "Helper.h"
+
 
 @interface SceneDelegate ()
 
@@ -23,10 +25,22 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PFQuery *query = [PFQuery queryWithClassName:@"Professionals"];
         [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
-        [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable professional, NSError * _Nullable error) {
             if (error != nil){
-                self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+                PFQuery *query = [PFQuery queryWithClassName:@"UserDetail"];
+                [query whereKey:@"userID" equalTo:PFUser.currentUser.objectId];
+                [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable user, NSError * _Nullable error) {
+                    if (user != nil){
+                        [Helper sharedObject].currentUser = user;
+                        [Helper sharedObject].isUser = YES;
+                        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+                    }else{
+                        
+                    }
+                }];
             }else{
+                [Helper sharedObject].currentUser = professional;
+                [Helper sharedObject].isUser = NO;
                 self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"professionalTabController"];
             }
         }];

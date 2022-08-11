@@ -1,4 +1,3 @@
-//
 //  FeedViewController.m
 //  Ment
 //
@@ -14,30 +13,25 @@
 #import <Parse/PFObject+Subclass.h>
 #import "DetailFeedViewController.h"
 #import "FilterViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "Helper.h"
 
 
-@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate, CLLocationManagerDelegate>{
+        CLLocationManager *locationManager;
+        CLLocation *currentLocation;
+}
 @property (weak, nonatomic) IBOutlet UITableView *feedTableView;
 @property (strong, nonatomic) NSArray *profileArray;
-@property (strong, nonatomic) NSMutableArray *profesionals;
+@property (strong, nonatomic) NSMutableArray *userDetails;
 @property (strong, nonatomic) NSMutableArray *profesionalsFiltered;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-
-@property (strong, nonatomic) NSArray *userLocation;
-@property (strong, nonatomic) NSArray *professionalLocation;
-
-
-// attempt at searchBar
-
+@property (strong, nonatomic) NSMutableArray *userLocation;
+@property (strong, nonatomic) NSMutableArray *professionalLocation;
+@property CLLocation *location;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *filteredProfessionals;
-
-
 @property BOOL isFiltered;
-
-
-
-
 
 @end
 
@@ -54,7 +48,20 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getProfessionals) forControlEvents:UIControlEventValueChanged];
     [self.feedTableView insertSubview:self.refreshControl atIndex:0];
+    [self currentLocationIdentifier];
+    
+    //swipe gesture initialization
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(detectSwipe:)];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]
+                                            initWithTarget:self  action:@selector(detectSwipe:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
 }
+
 
 
 -(void) getProfessionals {
@@ -64,12 +71,25 @@
     [query includeKey:@"author"];
     [self refreshControl];
     //fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *profesionals, NSError *error){
+    [query findObjectsInBackgroundWithBlock:^(NSArray *professionals, NSError *error){
         [self.refreshControl endRefreshing];
-        if(profesionals != nil){
+        if(professionals != nil){
+            self.professionals = [[NSMutableArray alloc] init];
+            self.profesionalsFiltered = [[NSMutableArray alloc] init];
+            
+            for (Professional * professional in professionals){
+                
+                NSNumber *latitude = professional[@"latitude"];
+                NSNumber *longitude = professional[@"longitude"];
+        
+                CLLocation *professionalLocation = [[CLLocation alloc]initWithLatitude:latitude.doubleValue longitude:longitude.doubleValue];
+                CLLocationDistance distance = [self.location distanceFromLocation:professionalLocation];
+                NSLog (@"Current Location %@: [%f,%f] - Professional Location: [%f,%f] -> Distance: %f",professional[@"Name"], self.location.coordinate.latitude, self.location.coordinate.longitude, latitude.doubleValue, longitude.doubleValue,distance);
+                professional[@"distance"] = @(distance);
+                [self.professionals addObject:professional];
+                [self.profesionalsFiltered addObject:professional];
+            }
             // do something with the array of object returned by call
-            self.profesionals = [[NSMutableArray alloc] initWithArray:profesionals];
-            self.profesionalsFiltered = [[NSMutableArray alloc] initWithArray:profesionals];
             [self.feedTableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -77,87 +97,28 @@
     }];
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    if (searchText.length == 0) {
-        self.isFiltered = false;
-        [self.searchBar endEditing:YES];
-    } else {
-        self.isFiltered = true;
-        for (Professional *professional in self.profesionals ) {
-            NSRange range = [professional[@"Name"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
-            if (range.location != NSNotFound) {
-                
-                [self.filteredProfessionals addObject:professional];
-            }
-        }
-    }
-    [self.feedTableView reloadData];
+#pragma mark - Swipe Gesture Recognizer
+
+- (IBAction)detectSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+        self.tabBarController.selectedIndex +=1;
+        NSLog(@"%lu",self.tabBarController.selectedIndex);
+   } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+       self.tabBarController.selectedIndex -=1;
+   }
 }
+#pragma mark - Filtering with Predicates
 
--(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
-    Professional *profile = self.profesionalsFiltered[indexPath.row];
-    [cell setProfile:profile];
-    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.profesionalsFiltered.count;
-}
-
--(void)viewButtonTapped:(UIButton*)sender {
-    
-    CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.feedTableView];
-    NSIndexPath *clickedButtonIndexPath = [self.feedTableView indexPathForRowAtPoint:touchPoint];
-
-    NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
-    NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
-
-    [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
-}
-
-- (IBAction)feedFilterButton:(id)sender {
-    
-    [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
-
-}
-
-- (void) calculateDistance{
-    
-    for (UserDetail *userDetail in self.userDetail){
-        self.userLocation = userDetail[@"Location"];
-        NSLog(@"%@", _userLocation);
-    }
-    for (Professional *professional in self.profesionals ) {
-        self.professionalLocation = professional[@"Location"];
-        NSLog(@"%@", _professionalLocation);
-    }
-   // NSInteger* lon = (@([_userLocation.firstObject intValue]) - @([_professionalLocation.firstObject intValue]));
-    // NSInteger* lat = (@([_userLocation.lastObject intValue]) - @([_professionalLocation.lastObject intValue]));
-     //distance = sqrt(long,lat);
-    
-}
-
-
-
-- (IBAction)feedNotificationButton:(id)sender {
-    
-}
-
-- (void)sendDataToA:(nonnull Filter *)filter {
+- (void)sendDataToFilter:(nonnull Filter *)filter {
     
     // predicates are conditionals to array.
-    //NSPredicate *predicate0 = [NSPredicate predicateWithFormat:@"Location <= %d" filter.selectedDistance.intValue];
-    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
-    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]];
-    NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.profesionals filteredArrayUsingPredicate:predicate]];
+    NSPredicate *predicateLocation = [NSPredicate predicateWithFormat:@"distance <= %d", filter.selectedDistance.intValue];
+    NSPredicate *predicatePrice = [NSPredicate predicateWithFormat:@"Price <= %d", filter.selectedPrice.intValue];
+    NSPredicate *predicateAge = [NSPredicate predicateWithFormat:@"Age <= %d", filter.selectedAge.intValue];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicatePrice, predicateAge, predicateLocation]];
+    NSMutableArray* firstFiltered = [[NSMutableArray alloc] initWithArray:[self.professionals filteredArrayUsingPredicate:predicate]];
     NSMutableArray * specialityFiltered = [[NSMutableArray alloc]init];
-    
     if (filter.selectedSpeciality.count > 0){
         for (Professional* professional in firstFiltered){
             NSArray * specialitys = professional[@"Speciality"];
@@ -191,7 +152,86 @@
     [self.feedTableView reloadData];
 }
 
+#pragma mark - UITableView
+
+-(nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
+    Professional *profile = self.profesionalsFiltered[indexPath.row];
+    [cell setProfile:profile];
+    [cell.bookAppointmentButton addTarget:self action:@selector(viewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.profesionalsFiltered.count;
+}
+
+#pragma mark - LocationManagerDelegate
+- (void) currentLocationIdentifier{
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    [locationManager stopUpdatingLocation];
+    CLLocation *location = [locations lastObject];
+    NSLog(@"lat%f - lon%f", location.coordinate.latitude, location.coordinate.longitude);
+    self.location = location;
+}
+
+#pragma mark - UISearchBar
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length == 0) {
+        self.isFiltered = false;
+        [self.searchBar endEditing:YES];
+        
+    } else {
+        self.isFiltered = true;
+        self.profesionalsFiltered = [[NSMutableArray alloc] init];
+        for (Professional *professional in self.professionals) {
+            NSRange range = [professional[@"Name"] rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (range.location != NSNotFound) {
+                
+                [self.profesionalsFiltered addObject: professional];
+            }
+        }
+    }
+    [self.feedTableView reloadData];
+}
+
 #pragma mark - Navigation
+
+- (IBAction)feedFilterButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"professionalsFilter" sender:nil];
+}
+
+- (IBAction) feedNotificationButton:(id)sender{
+    [self performSegueWithIdentifier:@"userNotificationSegue" sender:nil];
+}
+
+-(void)viewButtonTapped:(UIButton*)sender {
+    
+    CGPoint touchPoint = [sender convertPoint:CGPointZero toView:self.feedTableView];
+    NSIndexPath *clickedButtonIndexPath = [self.feedTableView indexPathForRowAtPoint:touchPoint];
+
+    NSLog(@"index path.section ==%ld",(long)clickedButtonIndexPath.section);
+    NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
+
+    [self performSegueWithIdentifier:@"professionalDetail" sender:clickedButtonIndexPath];
+}
+
+#pragma mark - Navegation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
@@ -204,12 +244,11 @@
     } else if ([segue.identifier isEqual:@"professionalsFilter"]) {
         FilterViewController *filterVC = [segue destinationViewController];
         filterVC.delegate = self;
-        filterVC.professionals = self.profesionals;
+        filterVC.professionals = self.professionals;
     }
 }
 
 @end
-
 
 
 

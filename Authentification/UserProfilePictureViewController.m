@@ -18,6 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.signupButton.layer.cornerRadius = 20;
+    self.signupButton.clipsToBounds = YES;
+    self.chosenProfilePicture.layer.cornerRadius = 20;
+    self.chosenProfilePicture.clipsToBounds = YES;
 }
 
 - (IBAction)didSignup:(id)sender {
@@ -29,7 +34,6 @@
         [professional save];
     }];
  [self performSegueWithIdentifier:@"secondSegue" sender:nil];
-    
 }
 
 - (IBAction)didTapUploadButton:(id)sender {
@@ -41,16 +45,14 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
+
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
     CGSize resizeSize = CGSizeMake(80, 80);
     if (editedImage) {
         self.chosenProfilePicture.image = [self resizeImage:editedImage withSize:resizeSize];
@@ -58,7 +60,6 @@
         self.chosenProfilePicture.image = [self resizeImage:originalImage withSize:resizeSize];
     }
     PFObject *parseObject = [PFObject objectWithClassName:@"Professionals"];
-    
     PFFileObject *imageFile = [UserProfilePictureViewController getPFFileFromImage: self.chosenProfilePicture.image];
     parseObject[@"Image"] = imageFile;
     [parseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -67,16 +68,14 @@
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
     resizeImageView.image = image;
-    
     UIGraphicsBeginImageContext(size);
     [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     return newImage;
 }
 

@@ -1,0 +1,16 @@
+{
+  "data" : [
+    {
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "99115-help-blue.gif",
+      "idiom" : "iphone",
+      "universal-type-identifier" : "public.data"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

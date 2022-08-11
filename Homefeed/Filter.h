@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSNumber* selectedPrice;
 @property (nonatomic, strong) NSNumber* selectedAge;
+@property (nonatomic, strong) NSNumber* selectedDistance;
 @property (nonatomic, strong) NSArray * selectedSpeciality;
 @property (nonatomic, strong) NSArray * selectedLanguage;
 

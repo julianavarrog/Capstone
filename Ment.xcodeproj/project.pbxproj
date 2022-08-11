@@ -7,8 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1008FC3F28A4281F00781B4A /* UpdateProfilePicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008FC3E28A4281F00781B4A /* UpdateProfilePicture.m */; };
+		1010668A28A44A32008C1DCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E082870126B0091D1A6 /* main.m */; };
+		1010668B28A44A32008C1DCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4E082870126B0091D1A6 /* main.m */; };
+		1015370D28A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 101536F528A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		1015370E28A450F3006CD119 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370128A450F3006CD119 /* MASCompositeConstraint.m */; };
+		1015370F28A450F3006CD119 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370228A450F3006CD119 /* MASConstraintMaker.m */; };
+		1015371028A450F3006CD119 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370328A450F3006CD119 /* MASLayoutConstraint.m */; };
+		1015371128A450F3006CD119 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370428A450F3006CD119 /* NSArray+MASAdditions.m */; };
+		1015371228A450F3006CD119 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370528A450F3006CD119 /* View+MASAdditions.m */; };
+		1015371328A450F3006CD119 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370828A450F3006CD119 /* MASConstraint.m */; };
+		1015371428A450F3006CD119 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370928A450F3006CD119 /* MASViewConstraint.m */; };
+		1015371528A450F3006CD119 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370A28A450F3006CD119 /* MASViewAttribute.m */; };
+		1015371628A450F3006CD119 /* TimeLineViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370B28A450F3006CD119 /* TimeLineViewControl.m */; };
+		1015371928A451E5006CD119 /* timelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015371828A451E5006CD119 /* timelineViewController.m */; };
+		1015371B28A46066006CD119 /* helpAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1015371A28A46066006CD119 /* helpAnimation.gif */; };
+		1015371D28A460FF006CD119 /* helpAnimation.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1015371C28A460FF006CD119 /* helpAnimation.jpeg */; };
+		10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10590E27289208D000966FD5 /* SessionSummaryViewController.m */; };
 		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
-		1065745A287CA6D0003E8877 /* Languages.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Languages.m */; };
+		1065745A287CA6D0003E8877 /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Language.m */; };
+		106B1EA028987624005F0BFF /* MapCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B1E9F28987624005F0BFF /* MapCircle.m */; };
+		106B1EA3289991AE005F0BFF /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B1EA2289991AE005F0BFF /* Notification.m */; };
 		106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DF72870126A0091D1A6 /* AppDelegate.m */; };
 		106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFA2870126A0091D1A6 /* SceneDelegate.m */; };
 		106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 106B4DFD2870126A0091D1A6 /* ViewController.m */; };
@@ -42,10 +61,13 @@
 		10D364942885F7B000FF5BBB /* UserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364932885F7B000FF5BBB /* UserDetail.m */; };
 		10D36497288621C000FF5BBB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D36496288621C000FF5BBB /* MapViewController.m */; };
 		10D3649B2887C39400FF5BBB /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */; };
-		10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */; };
+		10D364A1288B52E500FF5BBB /* EventsCalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */; };
+		10E3EFE9287F625B00F529D6 /* ProfessionalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */; };
 		10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFEB2880DE1900F529D6 /* NotificationCell.m */; };
 		10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF12883A4AC00F529D6 /* Professional.m */; };
 		10E3EFF52883A69600F529D6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10E3EFF42883A69600F529D6 /* Filter.m */; };
+		10EC28B428931E3900E9E5E2 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EC28B328931E3900E9E5E2 /* MapPin.m */; };
+		10F58BDE289CCD7700E80F19 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F58BDD289CCD7700E80F19 /* Helper.m */; };
 		391D1BB82A963B428A21A364 /* Pods_Ment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFCAD6B8EE30B9E0707B5C9 /* Pods_Ment.framework */; };
 		494DBF1E96FAF5BD1FD4E8C2 /* Pods_Ment_MentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA780C5D5317B39894EC460F /* Pods_Ment_MentUITests.framework */; };
 		7B3500182E8D8F2389479645 /* Pods_MentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */; };
@@ -70,10 +92,47 @@
 
 /* Begin PBXFileReference section */
 		0AE5EDA8B5416C20A77D9C20 /* Pods-Ment-MentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.release.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1008FC3D28A4281F00781B4A /* UpdateProfilePicture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateProfilePicture.h; sourceTree = "<group>"; };
+		1008FC3E28A4281F00781B4A /* UpdateProfilePicture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateProfilePicture.m; sourceTree = "<group>"; };
+		101536F428A450F3006CD119 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		101536F528A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		101536F628A450F3006CD119 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		101536F728A450F3006CD119 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		101536F828A450F3006CD119 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		101536F928A450F3006CD119 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		101536FA28A450F3006CD119 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		101536FB28A450F3006CD119 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		101536FC28A450F3006CD119 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		101536FD28A450F3006CD119 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		101536FE28A450F3006CD119 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		101536FF28A450F3006CD119 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		1015370028A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		1015370128A450F3006CD119 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		1015370228A450F3006CD119 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		1015370328A450F3006CD119 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		1015370428A450F3006CD119 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		1015370528A450F3006CD119 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		1015370628A450F3006CD119 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		1015370728A450F3006CD119 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		1015370828A450F3006CD119 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		1015370928A450F3006CD119 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		1015370A28A450F3006CD119 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		1015370B28A450F3006CD119 /* TimeLineViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewControl.m; sourceTree = "<group>"; };
+		1015370C28A450F3006CD119 /* TimeLineViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewControl.h; sourceTree = "<group>"; };
+		1015371728A451E2006CD119 /* timelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timelineViewController.h; sourceTree = "<group>"; };
+		1015371828A451E5006CD119 /* timelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = timelineViewController.m; sourceTree = "<group>"; };
+		1015371A28A46066006CD119 /* helpAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = helpAnimation.gif; sourceTree = "<group>"; };
+		1015371C28A460FF006CD119 /* helpAnimation.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = helpAnimation.jpeg; sourceTree = "<group>"; };
+		10590E26289208D000966FD5 /* SessionSummaryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionSummaryViewController.h; sourceTree = "<group>"; };
+		10590E27289208D000966FD5 /* SessionSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionSummaryViewController.m; sourceTree = "<group>"; };
 		10657455287C9F3D003E8877 /* Speciality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Speciality.h; sourceTree = "<group>"; };
 		10657456287C9F3D003E8877 /* Speciality.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Speciality.m; sourceTree = "<group>"; };
-		10657458287CA6D0003E8877 /* Languages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Languages.h; sourceTree = "<group>"; };
-		10657459287CA6D0003E8877 /* Languages.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Languages.m; sourceTree = "<group>"; };
+		10657458287CA6D0003E8877 /* Language.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
+		10657459287CA6D0003E8877 /* Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
+		106B1E9E28987624005F0BFF /* MapCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapCircle.h; sourceTree = "<group>"; };
+		106B1E9F28987624005F0BFF /* MapCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapCircle.m; sourceTree = "<group>"; };
+		106B1EA1289991AE005F0BFF /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		106B1EA2289991AE005F0BFF /* Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		106B4DF32870126A0091D1A6 /* Ment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		106B4DF62870126A0091D1A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		106B4DF72870126A0091D1A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -138,14 +197,20 @@
 		10D36496288621C000FF5BBB /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		10D364992887749300FF5BBB /* Ment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ment.entitlements; sourceTree = "<group>"; };
 		10D3649A2887C39400FF5BBB /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
-		10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFilterInfoViewController.h; sourceTree = "<group>"; };
-		10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFilterInfoViewController.m; sourceTree = "<group>"; };
+		10D3649F288B52E500FF5BBB /* EventsCalendarTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventsCalendarTableViewController.h; sourceTree = "<group>"; };
+		10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsCalendarTableViewController.m; sourceTree = "<group>"; };
+		10E3EFE7287F625B00F529D6 /* ProfessionalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfessionalInfoViewController.h; sourceTree = "<group>"; };
+		10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfessionalInfoViewController.m; sourceTree = "<group>"; };
 		10E3EFEA2880DE1900F529D6 /* NotificationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
 		10E3EFEB2880DE1900F529D6 /* NotificationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		10E3EFF02883A4AC00F529D6 /* Professional.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Professional.h; sourceTree = "<group>"; };
 		10E3EFF12883A4AC00F529D6 /* Professional.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Professional.m; sourceTree = "<group>"; };
 		10E3EFF32883A69600F529D6 /* Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		10E3EFF42883A69600F529D6 /* Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		10EC28B228931E3900E9E5E2 /* MapPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		10EC28B328931E3900E9E5E2 /* MapPin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		10F58BDC289CCD7700E80F19 /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		10F58BDD289CCD7700E80F19 /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		25060B051F3AA9015EB4B976 /* Pods-MentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentTests.release.xcconfig"; path = "Target Support Files/Pods-MentTests/Pods-MentTests.release.xcconfig"; sourceTree = "<group>"; };
 		447F49A941A7B0CDD6220ABA /* Pods_MentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E281FEB64FA8AEB0F476385 /* Pods-Ment-MentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ment-MentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ment-MentUITests/Pods-Ment-MentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,9 +251,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101536F228A450F3006CD119 /* TimeLineControl */ = {
+			isa = PBXGroup;
+			children = (
+				101536F328A450F3006CD119 /* Masonry */,
+				1015370B28A450F3006CD119 /* TimeLineViewControl.m */,
+				1015370C28A450F3006CD119 /* TimeLineViewControl.h */,
+				1015371728A451E2006CD119 /* timelineViewController.h */,
+				1015371828A451E5006CD119 /* timelineViewController.m */,
+			);
+			name = TimeLineControl;
+			path = "../../../Downloads/timeLineiOS-master/TimeLineControl";
+			sourceTree = "<group>";
+		};
+		101536F328A450F3006CD119 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				101536F428A450F3006CD119 /* MASCompositeConstraint.h */,
+				101536F528A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				101536F628A450F3006CD119 /* MASConstraint+Private.h */,
+				101536F728A450F3006CD119 /* MASLayoutConstraint.h */,
+				101536F828A450F3006CD119 /* NSArray+MASShorthandAdditions.h */,
+				101536F928A450F3006CD119 /* MASConstraintMaker.h */,
+				101536FA28A450F3006CD119 /* View+MASAdditions.h */,
+				101536FB28A450F3006CD119 /* NSArray+MASAdditions.h */,
+				101536FC28A450F3006CD119 /* MASUtilities.h */,
+				101536FD28A450F3006CD119 /* MASViewAttribute.h */,
+				101536FE28A450F3006CD119 /* MASViewConstraint.h */,
+				101536FF28A450F3006CD119 /* MASConstraint.h */,
+				1015370028A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				1015370128A450F3006CD119 /* MASCompositeConstraint.m */,
+				1015370228A450F3006CD119 /* MASConstraintMaker.m */,
+				1015370328A450F3006CD119 /* MASLayoutConstraint.m */,
+				1015370428A450F3006CD119 /* NSArray+MASAdditions.m */,
+				1015370528A450F3006CD119 /* View+MASAdditions.m */,
+				1015370628A450F3006CD119 /* View+MASShorthandAdditions.h */,
+				1015370728A450F3006CD119 /* Masonry.h */,
+				1015370828A450F3006CD119 /* MASConstraint.m */,
+				1015370928A450F3006CD119 /* MASViewConstraint.m */,
+				1015370A28A450F3006CD119 /* MASViewAttribute.m */,
+			);
+			path = Masonry;
+			sourceTree = "<group>";
+		};
+		10590E252892068C00966FD5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				10D36495288621C000FF5BBB /* MapViewController.h */,
+				10D36496288621C000FF5BBB /* MapViewController.m */,
+				10EC28B228931E3900E9E5E2 /* MapPin.h */,
+				10EC28B328931E3900E9E5E2 /* MapPin.m */,
+				106B1E9E28987624005F0BFF /* MapCircle.h */,
+				106B1E9F28987624005F0BFF /* MapCircle.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		106B4DEA2870126A0091D1A6 = {
 			isa = PBXGroup;
 			children = (
+				101536F228A450F3006CD119 /* TimeLineControl */,
+				10590E252892068C00966FD5 /* Map */,
 				106B4E59287371AB0091D1A6 /* Authentification */,
 				106B4E5228728CDF0091D1A6 /* Calendar */,
 				10D3649D2888C02400FF5BBB /* Profile */,
@@ -228,12 +351,6 @@
 				106B4E042870126B0091D1A6 /* LaunchScreen.storyboard */,
 				106B4E072870126B0091D1A6 /* Info.plist */,
 				106B4E082870126B0091D1A6 /* main.m */,
-				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
-				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
-				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
-				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
-				10D36495288621C000FF5BBB /* MapViewController.h */,
-				10D36496288621C000FF5BBB /* MapViewController.m */,
 			);
 			path = Ment;
 			sourceTree = "<group>";
@@ -264,12 +381,16 @@
 				106B4E732878A13F0091D1A6 /* User.m */,
 				10657455287C9F3D003E8877 /* Speciality.h */,
 				10657456287C9F3D003E8877 /* Speciality.m */,
-				10657458287CA6D0003E8877 /* Languages.h */,
-				10657459287CA6D0003E8877 /* Languages.m */,
+				10657458287CA6D0003E8877 /* Language.h */,
+				10657459287CA6D0003E8877 /* Language.m */,
 				10E3EFF02883A4AC00F529D6 /* Professional.h */,
 				10E3EFF12883A4AC00F529D6 /* Professional.m */,
 				10D364922885F7B000FF5BBB /* UserDetail.h */,
 				10D364932885F7B000FF5BBB /* UserDetail.m */,
+				106B1EA1289991AE005F0BFF /* Notification.h */,
+				106B1EA2289991AE005F0BFF /* Notification.m */,
+				10F58BDC289CCD7700E80F19 /* Helper.h */,
+				10F58BDD289CCD7700E80F19 /* Helper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +402,8 @@
 				1096D83B287D318500A97C32 /* EventList.m */,
 				106B4E3528701D290091D1A6 /* CalendarViewController.h */,
 				106B4E3628701D290091D1A6 /* CalendarViewController.m */,
+				10D3649F288B52E500FF5BBB /* EventsCalendarTableViewController.h */,
+				10D364A0288B52E500FF5BBB /* EventsCalendarTableViewController.m */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -288,6 +411,8 @@
 		106B4E59287371AB0091D1A6 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
+				1015371C28A460FF006CD119 /* helpAnimation.jpeg */,
+				1015371A28A46066006CD119 /* helpAnimation.gif */,
 				106B4E3E2870A1C20091D1A6 /* LoginViewController.h */,
 				106B4E3F2870A1C20091D1A6 /* LoginViewController.m */,
 				106B4E5A287372D60091D1A6 /* UserTypeViewController.h */,
@@ -302,10 +427,10 @@
 				106B4E672874E40A0091D1A6 /* OpenViewController.m */,
 				106B4E6C2877A1C90091D1A6 /* UserProfilePictureViewController.h */,
 				106B4E6D2877A1C90091D1A6 /* UserProfilePictureViewController.m */,
-				10E3EFE8287F625B00F529D6 /* NewFilterInfoViewController.m */,
-				10E3EFE7287F625B00F529D6 /* NewFilterInfoViewController.h */,
-				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
+				10E3EFE7287F625B00F529D6 /* ProfessionalInfoViewController.h */,
+				10E3EFE8287F625B00F529D6 /* ProfessionalInfoViewController.m */,
 				1096D83E287E2A4800A97C32 /* TestAppleSignin.m */,
+				1096D83D287E2A4800A97C32 /* TestAppleSignin.h */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -313,10 +438,16 @@
 		10D3649D2888C02400FF5BBB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				106B4E482870B48A0091D1A6 /* SettingsViewController.m */,
+				106B4E472870B48A0091D1A6 /* SettingsViewController.h */,
 				106B4E3C28701D730091D1A6 /* ProfileCell.m */,
 				106B4E3B28701D730091D1A6 /* ProfileCell.h */,
 				106B4E3928701D420091D1A6 /* ProfileViewController.m */,
 				106B4E3828701D420091D1A6 /* ProfileViewController.h */,
+				10590E26289208D000966FD5 /* SessionSummaryViewController.h */,
+				10590E27289208D000966FD5 /* SessionSummaryViewController.m */,
+				1008FC3D28A4281F00781B4A /* UpdateProfilePicture.h */,
+				1008FC3E28A4281F00781B4A /* UpdateProfilePicture.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -336,6 +467,8 @@
 				106B4E452870B19E0091D1A6 /* FilterViewController.m */,
 				106B4E412870AFA40091D1A6 /* NotificationsViewController.h */,
 				106B4E422870AFA40091D1A6 /* NotificationsViewController.m */,
+				106B4E692874F9DD0091D1A6 /* DetailFeedViewController.h */,
+				106B4E6A2874F9DD0091D1A6 /* DetailFeedViewController.m */,
 			);
 			path = Homefeed;
 			sourceTree = "<group>";
@@ -475,6 +608,8 @@
 			files = (
 				106B4E062870126B0091D1A6 /* LaunchScreen.storyboard in Resources */,
 				106B4E032870126B0091D1A6 /* Assets.xcassets in Resources */,
+				1015371B28A46066006CD119 /* helpAnimation.gif in Resources */,
+				1015371D28A460FF006CD119 /* helpAnimation.jpeg in Resources */,
 				106B4E012870126A0091D1A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,33 +739,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				106B4E712877EEFB0091D1A6 /* Event.m in Sources */,
+				10F58BDE289CCD7700E80F19 /* Helper.m in Sources */,
 				1096D83C287D318500A97C32 /* EventList.m in Sources */,
+				1015371928A451E5006CD119 /* timelineViewController.m in Sources */,
+				1015370F28A450F3006CD119 /* MASConstraintMaker.m in Sources */,
 				106B4E5F287373070091D1A6 /* UserFinalRegistrationViewController.m in Sources */,
 				10D364942885F7B000FF5BBB /* UserDetail.m in Sources */,
 				106B4DFE2870126A0091D1A6 /* ViewController.m in Sources */,
+				1015371528A450F3006CD119 /* MASViewAttribute.m in Sources */,
+				1015371228A450F3006CD119 /* View+MASAdditions.m in Sources */,
 				106B4E5C287372D60091D1A6 /* UserTypeViewController.m in Sources */,
 				106B4E402870A1C20091D1A6 /* LoginViewController.m in Sources */,
 				106B4E6E2877A1C90091D1A6 /* UserProfilePictureViewController.m in Sources */,
+				1015370E28A450F3006CD119 /* MASCompositeConstraint.m in Sources */,
 				10657457287C9F3D003E8877 /* Speciality.m in Sources */,
 				106B4E432870AFA40091D1A6 /* NotificationsViewController.m in Sources */,
+				1015371428A450F3006CD119 /* MASViewConstraint.m in Sources */,
 				106B4E3A28701D420091D1A6 /* ProfileViewController.m in Sources */,
 				106B4DF82870126A0091D1A6 /* AppDelegate.m in Sources */,
+				1008FC3F28A4281F00781B4A /* UpdateProfilePicture.m in Sources */,
+				106B1EA3289991AE005F0BFF /* Notification.m in Sources */,
+				10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */,
 				106B4E682874E40A0091D1A6 /* OpenViewController.m in Sources */,
 				10D36497288621C000FF5BBB /* MapViewController.m in Sources */,
 				106B4E652874B6500091D1A6 /* ProfessionalProfilePictureViewController.m in Sources */,
 				106B4E742878A13F0091D1A6 /* User.m in Sources */,
 				10E3EFEC2880DE1900F529D6 /* NotificationCell.m in Sources */,
 				106B4E34287019BD0091D1A6 /* FeedCell.m in Sources */,
+				1015371328A450F3006CD119 /* MASConstraint.m in Sources */,
 				106B4E6B2874F9DD0091D1A6 /* DetailFeedViewController.m in Sources */,
 				106B4E62287384370091D1A6 /* ProfessionalFinalRegistrationViewController.m in Sources */,
+				10EC28B428931E3900E9E5E2 /* MapPin.m in Sources */,
+				106B1EA028987624005F0BFF /* MapCircle.m in Sources */,
+				10D364A1288B52E500FF5BBB /* EventsCalendarTableViewController.m in Sources */,
 				106B4E092870126B0091D1A6 /* main.m in Sources */,
+				1015371128A450F3006CD119 /* NSArray+MASAdditions.m in Sources */,
 				106B4E3728701D290091D1A6 /* CalendarViewController.m in Sources */,
 				106B4DFB2870126A0091D1A6 /* SceneDelegate.m in Sources */,
-				10E3EFE9287F625B00F529D6 /* NewFilterInfoViewController.m in Sources */,
-				1065745A287CA6D0003E8877 /* Languages.m in Sources */,
+				10E3EFE9287F625B00F529D6 /* ProfessionalInfoViewController.m in Sources */,
+				1065745A287CA6D0003E8877 /* Language.m in Sources */,
 				106B4E3D28701D730091D1A6 /* ProfileCell.m in Sources */,
+				1015370D28A450F3006CD119 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				10E3EFF52883A69600F529D6 /* Filter.m in Sources */,
 				106B4E462870B19E0091D1A6 /* FilterViewController.m in Sources */,
+				1015371628A450F3006CD119 /* TimeLineViewControl.m in Sources */,
+				1015371028A450F3006CD119 /* MASLayoutConstraint.m in Sources */,
 				106B4E302870198C0091D1A6 /* FeedViewController.m in Sources */,
 				10E3EFF22883A4AC00F529D6 /* Professional.m in Sources */,
 				106B4E492870B48A0091D1A6 /* SettingsViewController.m in Sources */,
@@ -641,6 +794,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1010668A28A44A32008C1DCD /* main.m in Sources */,
 				106B4E132870126B0091D1A6 /* MentTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				106B4E1F2870126B0091D1A6 /* MentUITestsLaunchTests.m in Sources */,
+				1010668B28A44A32008C1DCD /* main.m in Sources */,
 				106B4E1D2870126B0091D1A6 /* MentUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

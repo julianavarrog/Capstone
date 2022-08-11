@@ -13,11 +13,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EventList : UITableViewCell
+
+@property (strong, nonatomic) NSDateFormatter * eventFormatter;
 @property (weak, nonatomic) IBOutlet PFImageView *profesionalImage;
 @property (weak, nonatomic) IBOutlet UILabel *profesionalName;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *viewButton;
 @property (weak, nonatomic) IBOutlet UILabel *eventState;
+@property (weak, nonatomic) IBOutlet UILabel *dateTime;
 
 - (void)setEvent:(Event*)event with:(Professional*) professional;
 
