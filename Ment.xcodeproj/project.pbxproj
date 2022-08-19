@@ -21,8 +21,6 @@
 		1015371528A450F3006CD119 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370A28A450F3006CD119 /* MASViewAttribute.m */; };
 		1015371628A450F3006CD119 /* TimeLineViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015370B28A450F3006CD119 /* TimeLineViewControl.m */; };
 		1015371928A451E5006CD119 /* timelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1015371828A451E5006CD119 /* timelineViewController.m */; };
-		1015371B28A46066006CD119 /* helpAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1015371A28A46066006CD119 /* helpAnimation.gif */; };
-		1015371D28A460FF006CD119 /* helpAnimation.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1015371C28A460FF006CD119 /* helpAnimation.jpeg */; };
 		10590E28289208D000966FD5 /* SessionSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10590E27289208D000966FD5 /* SessionSummaryViewController.m */; };
 		10657457287C9F3D003E8877 /* Speciality.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657456287C9F3D003E8877 /* Speciality.m */; };
 		1065745A287CA6D0003E8877 /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 10657459287CA6D0003E8877 /* Language.m */; };
@@ -121,8 +119,6 @@
 		1015370C28A450F3006CD119 /* TimeLineViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewControl.h; sourceTree = "<group>"; };
 		1015371728A451E2006CD119 /* timelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timelineViewController.h; sourceTree = "<group>"; };
 		1015371828A451E5006CD119 /* timelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = timelineViewController.m; sourceTree = "<group>"; };
-		1015371A28A46066006CD119 /* helpAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = helpAnimation.gif; sourceTree = "<group>"; };
-		1015371C28A460FF006CD119 /* helpAnimation.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = helpAnimation.jpeg; sourceTree = "<group>"; };
 		10590E26289208D000966FD5 /* SessionSummaryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionSummaryViewController.h; sourceTree = "<group>"; };
 		10590E27289208D000966FD5 /* SessionSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionSummaryViewController.m; sourceTree = "<group>"; };
 		10657455287C9F3D003E8877 /* Speciality.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Speciality.h; sourceTree = "<group>"; };
@@ -411,8 +407,6 @@
 		106B4E59287371AB0091D1A6 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
-				1015371C28A460FF006CD119 /* helpAnimation.jpeg */,
-				1015371A28A46066006CD119 /* helpAnimation.gif */,
 				106B4E3E2870A1C20091D1A6 /* LoginViewController.h */,
 				106B4E3F2870A1C20091D1A6 /* LoginViewController.m */,
 				106B4E5A287372D60091D1A6 /* UserTypeViewController.h */,
@@ -608,8 +602,6 @@
 			files = (
 				106B4E062870126B0091D1A6 /* LaunchScreen.storyboard in Resources */,
 				106B4E032870126B0091D1A6 /* Assets.xcassets in Resources */,
-				1015371B28A46066006CD119 /* helpAnimation.gif in Resources */,
-				1015371D28A460FF006CD119 /* helpAnimation.jpeg in Resources */,
 				106B4E012870126A0091D1A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

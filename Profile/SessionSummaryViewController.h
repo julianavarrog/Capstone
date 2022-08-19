@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *taskThree;
 @property (weak, nonatomic) IBOutlet UITextView *reflectionBox;
 
+// gif animation
+@property (weak, nonatomic) IBOutlet UIImageView *confettiAnimation;
 @property (strong, nonatomic) PFObject * activity;
 @property bool isUser;
 @property(nonatomic,assign)id delegate;

@@ -118,7 +118,7 @@
 
 -(void) setupProfileInfo:(PFObject *) currentUser {
     self.profileName.text = currentUser[@"Name"];
-    self.profilePicture.file = nil;
+    //self.profilePicture.file = nil;
     self.profilePicture.file = currentUser[@"Image"];
     NSString *atName = @"@";
     if (currentUser[@"username"] != nil){
@@ -128,6 +128,7 @@
         [self.profileUsername setHidden:YES];
     }
     self.profilePicture.layer.cornerRadius  = self.profilePicture.frame.size.width/2;
+    [self.profilePicture loadInBackground];
 }
 
 # pragma mark - Update Activities

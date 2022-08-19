@@ -16,6 +16,7 @@
 
 @synthesize delegate;
 @synthesize activity;
+@synthesize confettiAnimation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

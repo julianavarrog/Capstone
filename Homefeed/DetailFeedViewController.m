@@ -72,6 +72,8 @@
     
     self.detailImage.file = self.professional[@"Image"];
     self.detailImage.layer.cornerRadius  = self.detailImage.frame.size.width/2;
+    [self.detailImage loadInBackground];
+
 }
 
 - (void) fetchEvents{
